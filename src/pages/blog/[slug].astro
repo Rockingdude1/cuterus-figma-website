@@ -67,7 +67,7 @@ const bodyHtml = post.body
       <div class="blog-footer__flower blog-footer__flower--purple"></div>
       <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
       <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
-      <a href="/#contact" class="btn-primary">Work with Me</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
   </body>
 </html>
@@ -315,16 +315,22 @@ const bodyHtml = post.body
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     .post {
-      padding: 100px 24px 40px;
+      padding: 100px 16px 40px;
     }
 
+    /* Keep lower as row: related links left, mail envelope right */
     .post__lower {
-      flex-direction: column;
-      gap: 32px;
+      gap: 16px;
+      align-items: flex-start;
     }
 
+    /* Show mail on mobile, sized to fit beside the related list */
     .post__mail {
-      display: none;
+      display: block;
+      width: 90px;
+      height: 64px;
+      flex-shrink: 0;
+      margin-top: 36px;
     }
   }
 </style>

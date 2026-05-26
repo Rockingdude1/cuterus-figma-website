@@ -1,0 +1,682 @@
+---
+import { Image } from 'astro:assets';
+import blogPhoto from '../assets/images/blog-photo.jpg';
+---
+
+<section class="content" id="content">
+
+  <!-- Mobile-only: heading at top -->
+  <div class="content__mobile-header">
+    <p class="content__mobile-sub">Building an audience across platforms — because your feed deserves more science, less drama.</p>
+    <h2 class="content__mobile-heading">How you will find me while scrolling on your phone</h2>
+  </div>
+
+  <!-- Mobile-only: platform pill + nav arrows -->
+  <div class="content__mobile-controls">
+    <span class="content__platform-pill" id="content-platform-pill">Instagram</span>
+    <div class="content__mobile-nav">
+      <button class="content__nav-btn" id="content-prev" aria-label="Previous platform">&#8249;</button>
+      <button class="content__nav-btn" id="content-next" aria-label="Next platform">&#8250;</button>
+    </div>
+  </div>
+
+  <div class="content__phones">
+
+    <!-- Phone 1: Instagram -->
+    <div class="content__mockup content__mockup--active" data-phone="0">
+      <div class="content__frame">
+        <div class="content__island"></div>
+        <div class="content__screen content__screen--ig">
+
+          <div class="content__profile">
+            <div class="content__avatar">
+              <Image
+                src={blogPhoto}
+                alt="Dr. Tanaya Narendra"
+                class="content__avatar-img"
+                width={56}
+                height={56}
+              />
+            </div>
+            <div class="content__profile-text">
+              <span class="content__profile-name">Dr. Tanaya Narendra</span>
+              <span class="content__profile-handle">@dr_cuterus</span>
+            </div>
+          </div>
+
+          <p class="content__bio">Made for sharing 100% Science with 0% Sharam.</p>
+
+          <div class="content__stats">
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+          </div>
+
+          <div class="content__grid2">
+            <div class="content__thumb"></div>
+            <div class="content__thumb"></div>
+          </div>
+
+          <a href="https://www.instagram.com/dr.cuterus" target="_blank" rel="noopener" class="content__cta">Follow Now</a>
+
+        </div>
+        <div class="content__home-bar"></div>
+      </div>
+    </div>
+
+    <!-- Phone 2: Podcast -->
+    <div class="content__mockup" data-phone="1">
+      <div class="content__frame">
+        <div class="content__island"></div>
+        <div class="content__screen content__screen--podcast">
+
+          <div class="content__podcast-header">
+            <div class="content__podcast-art"></div>
+            <div class="content__podcast-info">
+              <b class="content__podcast-title">The Dr. Cuterus<br/>Podcast</b>
+              <span class="content__podcast-artist">Dr. Tanaya Narendra</span>
+            </div>
+          </div>
+
+          <p class="content__podcast-stats">Basic Stats Number of The Podcast</p>
+
+          <div class="content__episodes">
+            <div class="content__ep-row"></div>
+            <div class="content__ep-row"></div>
+            <div class="content__ep-row"></div>
+          </div>
+
+          <a href="#" class="content__cta content__cta--white">Listen Now</a>
+
+        </div>
+        <div class="content__home-bar content__home-bar--light"></div>
+      </div>
+    </div>
+
+    <!-- Phone 3: YouTube -->
+    <div class="content__mockup" data-phone="2">
+      <div class="content__frame">
+        <div class="content__island content__island--dark"></div>
+        <div class="content__screen content__screen--yt">
+
+          <div class="content__profile">
+            <div class="content__avatar">
+              <img
+                src="/images/content-youtube.jpg"
+                alt="Dr. Tanaya Narendra YouTube"
+                class="content__avatar-img"
+              />
+            </div>
+            <div class="content__profile-text">
+              <span class="content__profile-name">Dr. Tanaya Narendra</span>
+              <span class="content__profile-handle">@dr_cuterus</span>
+            </div>
+          </div>
+
+          <p class="content__bio">Made for sharing 100% Science with 0% Sharam.</p>
+
+          <div class="content__stats">
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+            <div class="content__stat">
+              <b class="content__stat-num">1.9 M</b>
+              <span class="content__stat-label">followers</span>
+            </div>
+          </div>
+
+          <div class="content__vids">
+            <div class="content__vid-thumb"></div>
+            <div class="content__vid-thumb"></div>
+          </div>
+
+          <a href="https://www.youtube.com/@DrCuterus" target="_blank" rel="noopener" class="content__cta">Subscribe Now</a>
+
+        </div>
+        <div class="content__home-bar content__home-bar--dark"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom strip -->
+  <div class="content__strip">
+    <p class="content__strip-sub">Building an audience across platforms — because your feed deserves more science, less drama.</p>
+    <h2 class="content__strip-heading">How you will find me while scrolling on your phone</h2>
+  </div>
+
+</section>
+
+<style>
+  /* ── SECTION ── */
+  .content {
+    background-color: var(--color-beige-500);
+    padding-top: 80px;
+    overflow: hidden;
+  }
+
+  /* ── PHONES ROW ── */
+  .content__phones {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 82px;
+    padding: 48px 40px 0;
+    overflow: hidden;
+    height: 500px;
+  }
+
+  /* ── SINGLE MOCKUP WRAPPER ── */
+  .content__mockup {
+    flex: 0 0 auto;
+  }
+
+  /* ── PHONE FRAME ── */
+  .content__frame {
+    width: 268px;
+    border-radius: 40px;
+    background: #1c1417;
+    padding: 7px;
+    box-shadow:
+      inset 0 0 0 1px #3a3132,
+      0 24px 64px rgba(28, 20, 23, 0.28);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Side buttons (volume left, power right) */
+  .content__frame::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 120px;
+    width: 3px;
+    height: 32px;
+    background: #1c1417;
+    border-radius: 2px 0 0 2px;
+    box-shadow: 0 -46px 0 #1c1417, 0 48px 0 #1c1417;
+  }
+
+  .content__frame::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 160px;
+    width: 3px;
+    height: 60px;
+    background: #1c1417;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ── DYNAMIC ISLAND ── */
+  .content__island {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 88px;
+    height: 26px;
+    background: #1c1417;
+    border-radius: 13px;
+    z-index: 10;
+  }
+
+  .content__island--dark {
+    background: #1c1417;
+  }
+
+  /* ── SCREEN ── */
+  .content__screen {
+    border-radius: 33px;
+    overflow: hidden;
+    padding: 50px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 468px;
+    position: relative;
+  }
+
+  .content__screen--ig {
+    background: #d4b8ef;
+    color: #1c1417;
+  }
+
+  .content__screen--podcast {
+    background: #1e0f34;
+    color: #fefefe;
+  }
+
+  .content__screen--yt {
+    background: #fafafa;
+    color: #1c1417;
+  }
+
+  /* ── HOME BAR ── */
+  .content__home-bar {
+    width: 100px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+
+  .content__home-bar--light {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .content__home-bar--dark {
+    background: rgba(28, 20, 23, 0.25);
+  }
+
+  /* ── PROFILE ROW ── */
+  .content__profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .content__avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .content__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+
+  .content__profile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .content__profile-name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    color: inherit;
+  }
+
+  .content__profile-handle {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: inherit;
+    opacity: 0.75;
+  }
+
+  /* ── BIO ── */
+  .content__bio {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: inherit;
+    margin: 0;
+  }
+
+  /* ── STATS ROW ── */
+  .content__stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .content__screen--podcast .content__stats {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .content__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .content__stat-num {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: inherit;
+    line-height: 1;
+  }
+
+  .content__stat-label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.6875rem;
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  /* ── INSTAGRAM GRID (2-col thumbnails) ── */
+  .content__grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .content__thumb {
+    background: white;
+    border-radius: 4px;
+    min-height: 100px;
+  }
+
+  /* ── PODCAST HEADER ── */
+  .content__podcast-header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .content__podcast-art {
+    width: 72px;
+    height: 72px;
+    background: white;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .content__podcast-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .content__podcast-title {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: white;
+    line-height: 1.25;
+  }
+
+  .content__podcast-artist {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .content__podcast-stats {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  /* ── PODCAST EPISODE ROWS ── */
+  .content__episodes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .content__ep-row {
+    background: white;
+    border-radius: 6px;
+    height: 56px;
+  }
+
+  /* ── YOUTUBE VIDEO THUMBNAILS ── */
+  .content__vids {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .content__vid-thumb {
+    background: white;
+    border-radius: 6px;
+    height: 80px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .content__cta {
+    display: block;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--color-brand-400);
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: auto;
+    transition: background-color 0.15s ease;
+  }
+
+  .content__cta:hover {
+    background-color: var(--color-brand-500, #5a2d7a);
+  }
+
+  .content__cta--white {
+    background-color: var(--color-brand-400);
+  }
+
+  /* ── BOTTOM STRIP ── */
+  .content__strip {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 16px 60px 24px;
+    gap: 2px;
+    border-top: 1px solid rgba(28, 20, 23, 0.1);
+  }
+
+  .content__strip-sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+    text-align: right;
+    max-width: 700px;
+  }
+
+  .content__strip-heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2rem, 3.1vw, 2.5rem);
+    color: var(--color-brand-900);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-align: right;
+  }
+
+  /* ── MOBILE-ONLY ELEMENTS: always hidden except inside mobile breakpoint ── */
+  .content__mobile-header,
+  .content__mobile-controls {
+    display: none !important;
+  }
+
+  /* ── DESKTOP OVERRIDE ── */
+  @media (min-width: 769px) {
+    .content__mobile-header,
+    .content__mobile-controls {
+      display: none !important;
+    }
+  }
+
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .content__phones {
+      gap: clamp(16px, 3vw, 48px);
+      padding: 32px 20px 0;
+      height: 460px;
+    }
+
+    .content__frame {
+      width: min(220px, 28vw);
+      border-radius: 32px;
+    }
+
+    .content__strip {
+      padding: 16px 24px 24px;
+    }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    /* Show mobile header at top */
+    .content__mobile-header {
+      display: flex !important;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px 20px 8px;
+    }
+
+    /* Subtitle in rotated yellow pill (matches Figma) */
+    .content__mobile-sub {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 0.8125rem;
+      color: var(--color-brand-900);
+      background-color: var(--color-yellow-500);
+      padding: 8px 14px;
+      transform: rotate(-2deg);
+      display: inline-block;
+      align-self: flex-start;
+      line-height: 1.4;
+      max-width: 85%;
+    }
+
+    /* Large heading (matches Figma: bold italic purple, left-aligned) */
+    .content__mobile-heading {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(2.5rem, 11vw, 3.25rem);
+      color: var(--color-brand-400);
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+      margin: 0;
+      text-align: left;
+    }
+
+    /* Show platform pill + nav arrows */
+    .content__mobile-controls {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px 8px;
+    }
+
+    /* Platform pill: oval border, no fill */
+    .content__platform-pill {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 0.9375rem;
+      color: var(--color-brand-900);
+      border: 1.5px solid var(--color-brand-900);
+      border-radius: 999px;
+      padding: 5px 18px;
+      background: none;
+    }
+
+    /* Nav arrows: purple-bordered capsule with two arrow buttons */
+    .content__mobile-nav {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--color-brand-400);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .content__nav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--color-brand-400);
+      padding: 4px 14px;
+      line-height: 1;
+    }
+
+    .content__nav-btn:first-child {
+      border-right: 1.5px solid var(--color-brand-400);
+    }
+
+    /* Phones: carousel mode */
+    .content__phones {
+      height: auto;
+      overflow: visible;
+      padding: 8px 20px 24px;
+      justify-content: center;
+    }
+
+    .content__mockup {
+      display: none;
+    }
+
+    .content__mockup--active {
+      display: block;
+    }
+
+    /* Larger phone frame on mobile */
+    .content__frame {
+      width: min(320px, calc(100vw - 48px));
+    }
+
+    /* Hide desktop strip */
+    .content__strip {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const platforms = ['Instagram', 'The Dr. Cuterus Podcast', 'Youtube'];
+  let current = 0;
+
+  const pill = document.getElementById('content-platform-pill');
+  const mockups = document.querySelectorAll<HTMLElement>('.content__mockup');
+
+  function showSlide(index: number) {
+    current = ((index % 3) + 3) % 3;
+    if (pill) pill.textContent = platforms[current];
+    mockups.forEach((m, i) => {
+      m.classList.toggle('content__mockup--active', i === current);
+    });
+  }
+
+  document.getElementById('content-prev')?.addEventListener('click', () => showSlide(current - 1));
+  document.getElementById('content-next')?.addEventListener('click', () => showSlide(current + 1));
+</script>

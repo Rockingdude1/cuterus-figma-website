@@ -25,12 +25,12 @@ import clinicImage from '../assets/images/clinic-image.png';
 
       <!-- Purple grid tag cloud — full viewport width -->
       <div class="appt-hero__tag-cloud">
-        <div class="appt-tag appt-tag--yellow" style="left: 25%; top: 20%; transform: rotate(-5.77deg);">Irregular or painful periods</div>
-        <div class="appt-tag appt-tag--purple-dark" style="left: 28.6%; top: 40%; transform: rotate(1.26deg);">PCOS symptoms</div>
-        <div class="appt-tag appt-tag--beige" style="left: 40.9%; top: 28%;">HPV, STIs?<br/>Don't know where to start.</div>
-        <div class="appt-tag appt-tag--yellow-light" style="left: 50.7%; top: 53%; transform: rotate(1.09deg);">Questions about fertility<br/>or egg health</div>
-        <div class="appt-tag appt-tag--purple-dark" style="left: 32%; top: 56%; transform: rotate(-4.06deg);">Confused about<br/>contraception options</div>
-        <div class="appt-tag appt-tag--purple-dark" style="left: 58.3%; top: 7%; transform: rotate(-2.03deg);">Want a second opinion<br/>without judgment</div>
+        <div class="appt-tag appt-tag--yellow appt-tag--p1">Irregular or painful periods</div>
+        <div class="appt-tag appt-tag--purple-dark appt-tag--p2">PCOS symptoms</div>
+        <div class="appt-tag appt-tag--beige appt-tag--p3">HPV, STIs?<br/>Don't know where to start.</div>
+        <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Questions about fertility<br/>or egg health</div>
+        <div class="appt-tag appt-tag--purple-dark appt-tag--p5">Confused about<br/>contraception options</div>
+        <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Want a second opinion<br/>without judgment</div>
       </div>
 
       <div class="appt-hero-bottom">
@@ -55,10 +55,7 @@ import clinicImage from '../assets/images/clinic-image.png';
 
       <div class="appt-book__content">
         <p class="appt-book__bio">
-          Dr. Tanaya Narendra is an IVF specialist and sexual health educator.<br/>
-          She believes every body deserves honest, shame-free medical care.<br/>
-          Known online as Dr. Cuterus, she answers the questions nobody else will.<br/>
-          All consultations are private, professional, and completely judgment-free.
+I, Dr. Tanaya Narendra, am an Oxford-trained embryologist and registered medical doctor with over a decade of experience in reproductive and sexual health. I have worked across India and the UK, and bring both clinical rigour and genuine warmth to every consultation. My expertise spans menstrual health, fertility, contraception, STIs, and sexual wellness.
         </p>
 
         <h2 class="appt-book__heading">Book an Appointment for<br/>following problems:</h2>
@@ -112,7 +109,7 @@ import clinicImage from '../assets/images/clinic-image.png';
     <div class="appt-footer">
       <p class="appt-footer__heading">Found something you liked? Let's talk.</p>
       <p class="appt-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
-      <a href="/#contact" class="btn-primary">Work with Me</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
   </body>
 </html>
@@ -212,6 +209,14 @@ import clinicImage from '../assets/images/clinic-image.png';
     background-color: var(--color-beige-500);
     color: var(--color-black);
   }
+
+  /* Desktop positions (moved from inline styles) */
+  .appt-tag--p1 { left: 25%;   top: 20%; transform: rotate(-5.77deg); }
+  .appt-tag--p2 { left: 28.6%; top: 40%; transform: rotate(1.26deg);  }
+  .appt-tag--p3 { left: 40.9%; top: 28%; }
+  .appt-tag--p4 { left: 50.7%; top: 53%; transform: rotate(1.09deg);  }
+  .appt-tag--p5 { left: 32%;   top: 56%; transform: rotate(-4.06deg); }
+  .appt-tag--p6 { left: 58.3%; top: 7%;  transform: rotate(-2.03deg); }
 
   .appt-hero__tagline {
     font-family: var(--font-sans);
@@ -464,15 +469,61 @@ import clinicImage from '../assets/images/clinic-image.png';
     text-align: center;
   }
 
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .appt-hero-top,
+    .appt-hero-bottom {
+      padding: 0 32px;
+    }
+
+    .appt-book {
+      grid-template-columns: 1fr 1fr;
+      padding: 48px 60px;
+      gap: 40px;
+    }
+
+    .appt-book__photo {
+      height: 360px;
+    }
+
+    .appt-reviews {
+      padding: 48px 60px;
+    }
+  }
+
   /* ── MOBILE ── */
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
+    /* Tag cloud: taller to fit stacked mobile layout */
     .appt-hero__tag-cloud {
-      height: 220px;
+      height: 298px;
     }
 
     .appt-tag {
-      font-size: 0.8rem;
-      padding: 6px 10px;
+      font-size: 0.875rem;
+      padding: 6px 12px;
+    }
+
+    /* Mobile positions from Figma (pixel-based for 390px frame) */
+    .appt-tag--p1 { left: 22px;  top: 26px;  transform: rotate(-5.77deg); }
+    .appt-tag--p2 { left: 203px; top: 65px;  transform: rotate(1.26deg);  }
+    .appt-tag--p3 { left: 143px; top: 150px; transform: none; }
+    .appt-tag--p4 { left: 13px;  top: 94px;  transform: rotate(1.09deg);  }
+    .appt-tag--p5 { left: 43px;  top: 203px; transform: rotate(-4.06deg); }
+    .appt-tag--p6 { display: none; }
+
+    .appt-hero__tagline {
+      font-size: 1rem;
+      margin: 16px 0 16px;
+    }
+
+    .appt-hero__cta {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+
+    .appt-hero-top,
+    .appt-hero-bottom {
+      padding: 0 20px;
     }
 
     .appt-book {
@@ -482,6 +533,18 @@ import clinicImage from '../assets/images/clinic-image.png';
 
     .appt-book__photo {
       height: 300px;
+    }
+
+    .appt-book__bio,
+    .appt-book__heading,
+    .appt-reviews__sub {
+      font-size: 1.1rem;
+    }
+
+    .appt-book__cta,
+    .appt-reviews__cta {
+      font-size: 1rem;
+      padding: 10px 18px;
     }
 
     .appt-reviews {

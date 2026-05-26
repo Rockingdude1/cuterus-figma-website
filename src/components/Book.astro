@@ -85,7 +85,7 @@ const languages = [
 
   <!-- Mobile row 4 / Desktop col 3 row 2: buy button -->
   <div class="book__buy-wrap">
-    <a href="#" class="btn-primary book__buy-btn" id="book-buy-btn">Buy My Book →</a>
+    <a href="https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1?crid=1AYTCM5XEFSTN&dib=eyJ2IjoiMSJ9.Mv4OnhyViSBEM-ohLGYmOwP4lWA4KrK2DdIA29vA-T1vbmhtg8Nv4RnFjuhOFoAzqrE7JqvjGOl9enOFKUvTU_qkCwTFZU7Q3iD3mq3i54kTS65KOL0JTQ1MnvfT5FoqkHIBaPFd-sy-4qPwUTEfXw.z42SQNkoKwz6iuqjJ7kO2oXu0cILjyBBtxIeeIlMYow&dib" target="_blank" rel="noopener" class="btn-primary book__buy-btn" id="book-buy-btn">Buy My Book →</a>
   </div>
 
   <!-- Mobile row 5 / Desktop col 1 row 2: who should read this -->
@@ -94,7 +94,8 @@ const languages = [
     <img src="/doodles/arrow-1.svg" class="book__who-arrow" alt="" width="60" height="62" />
     <div class="book__divider"></div>
     <p class="book__who-answer">
-      For everyone who grew up with more questions than answers about their own body.
+      <span class="book__who-hinglish">Agar aapne kabhi Google pe kuch poochha jo doctor ke saamne poochhhne mein sharam aati toh yeh book aapke liye hai.</span>
+      <span class="book__who-english">If you've ever Googled something you were too embarrassed to ask your doctor, then this book is for you.</span>
     </p>
   </div>
 
@@ -469,6 +470,42 @@ const languages = [
     color: var(--color-brand-400);
     margin: 0;
     letter-spacing: -0.06em;
+  }
+
+  /* ── LANGUAGE VARIANTS ── */
+  .book__who-english {
+    display: none;
+  }
+
+  :global([data-lang="english"]) .book__who-english {
+    display: inline;
+  }
+
+  :global([data-lang="english"]) .book__who-hinglish {
+    display: none;
+  }
+
+  /* TABLET (769–1024px) */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .book__left {
+      padding: 16px 16px 32px 32px;
+    }
+
+    .book__who {
+      padding: 16px 16px 32px 32px;
+    }
+
+    .book__cover {
+      width: min(240px, 30vw);
+    }
+
+    .book__lang-arrow {
+      display: none;
+    }
+
+    .book__quote-wrap {
+      max-width: 100%;
+    }
   }
 
   /* MOBILE */

@@ -10,15 +10,17 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     <!-- LEFT: PHOTO -->
     <div class="columnist__photo-col">
       <div class="columnist__badge">
-        <span>answering sex queries with</span>
-        <span>aaj ki taaza khabhar</span>
+        <span class="columnist__badge-hinglish">answering sex queries with</span>
+        <span class="columnist__badge-hinglish">aaj ki taaza khabhar</span>
+        <span class="columnist__badge-english">your Sunday paper just got</span>
+        <span class="columnist__badge-english">a lot more interesting</span>
       </div>
       <Image
         src={columnistPhoto}
         alt="Dr. Tanaya Narendra holding Mumbai Mirror"
         class="columnist__photo"
         widths={[600, 1100]}
-        sizes="42vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 42vw, 40vw"
       />
     </div>
 
@@ -29,14 +31,14 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
 
       <span class="columnist__quote-open">"</span>
       <div class="columnist__quote-box">
-        <p>A quote by mahinder watsa/on sex ed and why it is important to discuss about.</p>
+        <p>Knowledge is important. You can have simple, meaningful discussions without any embarrassment.</p>
       </div>
       <span class="columnist__quote-close">"</span>
 
       <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
 
       <div class="columnist__desc-box">
-        <p>Continuing the legacy of &lt;adjective&gt; <strong>Mahindra Watsa</strong>, I reply to all of your queries on Mumbai Mirror's Sex Column. For anyone who has queries can reach out to me. It is never embarrassing to ask know more about your own body.</p>
+        <p>Carrying forward <strong>Dr. Mahindra Watsa</strong> legendary sex column in Mumbai Mirror, every Sunday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
       </div>
 
       <a href="#" class="btn-primary columnist__cta">Read It Now →</a>
@@ -274,6 +276,69 @@ import columnistPhoto from '../assets/images/columnist-photo.jpg';
     font-size: 1.5rem;
     padding: 12px 24px;
     z-index: 3;
+  }
+
+  /* ── LANGUAGE VARIANTS ── */
+  .columnist__badge-english {
+    display: none;
+  }
+
+  :global([data-lang="english"]) .columnist__badge-english {
+    display: inline;
+  }
+
+  :global([data-lang="english"]) .columnist__badge-hinglish {
+    display: none;
+  }
+
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .columnist {
+      grid-template-columns: 40vw 1fr;
+    }
+
+    .columnist__badge {
+      left: 32px;
+    }
+
+    .columnist__badge span {
+      font-size: 1.25rem;
+    }
+
+    /* Scale down the ± px offsets so content fits the narrower right column */
+    .columnist__quote-open {
+      left: max(4px, calc(50% - 180px));
+    }
+
+    .columnist__quote-box {
+      width: min(400px, 90%);
+    }
+
+    .columnist__quote-box p {
+      font-size: 1.125rem;
+    }
+
+    .columnist__quote-close {
+      left: min(calc(100% - 4px), calc(50% + 170px));
+    }
+
+    .columnist__heading {
+      left: calc(50% + 180px);
+      font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+    }
+
+    .columnist__desc-box {
+      width: min(400px, 90%);
+    }
+
+    .columnist__desc-box p {
+      font-size: 1.125rem;
+    }
+
+    .columnist__cta {
+      font-size: 1.125rem;
+      padding: 10px 20px;
+    }
   }
 
   /* ── MOBILE ── */

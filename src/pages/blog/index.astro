@@ -93,7 +93,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
       <div class="blog-footer__flower blog-footer__flower--purple"></div>
       <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
       <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
-      <a href="/#contact" class="btn-primary">Work with Me</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
   </body>
 </html>
@@ -479,25 +479,85 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     text-align: center;
   }
 
-  /* ── MOBILE ── */
-  @media (max-width: 900px) {
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
     .blog__body {
-      grid-template-columns: 1fr;
-      padding: 40px 24px;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px 32px 16px;
       gap: 32px;
     }
 
-    .blog__photo-col {
-      display: none;
+    .blog__frame-outer {
+      width: 240px;
     }
 
     .blog__bottom-strip {
-      padding: 24px 24px;
-      flex-wrap: wrap;
+      padding: 8px 32px 24px;
+    }
+
+    .blog__btn-center {
+      width: auto;
+    }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    /* Stack to single column; content first, photo second */
+    .blog__body {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px 16px;
+      gap: 24px;
+      min-height: unset;
+    }
+
+    .blog__content-col {
+      order: 1;
+    }
+
+    .blog__photo-col {
+      order: 2;
+      display: flex;
+      justify-content: center;
+      padding-top: 0;
+    }
+
+    .blog__frame-outer {
+      width: 220px;
+    }
+
+    /* Bottom strip: column layout, confused text above CTA */
+    .blog__bottom-strip {
+      padding: 8px 16px 32px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .blog__bottom-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .blog__confused-text {
+      order: 1;
+    }
+
+    .blog__btn-center {
+      order: 2;
+      width: auto;
+      justify-content: flex-start;
+    }
+
+    .blog__arrow-icon {
+      display: none;
     }
 
     .blog__mail {
-      display: none;
+      display: flex;
     }
   }
 </style>

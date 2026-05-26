@@ -6,6 +6,8 @@ import Book from '../components/Book.astro';
 import Contact from '../components/Contact.astro';
 import Fursat from '../components/Fursat.astro';
 import Columnist from '../components/Columnist.astro';
+import Content from '../components/Content.astro';
+import doctorPhotoUrl from '../assets/images/doctor-photo.png?url';
 ---
 
 <html lang="en">
@@ -14,6 +16,7 @@ import Columnist from '../components/Columnist.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href={doctorPhotoUrl} />
 
     <title>Dr. Cuterus — Dr. Tanaya Narendra</title>
     <meta name="description" content="Dr. Tanaya Narendra, popularly known as Dr. Cuterus — Oxford-trained doctor, sex educator, author, and award-winning creator making sex ed safe in India." />
@@ -45,8 +48,28 @@ import Columnist from '../components/Columnist.astro';
       <About />
       <Book />
       <Columnist />
+      <Content />
       <Contact />
       <Fursat />
     </main>
   </body>
 </html>
+
+<style is:global>
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  main {
+    height: 100svh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main > * {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+</style>

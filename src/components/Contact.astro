@@ -11,7 +11,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       alt="Dr. Tanaya Narendra"
       class="contact__photo"
       widths={[400, 700, 1000]}
-      sizes="50vw"
+      sizes="(max-width: 768px) 100vw, 50vw"
     />
     <img src="/doodles/contact-cutout.svg" class="contact__cutout" alt="" aria-hidden="true" />
   </div>
@@ -26,11 +26,11 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       </h2>
 
       <p class="contact__subheading">
-        For collabs, speaking, and partnerships — or just to say hi!
+        For collabs, speaking, and partnerships or just to say hi!
       </p>
 
       <div class="contact__ctas">
-        <a href="mailto:drcuterus@gmail.com" class="btn-primary">Work With Me</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work With Me</a>
         <a href="#" class="btn-outline">See My Content</a>
       </div>
 
@@ -272,6 +272,22 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     color: var(--color-brand-900);
     margin: 0;
     text-align: center;
+  }
+
+  /* TABLET (769–1024px) */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .contact__content {
+      padding: 40px 32px 24px 28px;
+    }
+
+    .contact__flower--purple {
+      right: 80px;
+    }
+
+    .contact__samosa-img {
+      width: min(120px, 15vw);
+      height: min(120px, 15vw);
+    }
   }
 
   /* MOBILE */
