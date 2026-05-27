@@ -97,33 +97,33 @@ const pills = [
   <div class="about__pills-mobile" aria-hidden="true">
 
     <!-- CIRCLES -->
-    <span class="about__pill about__pill--yellow" style="top:50%;left:2%;--rotate:9.91deg;">
+    <span class="about__pill about__pill--yellow about__pill--embryologist" style="top:54%;left:12%;--rotate:9.91deg;">
       <img src="/doodles/elipse-1.svg" class="about__pill-ellipse" alt="" />
       <img src="/doodles/elipse-outline-1.svg" class="about__pill-ellipse-outline" alt="" />
       embryologist
     </span>
 
-    <span class="about__pill about__pill--purple" style="top:70%;left:0%;--rotate:7.36deg;">
+    <span class="about__pill about__pill--purple about__pill--oxford" style="top:70%;left:0%;--rotate:7.36deg;">
       <img src="/doodles/elipse-3.svg" class="about__pill-ellipse" alt="" />
       <img src="/doodles/elipse-outline-3.svg" class="about__pill-ellipse-outline" alt="" />
       Oxford-trained
     </span>
 
-    <span class="about__pill about__pill--purple-200 about__pill--bestseller" style="top:68%;left:63%;--rotate:-5deg;">
-      <img src="/doodles/elipse-2.svg" class="about__pill-ellipse" alt="" />
-      <img src="/doodles/elipse-outline-2.svg" class="about__pill-ellipse-outline" alt="" />
+    <span class="about__pill about__pill--yellow about__pill--bestseller" style="top:78%;left:68%;--rotate:-5deg;">
+      <img src="/doodles/elipse-4.svg" class="about__pill-ellipse" alt="" />
+      <img src="/doodles/elipse-outline-4.svg" class="about__pill-ellipse-outline" alt="" />
       Best-Selling<br />Author
     </span>
 
     <!-- PLAIN TEXT (with arrows) -->
     <span class="about__pill about__pill--plain" style="top:62%;left:3%;">hosts a podcast</span>
-    <span class="about__pill about__pill--plain about__pill--sexed" style="top:48%;left:58%;text-align:center;">makes sex ed<br />safe since 2019</span>
-    <span class="about__pill about__pill--plain" style="top:58%;right:5%;left:auto;--tx:0;text-align:right;">award-winning<br />creator</span>
+    <span class="about__pill about__pill--plain about__pill--sexed" style="top:46.5%;left:31%;text-align:center;">makes sex ed<br />safe since 2019</span>
+    <span class="about__pill about__pill--plain" style="top:52%;right:2%;left:auto;--tx:0;text-align:right;">award-winning<br />creator</span>
 
     <!-- ARROWS -->
-    <span class="about__arrow about__arrow--m1" aria-hidden="true" set:html={arrow2} />
+    <span class="about__arrow about__arrow--m1" aria-hidden="true" set:html={arrow5} />
     <span class="about__arrow about__arrow--m2" aria-hidden="true" set:html={arrow2} />
-    <span class="about__arrow about__arrow--m3" aria-hidden="true" set:html={arrow2} />
+    <span class="about__arrow about__arrow--m3" aria-hidden="true" set:html={arrow1} />
   </div>
 </section>
 
@@ -397,11 +397,11 @@ const pills = [
 
   /* Mobile arrow positions (only used when pills-mobile is visible) */
   .about__arrow--m1 {
-    top: 52%;
-    left: 55%;
-    transform: rotate(0deg);
-    width: 23px;
-    height: 65px;
+    top: 45%;
+    left: 52%;
+    transform: rotate(210deg) scaleX(-1);
+    width: 40px;
+    height: 100px;
   }
 
   .about__arrow--m2 {
@@ -413,11 +413,11 @@ const pills = [
   }
 
   .about__arrow--m3 {
-    top: 63%;
-    left: 70%;
-    transform: rotate(0deg);
-    width: 23px;
-    height: 65px;
+    top: 54%;
+    left: 86%;
+    transform: rotate(90deg) scaleY(-1);
+    width: 46px;
+    height: 130px;
   }
 
   /* Taller ellipse for two-line "Best-Selling Author" pill */
@@ -499,7 +499,7 @@ const pills = [
 
     .about__left {
       flex: 0 0 auto;
-      padding: 20px 24px 12px;
+      padding: 12px 20px 8px;
       align-items: center;
       text-align: center;
     }
@@ -514,7 +514,7 @@ const pills = [
 
     .about__heyi {
       display: block;
-      font-size: 1.2rem;
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
       text-align: center;
       margin-bottom: 2px;
     }
@@ -526,37 +526,49 @@ const pills = [
     .about__name-first,
     .about__name-tanaya,
     .about__name-narendra {
-      font-size: 2.5rem;
+      font-size: clamp(2.5rem, 9vw, 3rem);
     }
 
     .about__aka {
-      font-size: 1.5rem;
+      font-size: clamp(1.1rem, 4.2vw, 1.6rem);
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .about__ctas {
+      flex-direction: row;
       justify-content: center;
       gap: 8px;
     }
 
     .about__btn {
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
       padding: 6px 12px;
     }
 
     .about__right {
       flex: 1;
+      min-height: 0;
       order: 0;
       padding: 0;
       justify-content: center;
       align-items: flex-end;
-      overflow: visible;
+      overflow: hidden;
     }
 
     .about__photo-wrap {
       width: min(310px, 80vw);
+      height: 100%;
       margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .about__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
     }
 
     .about__pills-overlay {
@@ -577,6 +589,29 @@ const pills = [
 
     .about__pills-mobile .about__pill {
       font-size: 1rem;
+    }
+
+    .about__pills-mobile .about__pill--embryologist {
+      padding-top: 2px;
+      padding-bottom: 14px;
+    }
+
+    .about__pills-mobile .about__pill--oxford {
+      padding-top: 1px;
+      padding-bottom: 15px;
+    }
+
+    .about__pills-mobile .about__pill--embryologist .about__pill-ellipse,
+    .about__pills-mobile .about__pill--embryologist .about__pill-ellipse-outline {
+      transform: translate(-50%, -50%) rotate(-13deg);
+    }
+
+    .about__pills-mobile .about__pill--bestseller .about__pill-ellipse {
+      top: 65%;
+    }
+
+    .about__pills-mobile .about__pill--bestseller .about__pill-ellipse-outline {
+      top: 65%;
     }
   }
 </style>

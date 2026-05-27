@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import blogPhoto from '../assets/images/blog-photo.jpg';
 import podcastPhoto from '../assets/images/podcast-photo.jpg';
+import igThumb1 from '../assets/images/content-instagram-1.png';
+import igThumb2 from '../assets/images/content-instagram-2.png';
 ---
 
 <section class="content" id="content">
@@ -26,6 +28,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
 
     <!-- Phone 1: Instagram -->
     <div class="content__mockup content__mockup--active" data-phone="0">
+      <a class="content__desktop-pill" href="https://www.instagram.com/dr_cuterus/" target="_blank" rel="noopener">Instagram</a>
       <div class="content__frame">
         <div class="content__island"></div>
         <div class="content__screen content__screen--ig">
@@ -64,11 +67,15 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
           </div>
 
           <div class="content__grid2">
-            <div class="content__thumb"></div>
-            <div class="content__thumb"></div>
+            <a class="content__thumb" href="https://www.instagram.com/reel/DUiZwPdAQgZ/" target="_blank" rel="noopener" aria-label="Watch reel on Instagram">
+              <Image src={igThumb1} alt="Instagram reel" class="content__thumb-img" width={120} height={213} />
+              <span class="content__thumb-play" aria-hidden="true">&#9654;</span>
+            </a>
+            <a class="content__thumb" href="https://www.instagram.com/reel/DYCUGZqB0eZ/" target="_blank" rel="noopener" aria-label="Watch reel on Instagram">
+              <Image src={igThumb2} alt="Instagram reel" class="content__thumb-img" width={120} height={213} />
+              <span class="content__thumb-play" aria-hidden="true">&#9654;</span>
+            </a>
           </div>
-
-          <a href="https://www.instagram.com/dr_cuterus/" target="_blank" rel="noopener" class="content__cta">Follow Now</a>
 
         </div>
         <div class="content__home-bar"></div>
@@ -77,6 +84,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
 
     <!-- Phone 2: Podcast -->
     <div class="content__mockup" data-phone="1">
+      <a class="content__desktop-pill" href="https://open.spotify.com/show/6e1Hu3JzBxBqyXfMpXVRoS" target="_blank" rel="noopener">Spotify</a>
       <div class="content__frame">
         <div class="content__island"></div>
         <div class="content__screen content__screen--podcast">
@@ -91,15 +99,13 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
             </div>
           </div>
 
-          <p class="content__podcast-stats">Basic Stats Number of The Podcast</p>
-
           <div class="content__episodes">
-            <div class="content__ep-row"></div>
-            <div class="content__ep-row"></div>
-            <div class="content__ep-row"></div>
+            <a class="content__ep-row" href="https://open.spotify.com/episode/6ban0UjZqxmk8Klp4DWMfm?si=90f19016f6774fa4" target="_blank" rel="noopener">The one where Cuterus got interviewed!</a>
+            <a class="content__ep-row" href="https://open.spotify.com/episode/6noxsifWOTzW172FibdnbI?si=738d6190414d434e" target="_blank" rel="noopener">Painful Sex: What you need to know</a>
+            <a class="content__ep-row" href="https://open.spotify.com/episode/3T8kz33x7AvpdC3U3MPX8x?si=472a11bc09824049" target="_blank" rel="noopener">HPV — all you need to know!</a>
           </div>
 
-          <a href="#" class="content__cta content__cta--white">Listen Now</a>
+          <a href="https://open.spotify.com/show/6e1Hu3JzBxBqyXfMpXVRoS" target="_blank" rel="noopener" class="content__cta content__cta--white">Listen Now</a>
 
         </div>
         <div class="content__home-bar content__home-bar--light"></div>
@@ -108,6 +114,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
 
     <!-- Phone 3: YouTube -->
     <div class="content__mockup" data-phone="2">
+      <a class="content__desktop-pill" href="https://www.youtube.com/@DrCuterus" target="_blank" rel="noopener">YouTube</a>
       <div class="content__frame">
         <div class="content__island content__island--dark"></div>
         <div class="content__screen content__screen--yt">
@@ -154,7 +161,6 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
             </a>
           </div>
 
-          <a href="https://www.youtube.com/@DrCuterus" target="_blank" rel="noopener" class="content__cta">Subscribe Now</a>
 
         </div>
         <div class="content__home-bar content__home-bar--dark"></div>
@@ -187,7 +193,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
     justify-content: center;
     align-items: flex-start;
     gap: 82px;
-    padding: 48px 40px 0;
+    padding: 20px 40px 0;
     overflow: hidden;
     height: 500px;
   }
@@ -195,6 +201,30 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
   /* ── SINGLE MOCKUP WRAPPER ── */
   .content__mockup {
     flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* ── DESKTOP PLATFORM PILL ── */
+  .content__desktop-pill {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    color: var(--color-brand-900);
+    border: 1.5px solid var(--color-brand-900);
+    border-radius: 999px;
+    padding: 5px 18px;
+    background: none;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .content__desktop-pill:hover {
+    background: var(--color-yellow-500);
   }
 
   /* ── PHONE FRAME ── */
@@ -275,7 +305,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
   }
 
   .content__screen--yt {
-    background: #fafafa;
+    background: var(--color-beige-500);
     color: #1c1417;
   }
 
@@ -399,9 +429,36 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
   }
 
   .content__thumb {
-    background: white;
+    display: block;
     border-radius: 4px;
-    min-height: 100px;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    position: relative;
+    text-decoration: none;
+    background: #000;
+  }
+
+  .content__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .content__thumb-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.12);
+    color: white;
+    font-size: 1.25rem;
+    transition: background 0.15s ease;
+  }
+
+  .content__thumb:hover .content__thumb-play {
+    background: rgba(0, 0, 0, 0.22);
   }
 
   /* ── PODCAST HEADER ── */
@@ -459,14 +516,28 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
   .content__episodes {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    flex: 1;
+    gap: 12px;
+    margin-top: 20px;
   }
 
   .content__ep-row {
     background: white;
     border-radius: 6px;
     height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-brand-500);
+    text-decoration: none;
+    line-height: 1.3;
+    transition: background 0.15s ease;
+  }
+
+  .content__ep-row:hover {
+    background: var(--color-yellow-500);
   }
 
   /* ── YOUTUBE: hide bio to make room for thumbnails + button ── */
@@ -517,6 +588,8 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
   /* ── CTA BUTTON ── */
   .content__cta {
     display: block;
+    width: fit-content;
+    align-self: center;
     text-align: center;
     font-family: var(--font-sans);
     font-weight: 500;
@@ -526,7 +599,7 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
     padding: 10px 16px;
     border-radius: 8px;
     text-decoration: none;
-    margin-top: auto;
+    margin-top: 8px;
     transition: background-color 0.15s ease;
   }
 
@@ -588,6 +661,11 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
     display: none !important;
   }
 
+  /* ── DESKTOP-ONLY ELEMENTS: hidden on mobile ── */
+  .content__desktop-pill {
+    display: inline-block;
+  }
+
   /* ── DESKTOP OVERRIDE ── */
   @media (min-width: 769px) {
     .content__mobile-header,
@@ -616,6 +694,10 @@ import podcastPhoto from '../assets/images/podcast-photo.jpg';
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
+    .content__desktop-pill {
+      display: none !important;
+    }
+
     /* Show mobile header at top */
     .content__mobile-header {
       display: flex !important;
