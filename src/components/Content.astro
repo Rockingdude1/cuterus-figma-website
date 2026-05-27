@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import blogPhoto from '../assets/images/blog-photo.jpg';
+import podcastPhoto from '../assets/images/podcast-photo.jpg';
 ---
 
 <section class="content" id="content">
@@ -81,7 +82,9 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
         <div class="content__screen content__screen--podcast">
 
           <div class="content__podcast-header">
-            <div class="content__podcast-art"></div>
+            <div class="content__podcast-art">
+              <Image src={podcastPhoto} alt="The Dr. Cuterus Podcast" class="content__podcast-art-img" width={72} height={72} />
+            </div>
             <div class="content__podcast-info">
               <b class="content__podcast-title">The Dr. Cuterus<br/>Podcast</b>
               <span class="content__podcast-artist">Dr. Tanaya Narendra</span>
@@ -141,8 +144,14 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
           </div>
 
           <div class="content__vids">
-            <div class="content__vid-thumb"></div>
-            <div class="content__vid-thumb"></div>
+            <a class="content__vid-thumb" href="https://youtu.be/3n2_HZ_JRTU?si=3Fx699a-dClP04YG" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
+              <img src="https://img.youtube.com/vi/3n2_HZ_JRTU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
+              <span class="content__vid-play" aria-hidden="true">&#9654;</span>
+            </a>
+            <a class="content__vid-thumb" href="https://youtu.be/x3veBgcMzuU?si=CjSevBvW3ssvy_3B" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
+              <img src="https://img.youtube.com/vi/x3veBgcMzuU/mqdefault.jpg" alt="Dr. Cuterus YouTube video" class="content__vid-img" />
+              <span class="content__vid-play" aria-hidden="true">&#9654;</span>
+            </a>
           </div>
 
           <a href="https://www.youtube.com/@DrCuterus" target="_blank" rel="noopener" class="content__cta">Subscribe Now</a>
@@ -405,9 +414,16 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
   .content__podcast-art {
     width: 72px;
     height: 72px;
-    background: white;
     border-radius: 8px;
     flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .content__podcast-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .content__podcast-info {
@@ -453,18 +469,49 @@ import blogPhoto from '../assets/images/blog-photo.jpg';
     height: 56px;
   }
 
+  /* ── YOUTUBE: hide bio to make room for thumbnails + button ── */
+  .content__screen--yt .content__bio {
+    display: none;
+  }
+
   /* ── YOUTUBE VIDEO THUMBNAILS ── */
   .content__vids {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     flex: 1;
   }
 
   .content__vid-thumb {
-    background: white;
+    display: block;
+    position: relative;
     border-radius: 6px;
-    height: 80px;
+    overflow: hidden;
+    flex: 1;
+    text-decoration: none;
+  }
+
+  .content__vid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content__vid-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.28);
+    color: white;
+    font-size: 1.5rem;
+    transition: background 0.15s ease;
+  }
+
+  .content__vid-thumb:hover .content__vid-play {
+    background: rgba(0, 0, 0, 0.45);
   }
 
   /* ── CTA BUTTON ── */
