@@ -2,6 +2,10 @@
 import { Image } from 'astro:assets';
 import fursatPhoto from '../assets/images/fursat-photo.png';
 import fursatLogo from '../assets/images/fursat-logo.png';
+import fursat1 from '../assets/images/fursat-1.png';
+import fursat2 from '../assets/images/fursat-2.png';
+import fursat3 from '../assets/images/fursat-3.png';
+import fursat4 from '../assets/images/fursat-4.png';
 ---
 
 <section class="fursat" id="fursat">
@@ -49,7 +53,33 @@ import fursatLogo from '../assets/images/fursat-logo.png';
 
   <div class="fursat__right">
     <div class="fursat__photo-wrap">
-      <Image src={fursatPhoto} alt="Fursat bras collection" class="fursat__photo" />
+
+      <!-- Desktop: original single photo — wrapper div is the flex/grid child -->
+      <div class="fursat__frame fursat__frame--desktop">
+        <Image src={fursatPhoto} alt="Fursat bras collection" class="fursat__photo" />
+      </div>
+
+      <!-- Tablet + Mobile: colour variant photos — each wrapper is toggled via JS -->
+      <div class="fursat__frame fursat__frame--variant is-active" data-variant="1">
+        <Image src={fursat1} alt="Fursat bra colour 1" class="fursat__photo" />
+      </div>
+      <div class="fursat__frame fursat__frame--variant" data-variant="2">
+        <Image src={fursat2} alt="Fursat bra colour 2" class="fursat__photo" />
+      </div>
+      <div class="fursat__frame fursat__frame--variant" data-variant="3">
+        <Image src={fursat3} alt="Fursat bra colour 3" class="fursat__photo" />
+      </div>
+      <div class="fursat__frame fursat__frame--variant" data-variant="4">
+        <Image src={fursat4} alt="Fursat bra colour 4" class="fursat__photo" />
+      </div>
+
+      <!-- Colour swatches (tablet + mobile only) -->
+      <div class="fursat__swatches">
+        <button class="fursat__swatch fursat__swatch--1 is-active" data-variant="1" type="button" aria-label="Colour 1"></button>
+        <button class="fursat__swatch fursat__swatch--2" data-variant="2" type="button" aria-label="Colour 2"></button>
+        <button class="fursat__swatch fursat__swatch--3" data-variant="3" type="button" aria-label="Colour 3"></button>
+        <button class="fursat__swatch fursat__swatch--4" data-variant="4" type="button" aria-label="Colour 4"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -63,7 +93,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     overflow: hidden;
   }
 
-  /* LEFT */
+  /* ── LEFT ── */
   .fursat__left {
     display: flex;
     flex-direction: column;
@@ -115,10 +145,10 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   .fursat__desc {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--color-black);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.2;
   }
 
   .fursat__features {
@@ -138,9 +168,9 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     gap: 10px;
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: var(--color-black);
-    line-height: 1.4;
+    line-height: 1;
   }
 
   .fursat__bullet {
@@ -160,7 +190,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
   .fursat__quote {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: var(--color-black);
     margin: 0;
     line-height: 1.5;
@@ -185,7 +215,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     margin: 0;
   }
 
-  /* RIGHT — single photo */
+  /* ── RIGHT — desktop ── */
   .fursat__right {
     overflow: hidden;
     background-color: var(--color-beige-500);
@@ -195,8 +225,18 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     padding-top: 80px;
   }
 
+  /* photo-wrap is the positioning context for swatches + frames */
   .fursat__photo-wrap {
     position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Desktop frame — fills the flex container */
+  .fursat__frame--desktop {
     width: 100%;
     height: 100%;
     display: flex;
@@ -213,8 +253,87 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     display: block;
   }
 
+  /* Variant frames + swatches: hidden on desktop */
+  .fursat__frame--variant {
+    display: none;
+  }
 
-  /* TABLET (769–1024px) */
+  .fursat__swatches {
+    display: none;
+  }
+
+
+  /* ── TABLET + MOBILE: colour switcher ── */
+  @media (max-width: 1024px) {
+    /* Hide desktop frame */
+    .fursat__frame--desktop {
+      display: none;
+    }
+
+    /* photo-wrap becomes a position context (no flex layout needed) */
+    .fursat__photo-wrap {
+      display: block;
+    }
+
+    /* All variant frames fill the container; only .is-active is visible */
+    .fursat__frame--variant {
+      display: none;
+      position: absolute;
+      inset: 0;
+    }
+
+    .fursat__frame--variant.is-active {
+      display: block;
+    }
+
+    /* Photo inside a variant frame fills it fully */
+    .fursat__frame--variant .fursat__photo {
+      width: 100%;
+      height: 100%;
+      max-height: unset;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Swatches: vertical column, right-aligned */
+    .fursat__swatches {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .fursat__swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .fursat__swatch.is-active {
+      transform: scale(1.12);
+    }
+
+    .fursat__swatch--1 { background-color: #C5A882; }
+    .fursat__swatch--2 { background-color: #222020; }
+    .fursat__swatch--3 { background-color: #D49BB5; }
+    .fursat__swatch--4 { background-color: #6BCECA; }
+
+    .fursat__swatch--1.is-active { border-color: #9E6229; }
+    .fursat__swatch--2.is-active { border-color: #000000; }
+    .fursat__swatch--3.is-active { border-color: #965462; }
+    .fursat__swatch--4.is-active { border-color: #1F625D; }
+  }
+
+  /* ── TABLET (769–1024px) ── */
   @media (max-width: 1024px) and (min-width: 769px) {
     .fursat__left {
       padding: 48px 24px 48px 32px;
@@ -226,9 +345,18 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     .fursat__cta-wrap {
       max-width: 90%;
     }
+
+    /* Keep right column height so photo-wrap + swatches work */
+    .fursat__right {
+      padding-top: 80px;
+    }
+
+    .fursat__photo-wrap {
+      height: 100%;
+    }
   }
 
-  /* MOBILE */
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
     .fursat {
       display: flex;
@@ -238,28 +366,21 @@ import fursatLogo from '../assets/images/fursat-logo.png';
       overflow: hidden;
     }
 
-    /* Photo moves to top, fully visible below navbar */
+    /* Image section: top, yellow background */
     .fursat__right {
       order: 1;
       flex-shrink: 0;
       height: 43svh;
       padding: 0;
       min-height: unset;
+      background-color: #ffe07f;
     }
 
     .fursat__photo-wrap {
       height: 100%;
     }
 
-    .fursat__photo {
-      width: 100%;
-      height: 100%;
-      max-height: unset;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    /* Left fills remaining space, content centered */
+    /* Left fills remaining space */
     .fursat__left {
       order: 2;
       flex: 1;
@@ -267,16 +388,18 @@ import fursatLogo from '../assets/images/fursat-logo.png';
       gap: 8px;
     }
 
-    /* Space above desc-wrap for the absolutely-positioned logo to peek out */
+    /* Space for absolutely-positioned logo to peek above */
     .fursat__desc-wrap {
       margin-top: 24px;
       width: 100%;
       max-width: 100%;
     }
 
+    /* Move logo slightly higher on mobile */
     .fursat__logo-row {
       order: 1;
       margin-bottom: 0;
+      transform: translate(-15%, -60%);
     }
 
     .fursat__desc-box {
@@ -313,6 +436,7 @@ import fursatLogo from '../assets/images/fursat-logo.png';
       font-size: clamp(1.5rem, 7vw, 2rem);
       text-align: center;
       max-width: 100%;
+      margin-top: 6px;
     }
 
     .fursat__cta-wrap {
@@ -331,13 +455,24 @@ import fursatLogo from '../assets/images/fursat-logo.png';
       font-size: 0.75rem;
     }
 
-    /* Hide quote box on mobile — not in Figma design */
+    /* Quote box hidden on mobile */
     .fursat__quote-box {
       display: none;
     }
+
+    /* Slightly smaller swatches on mobile */
+    .fursat__swatch {
+      width: 38px;
+      height: 38px;
+    }
+
+    .fursat__swatches {
+      right: 8px;
+      gap: 8px;
+    }
   }
 
-  /* Small phones (iPhone SE, etc.) */
+  /* ── Small phones (iPhone SE, etc.) ── */
   @media (max-width: 768px) and (max-height: 700px) {
     .fursat__right {
       height: 38svh;
@@ -365,3 +500,20 @@ import fursatLogo from '../assets/images/fursat-logo.png';
     }
   }
 </style>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>('.fursat__photo-wrap');
+  if (wrap) {
+    wrap.querySelectorAll<HTMLButtonElement>('.fursat__swatch').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const variant = btn.dataset.variant;
+        // Update active swatch
+        wrap.querySelectorAll('.fursat__swatch').forEach(s => s.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        // Update active frame
+        wrap.querySelectorAll('.fursat__frame--variant').forEach(f => f.classList.remove('is-active'));
+        wrap.querySelector<HTMLElement>(`.fursat__frame--variant[data-variant="${variant}"]`)?.classList.add('is-active');
+      });
+    });
+  }
+</script>

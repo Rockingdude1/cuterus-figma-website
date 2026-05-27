@@ -525,6 +525,11 @@ const pills = [
       display: none;
     }
 
+    /* Keep bio hidden on mobile even when language is toggled */
+    :global([data-lang="english"]) .about__bio--english {
+      display: none;
+    }
+
     .about__heyi {
       display: block;
       font-size: clamp(1.2rem, 4vw, 1.4rem);
