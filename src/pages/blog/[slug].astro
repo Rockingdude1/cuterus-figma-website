@@ -26,6 +26,12 @@ const bodyHtml = post.body
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{post.question} — Dr. Cuterus</title>
     <meta name="description" content={post.excerpt} />
+    <meta property="og:title" content={`${post.question} — Dr. Cuterus`} />
+    <meta property="og:description" content={post.excerpt} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`https://drcuterus.com/blog/${post.slug}`} />
+    <meta property="og:image" content="https://drcuterus.com/og-image.png" />
+    <meta property="og:image:alt" content="Dr. Tanaya Narendra — Dr. Cuterus" />
   </head>
   <body>
     <Navbar />
@@ -63,10 +69,8 @@ const bodyHtml = post.body
 
     <!-- Footer -->
     <div class="blog-footer">
-      <div class="blog-footer__flower blog-footer__flower--yellow"></div>
-      <div class="blog-footer__flower blog-footer__flower--purple"></div>
       <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
-      <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
+      <p class="blog-footer__sub">For collabs, speaking, and partnerships or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
   </body>
@@ -234,61 +238,6 @@ const bodyHtml = post.body
     gap: 10px;
     position: relative;
     overflow: hidden;
-  }
-
-  .blog-footer__flower {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-  }
-
-  .blog-footer__flower::before,
-  .blog-footer__flower::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-  }
-
-  .blog-footer__flower--yellow {
-    left: 304px;
-    top: 55px;
-  }
-
-  .blog-footer__flower--yellow::before {
-    width: 28px;
-    height: 10px;
-    background-color: var(--color-yellow-500);
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  .blog-footer__flower--yellow::after {
-    width: 28px;
-    height: 10px;
-    background-color: var(--color-yellow-500);
-    transform: translate(-50%, -50%) rotate(60deg);
-    box-shadow: 0 9px 0 -4px var(--color-yellow-500), 0 -9px 0 -4px var(--color-yellow-500);
-  }
-
-  .blog-footer__flower--purple {
-    right: 355px;
-    top: 96px;
-  }
-
-  .blog-footer__flower--purple::before {
-    width: 28px;
-    height: 10px;
-    background-color: var(--color-brand-200);
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  .blog-footer__flower--purple::after {
-    width: 28px;
-    height: 10px;
-    background-color: var(--color-brand-200);
-    transform: translate(-50%, -50%) rotate(60deg);
-    box-shadow: 0 9px 0 -4px var(--color-brand-200), 0 -9px 0 -4px var(--color-brand-200);
   }
 
   .blog-footer__heading {

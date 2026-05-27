@@ -16,6 +16,12 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Blog — Dr. Cuterus</title>
     <meta name="description" content="Honest answers to the questions nobody wants to ask — by Dr. Tanaya Narendra." />
+    <meta property="og:title" content="Blog — Dr. Cuterus" />
+    <meta property="og:description" content="Honest answers to the questions nobody wants to ask — by Dr. Tanaya Narendra." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://drcuterus.com/blog" />
+    <meta property="og:image" content="https://drcuterus.com/og-image.png" />
+    <meta property="og:image:alt" content="Dr. Tanaya Narendra — Dr. Cuterus" />
   </head>
   <body>
     <Navbar />
@@ -97,7 +103,7 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     <!-- Footer -->
     <div class="blog-footer">
       <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
-      <p class="blog-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
+      <p class="blog-footer__sub">For collabs, speaking, and partnerships or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
     <Footer />
@@ -417,24 +423,6 @@ const categories = ['All', ...new Set(posts.map(p => p.category))];
     gap: 10px;
     position: relative;
     overflow: hidden;
-  }
-
-  .blog-footer__flower {
-    position: absolute;
-    width: 48px;
-    height: 46px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .blog-footer__flower--yellow {
-    left: clamp(20px, 6vw, 80px);
-    top: clamp(30px, 4vh, 55px);
-  }
-
-  .blog-footer__flower--purple {
-    right: clamp(20px, 6vw, 80px);
-    top: clamp(60px, 8vh, 96px);
   }
 
   .blog-footer__heading,
