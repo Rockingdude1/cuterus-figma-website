@@ -6,7 +6,8 @@ const navLinks = [
   { label: "Partnerships", href: "/partnerships" },
 ];
 
-const currentPath = Astro.url.pathname;
+const rawPath = Astro.url.pathname;
+const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 ---
 
 <header class="navbar">

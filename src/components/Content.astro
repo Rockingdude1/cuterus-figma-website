@@ -65,9 +65,9 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
                 <img src="/doodles/fursat-bullets.svg" width="44" height="44" alt="" />
               </span>
             </div>
-            <!-- Stat 2: heart reveals 992 posts -->
+            <!-- Stat 2: heart reveals 900+ posts -->
             <div class="content__stat content__stat--reveal">
-              <b class="content__stat-num">992</b>
+              <b class="content__stat-num">900+</b>
               <span class="content__stat-label">posts</span>
               <span class="content__stat-heart" aria-hidden="true">
                 <img src="/doodles/fursat-bullets.svg" width="44" height="44" alt="" />
@@ -155,7 +155,7 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
             <!-- Stat 1: postcard reveals 1.9M subscribers -->
             <div class="content__stat content__stat--postcard">
               <div class="content__postcard">
-                <b class="content__stat-num">1.9 M</b>
+                <b class="content__stat-num">834K</b>
                 <span class="content__stat-label">subscribers</span>
               </div>
               <img src="/doodles/ask your query no hover.svg" class="content__postcard-env" width="52" height="52" alt="" />
@@ -163,7 +163,7 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
             <!-- Stat 2: postcard reveals video count -->
             <div class="content__stat content__stat--postcard">
               <div class="content__postcard">
-                <b class="content__stat-num">200+</b>
+                <b class="content__stat-num">350+</b>
                 <span class="content__stat-label">videos</span>
               </div>
               <img src="/doodles/ask your query no hover.svg" class="content__postcard-env" width="52" height="52" alt="" />
@@ -919,7 +919,7 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
     .content__mobile-controls {
       display: flex !important;
       align-items: center;
-      width: min(320px, calc(100vw - 48px));
+      width: min(268px, calc(100vw - 48px));
       margin-left: auto;
       margin-right: auto;
       padding: 12px 0 8px;
@@ -1004,6 +1004,11 @@ import igThumb2 from '../assets/images/content-instagram-2.png';
 
     .content__thumb:last-child {
       justify-self: end;
+    }
+
+    /* Podcast: hide footer bar so CTA isn't clipped */
+    .content__pod-footer {
+      display: none;
     }
 
     /* YouTube: hide second video, fix stretching container, show subscribe CTA */
