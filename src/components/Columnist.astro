@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import frontDoorSvg from '../assets/images/front of door.svg?url';
-import backDoorSvg  from '../assets/images/back of door.svg?url';
+import backDoorImg  from '../assets/images/back of door.jpg';
 ---
 
 <div class="columnist-outer" id="columnist">
@@ -11,7 +12,7 @@ import backDoorSvg  from '../assets/images/back of door.svg?url';
       <p class="columnist__knock">Knock to meet her.</p>
       <div class="columnist__door-scene">
         <!-- Back face — revealed as front door swings open -->
-        <img src={backDoorSvg}  alt="" class="columnist__door-back" aria-hidden="true" />
+        <Image src={backDoorImg} alt="" class="columnist__door-back" aria-hidden="true" widths={[400, 800]} sizes="50vw" />
         <!-- Front face — rotates open on click, hinge on left edge -->
         <img src={frontDoorSvg} alt="Click to open the door"
              class="columnist__door-front" id="columnist-door-front"

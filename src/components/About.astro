@@ -1,10 +1,11 @@
 ---
-import mainSvg      from '../assets/images/main.svg?url';
-import sareeSvg     from '../assets/images/saree.svg?url';
-import biilboardSvg from '../assets/images/biilboard.svg?url';
-import doctorSvg    from '../assets/images/doctor.svg?url';
-import podcastSvg   from '../assets/images/podcast.svg?url';
-import divingSvg    from '../assets/images/diving.svg?url';
+import { Image } from 'astro:assets';
+import mainImg      from '../assets/images/main.jpg';
+import sareeImg     from '../assets/images/saree.jpg';
+import biilboardImg from '../assets/images/biilboard.jpg';
+import doctorImg    from '../assets/images/doctor.jpg';
+import podcastImg   from '../assets/images/podcast.jpg';
+import divingImg    from '../assets/images/diving.jpg';
 
 const logos = [
   { src: '/logos/forbes.svg',         alt: 'Forbes India'                        },
@@ -26,12 +27,12 @@ const logos = [
 <section class="about" id="about">
 
   <!-- ─── PHOTO COLLAGE ─── -->
-  <img src={mainSvg}      alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
-  <img src={sareeSvg}     alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
-  <img src={biilboardSvg} alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
-  <img src={doctorSvg}    alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
-  <img src={podcastSvg}   alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
-  <img src={divingSvg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
+  <Image src={mainImg}      alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" widths={[400, 800]} sizes="(max-width: 768px) 54vw, 33vw" />
+  <Image src={sareeImg}     alt=""                    class="about__photo about__photo--saree"     loading="eager" fetchpriority="low"  widths={[200, 400]} sizes="(max-width: 768px) 20vw, 11vw"  aria-hidden="true" />
+  <Image src={divingImg}    alt=""                    class="about__photo about__photo--diving"    loading="eager" fetchpriority="low"  widths={[250, 500]} sizes="(max-width: 768px) 23vw, 13vw"  aria-hidden="true" />
+  <Image src={biilboardImg} alt=""                    class="about__photo about__photo--billboard" loading="lazy"                       widths={[300, 600]} sizes="(max-width: 768px) 22vw, 16vw"  aria-hidden="true" />
+  <Image src={doctorImg}    alt=""                    class="about__photo about__photo--doctor"    loading="lazy"                       widths={[200, 400]} sizes="(max-width: 768px) 17vw, 13vw"  aria-hidden="true" />
+  <Image src={podcastImg}   alt=""                    class="about__photo about__photo--podcast"   loading="lazy"                       widths={[400, 800]} sizes="(max-width: 768px) 37vw, 20vw"  aria-hidden="true" />
 
   <!-- Caption labels on photos -->
   <p class="about__img-label about__img-label--rtfrb" aria-hidden="true">Real Talk For Real Bodies</p>
@@ -402,9 +403,8 @@ const logos = [
   .about__ticker {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
+    left: 0;
+    width: 100%;
     height: 60px;
     background-color: var(--color-yellow-500);
     overflow: hidden;
