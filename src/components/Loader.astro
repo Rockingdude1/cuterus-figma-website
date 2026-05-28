@@ -100,14 +100,14 @@
     transition: width 0.38s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Heart rides the leading edge of the fill */
+  /* Heart rides the leading edge of the fill — bigger than the pill */
   .loader__heart {
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(-50%, -50%);
-    width: 26px;
-    height: 26px;
+    width: 64px;
+    height: 64px;
     color: var(--color-brand-400);
     transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
@@ -132,8 +132,8 @@
     }
 
     .loader__heart {
-      width: 22px;
-      height: 22px;
+      width: 52px;
+      height: 52px;
     }
   }
 </style>
