@@ -25,7 +25,7 @@
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: var(--color-brand-400);
+    background: var(--color-brand-200);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,59 +150,63 @@
 </style>
 
 <script>
-  const words    = ['Everything', 'nobody', 'told', 'you', 'about', 'Dr. Cuterus'];
-  const WORD_DELAY = 380;
-  const END_PAUSE  = 700;
-
   const loader = document.getElementById('page-loader')!;
-  const phrase = document.getElementById('loader-phrase')!;
-  const fill   = document.getElementById('loader-fill')!;
-  const heart  = document.getElementById('loader-heart')!;
 
-  // Build word spans with natural spaces between them
-  words.forEach((word, i) => {
-    const span = document.createElement('span');
-    span.className = 'word';
-    span.textContent = word;
-    phrase.appendChild(span);
-    if (i < words.length - 1) phrase.appendChild(document.createTextNode(' '));
-  });
-
-  const spans = phrase.querySelectorAll<HTMLElement>('.word');
-
-  spans.forEach((span, i) => {
-    setTimeout(() => {
-      span.classList.add('visible');
-      const pct = ((i + 1) / words.length) * 100;
-      fill.style.width  = `${pct}%`;
-      heart.style.left  = `${pct}%`;
-    }, i * WORD_DELAY);
-  });
-
-  const animDoneAt = words.length * WORD_DELAY + END_PAUSE;
-
-  let animDone = false;
-  let pageDone = false;
-
-  function dismiss() {
-    if (!animDone || !pageDone) return;
-    heart.classList.remove('waiting');
-    loader.classList.add('fade-out');
-    loader.addEventListener('transitionend', () => {
-      loader.style.display = 'none';
-    }, { once: true });
-  }
-
-  // After animation: if page isn't ready yet, pulse the heart instead of freezing
-  setTimeout(() => {
-    animDone = true;
-    if (!pageDone) heart.classList.add('waiting');
-    dismiss();
-  }, animDoneAt);
-
-  if (document.readyState === 'complete') {
-    pageDone = true; dismiss();
+  // Skip loader on every visit after the first within this browser session
+  if (sessionStorage.getItem('loader-seen')) {
+    loader.style.display = 'none';
   } else {
-    window.addEventListener('load', () => { pageDone = true; dismiss(); }, { once: true });
+    const words      = ['Everything', 'nobody', 'told', 'you', 'about', 'Dr. Cuterus'];
+    const WORD_DELAY = 380;
+    const END_PAUSE  = 700;
+
+    const phrase = document.getElementById('loader-phrase')!;
+    const fill   = document.getElementById('loader-fill')!;
+    const heart  = document.getElementById('loader-heart')!;
+
+    words.forEach((word, i) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      phrase.appendChild(span);
+      if (i < words.length - 1) phrase.appendChild(document.createTextNode(' '));
+    });
+
+    const spans = phrase.querySelectorAll<HTMLElement>('.word');
+
+    spans.forEach((span, i) => {
+      setTimeout(() => {
+        span.classList.add('visible');
+        const pct = ((i + 1) / words.length) * 100;
+        fill.style.width = `${pct}%`;
+        heart.style.left = `${pct}%`;
+      }, i * WORD_DELAY);
+    });
+
+    const animDoneAt = words.length * WORD_DELAY + END_PAUSE;
+    let animDone = false;
+    let pageDone = false;
+
+    function dismiss() {
+      if (!animDone || !pageDone) return;
+      sessionStorage.setItem('loader-seen', '1');
+      heart.classList.remove('waiting');
+      loader.classList.add('fade-out');
+      loader.addEventListener('transitionend', () => {
+        loader.style.display = 'none';
+      }, { once: true });
+    }
+
+    setTimeout(() => {
+      animDone = true;
+      if (!pageDone) heart.classList.add('waiting');
+      dismiss();
+    }, animDoneAt);
+
+    if (document.readyState === 'complete') {
+      pageDone = true; dismiss();
+    } else {
+      window.addEventListener('load', () => { pageDone = true; dismiss(); }, { once: true });
+    }
   }
 </script>
