@@ -422,8 +422,13 @@ const logos = [
     width: max-content;
     height: 100%;
     animation: about-ticker 50s linear infinite;
+    animation-play-state: paused;
     will-change: transform;
     padding: 0 32px;
+  }
+
+  .about__ticker-track.ticker-ready {
+    animation-play-state: running;
   }
 
   .about__ticker-logo {
@@ -581,3 +586,24 @@ const logos = [
     }
   }
 </style>
+
+<script>
+  const track = document.querySelector<HTMLElement>('.about__ticker-track');
+  if (track) {
+    const imgs = Array.from(track.querySelectorAll<HTMLImageElement>('img'));
+    const total = imgs.length;
+    if (total === 0) {
+      track.classList.add('ticker-ready');
+    } else {
+      let loaded = 0;
+      function onLoad() {
+        loaded++;
+        if (loaded >= total) track.classList.add('ticker-ready');
+      }
+      imgs.forEach(img => {
+        if (img.complete) onLoad();
+        else { img.addEventListener('load', onLoad, { once: true }); img.addEventListener('error', onLoad, { once: true }); }
+      });
+    }
+  }
+</script>
