@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import billgatesImg from '../assets/images/billgates.png';
 import ndtvImg from '../assets/images/ndtv.png';
@@ -15,19 +14,44 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Partnerships - Dr. Cuterus</title>
+    <title>Partnerships — Dr. Cuterus</title>
     <meta name="description" content="Dr. Tanaya Narendra in the news, on stage, award winner, and media appearances." />
-    <meta property="og:title" content="Partnerships - Dr. Cuterus" />
-    <meta property="og:description" content="Dr. Tanaya Narendra in the news, on stage, award winner, and media appearances." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://drcuterus.com/partnerships" />
-    <meta property="og:image" content="https://drcuterus.com/og-image.png" />
-    <meta property="og:image:alt" content="Dr. Tanaya Narendra - Dr. Cuterus" />
   </head>
   <body>
     <Navbar />
 
     <div class="gazette">
+
+      <!-- ── LOGO TICKER ── -->
+      <div class="gazette__ticker" aria-hidden="true">
+        <div class="gazette__ticker-track">
+          <img src="/logos/forbes.svg"          alt="Forbes India"                        class="gazette__ticker-logo" />
+          <img src="/logos/who.svg"              alt="World Health Organization"           class="gazette__ticker-logo" />
+          <img src="/logos/delhi.svg"            alt="Government of Delhi"                 class="gazette__ticker-logo gazette__ticker-logo--square" />
+          <img src="/logos/natgeo.svg"           alt="National Geographic"                 class="gazette__ticker-logo" />
+          <img src="/logos/gates.svg"            alt="Bill &amp; Melinda Gates Foundation" class="gazette__ticker-logo" />
+          <img src="/logos/better_india.svg"     alt="The Better India"                    class="gazette__ticker-logo gazette__ticker-logo--square" />
+          <img src="/logos/cosmo.svg"            alt="Cosmopolitan India"                  class="gazette__ticker-logo" />
+          <img src="/logos/hindustan_times.svg"  alt="Hindustan Times"                     class="gazette__ticker-logo" />
+          <img src="/logos/fii.png"              alt="Feminism in India"                   class="gazette__ticker-logo gazette__ticker-logo--png-bg" />
+          <img src="/logos/vogue.svg"            alt="Vogue India"                         class="gazette__ticker-logo" />
+          <img src="/logos/india_govt.svg"       alt="Ministry of Health &amp; Family Welfare" class="gazette__ticker-logo" />
+          <img src="/logos/umich.svg"            alt="University of Michigan"              class="gazette__ticker-logo" />
+          <!-- Duplicate set for seamless loop -->
+          <img src="/logos/forbes.svg"          alt="" class="gazette__ticker-logo" />
+          <img src="/logos/who.svg"              alt="" class="gazette__ticker-logo" />
+          <img src="/logos/delhi.svg"            alt="" class="gazette__ticker-logo gazette__ticker-logo--square" />
+          <img src="/logos/natgeo.svg"           alt="" class="gazette__ticker-logo" />
+          <img src="/logos/gates.svg"            alt="" class="gazette__ticker-logo" />
+          <img src="/logos/better_india.svg"     alt="" class="gazette__ticker-logo gazette__ticker-logo--square" />
+          <img src="/logos/cosmo.svg"            alt="" class="gazette__ticker-logo" />
+          <img src="/logos/hindustan_times.svg"  alt="" class="gazette__ticker-logo" />
+          <img src="/logos/fii.png"              alt="" class="gazette__ticker-logo gazette__ticker-logo--png-bg" />
+          <img src="/logos/vogue.svg"            alt="" class="gazette__ticker-logo" />
+          <img src="/logos/india_govt.svg"       alt="" class="gazette__ticker-logo" />
+          <img src="/logos/umich.svg"            alt="" class="gazette__ticker-logo" />
+        </div>
+      </div>
 
       <!-- ── MASTHEAD ── -->
       <div class="gazette__masthead">
@@ -76,7 +100,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
           <!-- Column divider between intro and NDTV -->
           <div class="gazette__col-rule"></div>
 
-          <!-- NDTV - full content, full image -->
+          <!-- NDTV — full content, full image -->
           <div class="gazette__ndtv">
             <h2 class="gazette__article-title">At NDTV Banega Swastha India</h2>
             <div class="gazette__ndtv-image-wrap">
@@ -99,7 +123,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
           <!-- Gates bordered article -->
           <article class="gazette__gates">
             <div class="gazette__gates-text">
-              <p class="gazette__body-text">Dr. Tanaya was invited by the Bill &amp; Melinda Gates Foundation to be a Global Goals Goalkeeper - a prestigious global initiative tied to the United Nations' goals for a healthier, more equal world. As part of this, she sat down with Bill Gates himself for a direct conversation on maternal health, child mortality, and the future of public health education. It's a rare honour that puts her in the company of world leaders, scientists, and changemakers.</p>
+              <p class="gazette__body-text">Dr. Tanaya was invited by the Bill &amp; Melinda Gates Foundation to be a Global Goals Goalkeeper — a prestigious global initiative tied to the United Nations' goals for a healthier, more equal world. As part of this, she sat down with Bill Gates himself for a direct conversation on maternal health, child mortality, and the future of public health education. It's a rare honour that puts her in the company of world leaders, scientists, and changemakers.</p>
               <h3 class="gazette__article-title gazette__article-title--gates">At the Bill &amp; Melinda Gates Foundation, Global Goals Goalkeeper</h3>
             </div>
             <div class="gazette__gates-image-wrap">
@@ -144,7 +168,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
 
           </div><!-- end .gazette__forbes-cosmo -->
 
-          <!-- Raj Shamani - only in right column -->
+          <!-- Raj Shamani — only in right column -->
           <article class="gazette__raj">
             <div class="gazette__raj-text">
               <h3 class="gazette__article-title gazette__article-title--raj">Dr. Tanaya Narendra Talks Sexual Health on Raj Shamani's Podcast</h3>
@@ -171,11 +195,12 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
 
     <!-- Footer -->
     <div class="partnerships-footer">
+      <img src="/doodles/contact-flower-yellow.svg" class="partnerships-footer__flower partnerships-footer__flower--yellow" alt="" aria-hidden="true" />
+      <img src="/doodles/contact-flower-purple.svg" class="partnerships-footer__flower partnerships-footer__flower--purple" alt="" aria-hidden="true" />
       <p class="partnerships-footer__heading">Found something you liked? Let's talk.</p>
-      <p class="partnerships-footer__sub">For collabs, speaking, and partnerships or just to say hi!</p>
+      <p class="partnerships-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
-    <Footer />
   </body>
 </html>
 
@@ -217,7 +242,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
 
   /* ── MASTHEAD ── */
   .gazette__masthead {
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   .gazette__title {
@@ -302,6 +327,56 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     font-size: 0.75rem;
     color: var(--color-brand-900);
     margin: 6px 0 8px;
+  }
+
+  /* ── LOGO TICKER ── */
+  .gazette__ticker {
+    background-color: var(--color-yellow-500);
+    overflow: hidden;
+    padding: 14px 0;
+    /* Full viewport bleed regardless of container max-width */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    /* Equal gap above (navbar→ticker) and below (ticker→masthead) */
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  @keyframes gazette-ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .gazette__ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: max-content;
+    animation: gazette-ticker 50s linear infinite;
+    will-change: transform;
+    padding: 0 32px;
+  }
+
+  /* SVG logos all have transparent backgrounds — brightness(0) → pure black */
+  .gazette__ticker-logo {
+    height: 30px;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0);
+  }
+
+  .gazette__ticker-logo--square {
+    height: 38px;
+  }
+
+  /* FII PNG has a white background — multiply blend makes white disappear into yellow */
+  .gazette__ticker-logo--png-bg {
+    filter: grayscale(1) contrast(10);
+    mix-blend-mode: multiply;
   }
 
   /* ── MAIN GRID: persistent 2-column ── */
@@ -428,7 +503,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     gap: 10px;
   }
 
-  /* Raj Shamani - right column only */
+  /* Raj Shamani — right column only */
   .gazette__raj {
     display: grid;
     grid-template-columns: 1fr 337px;
@@ -464,6 +539,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
       padding-right: 32px;
     }
 
+
     .gazette__main-grid {
       grid-template-columns: 260px 1fr;
     }
@@ -491,6 +567,7 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
       padding-left: 20px;
       padding-right: 20px;
     }
+
 
     .gazette__subheader {
       flex-wrap: nowrap;
@@ -605,6 +682,24 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     gap: 10px;
     position: relative;
     overflow: hidden;
+  }
+
+  .partnerships-footer__flower {
+    position: absolute;
+    width: 48px;
+    height: 46px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .partnerships-footer__flower--yellow {
+    left: clamp(20px, 6vw, 80px);
+    top: clamp(30px, 4vh, 55px);
+  }
+
+  .partnerships-footer__flower--purple {
+    right: clamp(20px, 6vw, 80px);
+    top: clamp(60px, 8vh, 96px);
   }
 
   .partnerships-footer__heading,
