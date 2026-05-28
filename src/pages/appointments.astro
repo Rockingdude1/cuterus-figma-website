@@ -56,12 +56,14 @@ const reviews = [
 
       <!-- Purple grid tag cloud — full viewport width -->
       <div class="appt-hero__tag-cloud">
-        <div class="appt-tag appt-tag--yellow appt-tag--p1">Irregular or painful periods</div>
-        <div class="appt-tag appt-tag--purple-dark appt-tag--p2">PCOS symptoms</div>
-        <div class="appt-tag appt-tag--beige appt-tag--p3">HPV, STIs?<br/>Don't know where to start.</div>
-        <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Questions about fertility<br/>or egg health</div>
-        <div class="appt-tag appt-tag--purple-dark appt-tag--p5">Confused about<br/>contraception options</div>
-        <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Want a second opinion<br/>without judgment</div>
+        <div class="appt-tag-group">
+          <div class="appt-tag appt-tag--yellow appt-tag--p1">Irregular or painful periods</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p2">PCOS symptoms</div>
+          <div class="appt-tag appt-tag--beige appt-tag--p3">HPV, STIs?<br/>Don't know where to start.</div>
+          <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Questions about fertility<br/>or egg health</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p5">Confused about<br/>contraception options</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Want a second opinion<br/>without judgment</div>
+        </div>
       </div>
 
       <div class="appt-hero-bottom">
@@ -219,6 +221,16 @@ const reviews = [
     background-size: 32px 32px;
     position: relative;
     flex-shrink: 0;
+  }
+
+  /* Centered group — tags position relative to this, not the full viewport */
+  .appt-tag-group {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: min(900px, 100%);
+    height: 100%;
   }
 
   /* Individual floating tags */

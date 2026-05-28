@@ -34,9 +34,6 @@ const logos = [
   <Image src={doctorImg}    alt=""                    class="about__photo about__photo--doctor"    loading="eager"                      widths={[200, 400]} sizes="(max-width: 768px) 17vw, 13vw"  aria-hidden="true" />
   <Image src={podcastImg}   alt=""                    class="about__photo about__photo--podcast"   loading="eager"                      widths={[400, 800]} sizes="(max-width: 768px) 37vw, 20vw"  aria-hidden="true" />
 
-  <!-- Caption labels on photos -->
-  <p class="about__img-label about__img-label--rtfrb" aria-hidden="true">Real Talk For Real Bodies</p>
-  <p class="about__img-label about__img-label--btc"   aria-hidden="true">Beyond The Clinic</p>
 
   <!-- "India's Favourite Sex Educator" badge -->
   <div class="about__badge" aria-hidden="true">
@@ -264,7 +261,7 @@ const logos = [
   /* right side of collage, between main and diving photo */
   .about__star--2 { width: 50px; left: 47.0%;  top: 28.0%; }
   /* lower-left, below billboard photo */
-  .about__star--3 { width: 44px; left: 3.75%;  top: 63.5%; }
+  .about__star--3 { display: none; }
   /* lower-center, between doctor and podcast */
   .about__star--4 { width: 64px; left: 47.5%;  top: 61.2%; }
 
@@ -523,7 +520,7 @@ const logos = [
     /* ── stars: reposition for mobile ── */
     .about__star--1 { width: 32px; left: 11.7%; top: 10.0%; }
     .about__star--2 { width: 36px; left: 80.0%; top: 16.5%; }
-    .about__star--3 { width: 32px; left: 10.5%; top: 34.5%; }
+    .about__star--3 { display: block; width: 32px; left: 10.5%; top: 34.5%; }
     .about__star--4 { width: 28px; left: 66.0%; top: 43.0%; }
 
     /* ── highlight bar: hidden on mobile ── */
@@ -580,12 +577,7 @@ const logos = [
 
     /* ── scroll ── */
     .about__scroll {
-      left: 50%;
-      right: auto;
-      top: auto;
-      bottom: 8.5%;  /* ≈ (8.33 % + 6 px) from bottom, staying above ticker */
-      transform: translateX(-50%);
-      font-size: clamp(12px, 3.5vw, 14px);
+      display: none;
     }
   }
 </style>
