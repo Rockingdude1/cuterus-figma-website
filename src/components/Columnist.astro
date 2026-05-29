@@ -7,6 +7,9 @@ import backDoorImg  from '../assets/images/back of door.jpg';
 <div class="columnist-outer" id="columnist">
   <section class="columnist">
 
+    <!-- scene wrapper: display:contents on desktop, fixed canvas + scale on mobile -->
+  <div class="columnist__scene">
+
     <!-- LEFT: DOOR ANIMATION -->
     <div class="columnist__door-col">
       <p class="columnist__knock">Knock to meet her.</p>
@@ -44,6 +47,7 @@ import backDoorImg  from '../assets/images/back of door.jpg';
       </div>
     </div>
 
+  </div><!-- /.columnist__scene -->
   </section>
 </div>
 
@@ -247,67 +251,81 @@ import backDoorImg  from '../assets/images/back of door.jpg';
     .columnist__cta { font-size: 1.125rem; padding: 10px 20px; }
   }
 
+  /* ── SCENE — display:contents on desktop (grid passthrough),
+     fixed 390×750 design canvas on mobile scaled by JS ── */
+  .columnist__scene {
+    display: contents;
+  }
+
   /* ── MOBILE (≤768px) ── */
   @media (max-width: 768px) {
-    /* Outer still fills at least the full screen.
-       scroll-margin-top: 0 prevents the previous section from peeking
-       at the top when scroll-snap snaps to this section. */
     .columnist-outer {
-      min-height: 100svh;
+      height: 100svh;
+      min-height: unset;
       scroll-margin-top: 0;
+      overflow: hidden;
+      clip-path: inset(0);
+      position: relative;
     }
 
-    /*
-     * Flatten the two-column structure into a single centered column.
-     * All items: knock → door → badge → heading → text → CTA
-     * are laid out together with a fixed gap.
-     * Extra space (on taller phones) accumulates as equal top/bottom margins
-     * via justify-content: center — never between the items.
-     */
+    /* Section is just a positioning context — scene handles layout */
     .columnist {
+      display: block;
+      height: 100svh;
+      max-height: unset;
+      padding: 0;
+      min-height: unset;
+    }
+
+    /* Fixed design canvas — JS scales it to fit any phone */
+    .columnist__scene {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100svh;
-      max-height: unset;
-      padding: 20px;
-      gap: 12px;
+      position: absolute;
+      width: 390px;
+      height: 750px;
+      top: 0;       /* JS sets exact top for vertical centering */
+      left: 50%;
+      transform: translateX(-50%);
+      transform-origin: top center;
+      gap: 10px;
+      padding: 0 20px;
       box-sizing: border-box;
     }
 
-    /* Remove both column wrappers from the layout — their children
-       become direct flex children of .columnist */
+    /* Flatten both column wrappers so children are direct scene flex items */
     .columnist__door-col,
     .columnist__right {
       display: contents;
     }
 
-    /* Hide the extra sentences on mobile — keep only the first sentence */
     .columnist__desc-extra {
       display: none;
     }
 
+    /* ── knock text ── */
     .columnist__knock {
-      font-size: 0.9rem;
+      font-size: 16px;
       margin: 0;
       text-align: center;
     }
 
+    /* ── door ── */
     .columnist__door-scene {
-      width: min(270px, 68vw);
-      height: calc(min(270px, 68vw) * (711 / 486));
+      width: 250px;
+      height: calc(250px * (711 / 486)); /* ≈ 366px */
       flex-shrink: 0;
     }
 
-    /* Content group: badge + heading + text + CTA, tight together */
+    /* ── content group: badge + heading + desc + cta ── */
     .columnist__content-group {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       width: 100%;
-      max-width: 380px;
     }
 
     .columnist__badge {
@@ -315,13 +333,13 @@ import backDoorImg  from '../assets/images/back of door.jpg';
     }
 
     .columnist__badge span {
-      font-size: clamp(0.875rem, 4vw, 1.1rem);
+      font-size: 16px;
       white-space: normal;
       text-align: center;
     }
 
     .columnist__heading {
-      font-size: clamp(1.75rem, 8vw, 2.2rem);
+      font-size: 36px;
       white-space: normal;
       text-align: center;
       margin: 0;
@@ -332,9 +350,9 @@ import backDoorImg  from '../assets/images/back of door.jpg';
       width: 100%;
     }
 
-    .columnist__desc-box p { font-size: 0.875rem; }
+    .columnist__desc-box p { font-size: 14px; }
 
-    .columnist__cta { font-size: 1rem; padding: 10px 20px; }
+    .columnist__cta { font-size: 16px; padding: 8px 16px; }
   }
 </style>
 
@@ -354,4 +372,33 @@ import backDoorImg  from '../assets/images/back of door.jpg';
       toggleDoor();
     }
   });
+
+  /* ── Mobile scene scaling — same pattern as About and Book ── */
+  const COL_DESIGN_W = 390;
+  const COL_DESIGN_H = 750;
+
+  function applyColumnistScale() {
+    const scene = document.querySelector<HTMLElement>('.columnist__scene');
+    if (!scene) return;
+
+    if (window.innerWidth > 768) {
+      scene.style.transform = '';
+      scene.style.top = '';
+      return;
+    }
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const navbarH = (document.querySelector<HTMLElement>('.navbar')?.offsetHeight) ?? 60;
+    const availH = vh - navbarH;
+    const scale = Math.min(vw / COL_DESIGN_W, availH / COL_DESIGN_H);
+    const scaledH = COL_DESIGN_H * scale;
+    const topOffset = navbarH + (availH - scaledH) / 2;
+
+    scene.style.top = `${topOffset}px`;
+    scene.style.transform = `translateX(-50%) scale(${scale})`;
+  }
+
+  applyColumnistScale();
+  window.addEventListener('resize', applyColumnistScale);
 </script>
