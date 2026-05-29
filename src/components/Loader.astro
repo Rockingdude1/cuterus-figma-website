@@ -52,6 +52,8 @@
     #loader-title { left: 32px; }
   }
   @media (max-width: 768px) {
+    /* font-size drives text width — keep right edge safely inside viewport.
+       JS will shrink further if the rendered width still overflows. */
     #loader-title { left: 20px; font-size: min(15vw, 26vh); }
   }
 </style>
@@ -61,6 +63,17 @@
   const panel   = document.getElementById('loader-panel')!;
   const title   = document.getElementById('loader-title')!;
   const navLogo = document.querySelector<HTMLElement>('.navbar__logo');
+
+  // Ensure the title never overflows the viewport horizontally on any phone.
+  // Runs once before animation starts; measures actual rendered text width.
+  if (window.innerWidth <= 768) {
+    const maxW = window.innerWidth - 40; // 20px left + 20px right clearance
+    const textW = title.getBoundingClientRect().width;
+    if (textW > maxW) {
+      const curFs = parseFloat(getComputedStyle(title).fontSize);
+      title.style.fontSize = `${curFs * (maxW / textW)}px`;
+    }
+  }
 
   if (sessionStorage.getItem('loader-seen')) {
     loader.style.display = 'none';
