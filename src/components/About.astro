@@ -1,10 +1,10 @@
 ---
-import mainSvg      from '../assets/images/main.svg?url';
-import sareeSvg     from '../assets/images/saree.svg?url';
-import biilboardSvg from '../assets/images/biilboard.svg?url';
-import doctorSvg    from '../assets/images/doctor.svg?url';
-import podcastSvg   from '../assets/images/podcast.svg?url';
-import divingSvg    from '../assets/images/diving.svg?url';
+import mainJpg      from '../assets/images/photo_about main.jpg?url';
+import sareeJpg     from '../assets/images/photo_about saree.jpg?url';
+import billboardJpg from '../assets/images/photo_about billboard.jpg?url';
+import docJpg       from '../assets/images/photo_about doc.jpg?url';
+import divingJpg    from '../assets/images/photo_about diving.jpg?url';
+import podcastJpg   from '../assets/images/photo_about podcast.jpg?url';
 
 const logos = [
   { src: '/logos/forbes.svg',         alt: 'Forbes India'                        },
@@ -29,12 +29,26 @@ const logos = [
   <div class="about__scene">
 
     <!-- ─── PHOTO COLLAGE ─── -->
-    <img src={mainSvg}      width="494" height="625" alt="Dr. Tanaya Narendra" class="about__photo about__photo--main"      loading="eager" fetchpriority="high" />
-    <img src={sareeSvg}     width="151" height="198" alt=""                    class="about__photo about__photo--saree"     loading="eager" aria-hidden="true" />
-    <img src={biilboardSvg} width="201" height="231" alt=""                    class="about__photo about__photo--billboard" loading="eager" aria-hidden="true" />
-    <img src={doctorSvg}    width="140" height="176" alt=""                    class="about__photo about__photo--doctor"    loading="eager" aria-hidden="true" />
-    <img src={podcastSvg}   width="277" height="189" alt=""                    class="about__photo about__photo--podcast"   loading="eager" aria-hidden="true" />
-    <img src={divingSvg}    width="173" height="230" alt=""                    class="about__photo about__photo--diving"    loading="eager" aria-hidden="true" />
+    <!-- main photo: CSS polaroid (white bg, shadow, bigger bottom border) -->
+    <div class="about__photo about__photo--main">
+      <img src={mainJpg} alt="Dr. Tanaya Narendra" class="about__photo-content" loading="eager" fetchpriority="high" />
+    </div>
+
+    <div class="about__photo about__photo--saree  about__polaroid about__polaroid--purple">
+      <img src={sareeJpg}     alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+    </div>
+    <div class="about__photo about__photo--billboard about__polaroid about__polaroid--yellow">
+      <img src={billboardJpg} alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+    </div>
+    <div class="about__photo about__photo--doctor about__polaroid about__polaroid--purple">
+      <img src={docJpg}       alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+    </div>
+    <div class="about__photo about__photo--diving about__polaroid about__polaroid--purple">
+      <img src={divingJpg}    alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+    </div>
+    <div class="about__photo about__photo--podcast about__polaroid about__polaroid--yellow">
+      <img src={podcastJpg}   alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+    </div>
 
 
     <!-- "India's Favourite Sex Educator" badge -->
@@ -155,6 +169,36 @@ const logos = [
     backface-visibility: hidden;
   }
 
+  /* JPEG fills its container */
+  .about__photo-content {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Polaroid card — small photos: thin top/sides, bigger bottom white strip */
+  .about__polaroid {
+    background: #fefefe;
+    box-shadow: 0.4px 0.8px 2.5px 0.4px rgba(0,0,0,0.25);
+    padding: 3px 3px 12px;
+    overflow: visible;
+  }
+
+  /* coloured pin circle — centre sits exactly on the top edge (half inside, half outside) */
+  .about__polaroid::before {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    top: -6.5px;   /* half the height → centre on edge */
+    left: 14%;
+    z-index: 5;
+    box-shadow: 0.3px 0.6px 1.5px rgba(0,0,0,0.5);
+  }
+  .about__polaroid--yellow::before { background: #FFD700; }
+  .about__polaroid--purple::before { background: #6e3997; }
+
   .about__photo--main {
     width: 33%;
     max-width: 450px;
@@ -163,6 +207,10 @@ const logos = [
     transform: rotate(-1.87deg);
     transform-origin: center center;
     z-index: 2;
+    /* CSS polaroid: thin top/sides, noticeably bigger bottom strip */
+    background: #fefefe;
+    box-shadow: 1.1px 2.2px 6.5px 1.1px rgba(0,0,0,0.25);
+    padding: 9px 9px 38px;
   }
 
   .about__photo--saree {
@@ -175,10 +223,10 @@ const logos = [
   }
 
   .about__photo--billboard {
-    width: 15.59%;
-    max-width: 205px;
-    left: 4.7%;
-    top: 39.23%;
+    width: 10.5%;
+    max-width: 140px;
+    left: 7.5%;
+    top: 44%;
     transform: rotate(15.88deg);
     z-index: 1;
   }
@@ -192,22 +240,22 @@ const logos = [
     z-index: 3;
   }
 
-  .about__photo--podcast {
-    width: 19.73%;
-    max-width: 258px;
-    left: 49.79%;
-    top: 56.12%;
-    transform: rotate(8.09deg);
-    z-index: 3;
-  }
-
   .about__photo--diving {
     width: 12.46%;
     max-width: 165px;
     left: 49.42%;
     top: 28.44%;
     transform: rotate(-2.18deg);
-    z-index: 1;
+    z-index: 4;
+  }
+
+  .about__photo--podcast {
+    width: 19.73%;
+    max-width: 258px;
+    left: 49.79%;
+    top: 63%;
+    transform: rotate(8.09deg);
+    z-index: 3;
   }
 
   /* ─────────────────────────────────────────────
@@ -243,7 +291,7 @@ const logos = [
   .about__badge {
     position: absolute;
     left: 28.55%;
-    top: 70.27%;
+    top: 75%;
     background: var(--color-brand-100);
     padding: 4px 8px;
     font-family: var(--font-sans);
@@ -285,7 +333,7 @@ const logos = [
     font-weight: 500;
     color: var(--color-brand-400);
     font-size: clamp(32px, 5vw, 64px);
-    line-height: 1.25;
+    line-height: 1.3;
     letter-spacing: -0.03em;
     white-space: nowrap;
     z-index: 5;
@@ -457,6 +505,14 @@ const logos = [
     .about__badge { font-size: clamp(14px, 2.2vw, 28px); }
   }
 
+  /* Short desktop/laptop screens — nudge badge down so it stays below the main photo */
+  @media (max-height: 720px) and (min-width: 769px) {
+    .about__badge { top: 79%; }
+  }
+  @media (max-height: 620px) and (min-width: 769px) {
+    .about__badge { top: 83%; }
+  }
+
   /* ─────────────────────────────────────────────
      MOBILE  (≤ 768 px)
      Scene is fixed 402×772 px design space.
@@ -482,56 +538,56 @@ const logos = [
       width: 60%;
       max-width: none;
       left: 17.7%;
-      top: 12.6%;    /* 97px / 772 */
+      top: 7.5%;
     }
 
     .about__photo--saree {
       width: 21.3%;
       max-width: none;
       left: 3.2%;
-      top: 13.7%;    /* 106px / 772 */
+      top: 8.5%;
     }
 
     .about__photo--billboard {
       width: 28.6%;
       max-width: none;
       left: -4.5%;
-      top: 25.4%;    /* 196px / 772 */
+      top: 20%;
     }
 
     .about__photo--doctor {
       width: 19.9%;
       max-width: none;
       left: 8.7%;
-      top: 39.2%;    /* 303px / 772 */
-    }
-
-    .about__photo--podcast {
-      width: 39.6%;
-      max-width: none;
-      left: 64.7%;
-      top: 34.6%;    /* 267px / 772 */
+      top: 34%;
     }
 
     .about__photo--diving {
       width: 24.4%;
       max-width: none;
       left: 70.2%;
-      top: 18.1%;    /* 140px / 772 */
+      top: 13%;
+    }
+
+    .about__photo--podcast {
+      width: 39.6%;
+      max-width: none;
+      left: 64.7%;
+      top: 29.5%;
     }
 
     /* ── badge: fixed px within design canvas ── */
     .about__badge {
       left: 47.5%;
-      top: 42.5%;    /* ~328px / 772 */
+      top: 37%;
       transform: translateX(-50%);
       font-size: 16px;
     }
 
     /* ── stars ── */
-    .about__star--1 { width: 32px; left: 13.9%; top: 11.5%; }
-    .about__star--2 { width: 36px; left: 65.2%; top: 31.6%; }
-    .about__star--3 { display: block; width: 32px; left: 21.4%; top: 43.9%; }
+    .about__star--1 { width: 32px; left: 13.9%; top: 6.5%; }
+    .about__star--2 { width: 36px; left: 65.2%; top: 26.5%; }
+    .about__star--3 { display: block; width: 32px; left: 21.4%; top: 38.5%; }
     .about__star--4 { display: none; }
 
     .about__highlight-bar { display: none; }
