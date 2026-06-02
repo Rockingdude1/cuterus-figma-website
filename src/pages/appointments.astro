@@ -141,7 +141,7 @@ const reviews = [
   function updateReview() {
     const textEl = document.getElementById('review-text');
     const nameEl = document.getElementById('review-name');
-    const cardEl = document.getElementById('review-card') as HTMLAnchorElement | null;
+    const cardEl = document.getElementById('review-card');
     if (textEl) textEl.textContent = reviews[currentIndex].text;
     if (nameEl) nameEl.textContent = reviews[currentIndex].name;
     if (cardEl) cardEl.href = reviews[currentIndex].url;
@@ -151,14 +151,18 @@ const reviews = [
   const nextBtn = document.getElementById('review-next');
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
       updateReview();
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       currentIndex = (currentIndex + 1) % reviews.length;
       updateReview();
     });
