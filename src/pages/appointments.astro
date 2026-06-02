@@ -5,27 +5,31 @@ import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import clinicImage from '../assets/images/clinic-image.png';
 
-// Replace these with real Google reviews from her Maps listing
 const reviews = [
   {
-    text: "Dr. Tanaya is incredibly knowledgeable and makes you feel completely at ease. She addressed all my questions about PCOS and menstrual health without any judgment whatsoever.",
-    name: "Priya M."
+    text: "The coolest doctor ever! I'm a huge fan of her instagram account @dr_cuterus, where I get regular information about health & wellness. She is articulate about her thoughts & the info she wants to convey.",
+    name: "Naman Pataria",
+    url: "https://maps.app.goo.gl/tQnqi9NbgDePA2Nh6"
   },
   {
-    text: "Best consultation I've ever had. She explained everything so clearly — I finally understood what was happening with my body. No question felt too silly or awkward.",
-    name: "Aakriti S."
+    text: "Coolest and the most knowledgeable doctors I have ever come across",
+    name: "Yeshwanth Sundaramurthy",
+    url: "https://maps.app.goo.gl/8barbZzXXarhEjvn7"
   },
   {
-    text: "I was so nervous before my appointment but Dr. Tanaya was so warm and reassuring. She took her time and genuinely listened. Absolutely recommend her to everyone.",
-    name: "Neha R."
+    text: "Wonderful doctor who explains everything in a very easy language. My go-to gynaecologist.",
+    name: "Shreya Dalal",
+    url: "https://maps.app.goo.gl/92hAXso5bZounQDdA"
   },
   {
-    text: "Had concerns about fertility and egg health — she addressed everything thoroughly without making me feel scared. I left feeling informed and hopeful.",
-    name: "Divya K."
+    text: "Enjoyed the way she explains. Kudos to her.",
+    name: "Shiv Ahuja",
+    url: "https://maps.app.goo.gl/Gs4rEBhZubLSMTtp7"
   },
   {
-    text: "The consultation was completely confidential and judgment-free, exactly as promised. Dr. Tanaya is the kind of doctor everyone deserves to have access to.",
-    name: "Riya P."
+    text: "Excellent work for our society, which is needful for us",
+    name: "Nirmal Singh",
+    url: "https://maps.app.goo.gl/Yu4bnH28pMD5JkyR7"
   }
 ];
 ---
@@ -93,11 +97,11 @@ const reviews = [
             <span class="appt-pill">MBBS, MSc (Oxon), FRSPH</span>
             <span class="appt-pill">Medical Doctor &amp; Embryologist</span>
             <span class="appt-pill">Fellow, Royal Society for Public Health</span>
-            <span class="appt-pill">10+ Years In Reproductive Health</span>
+            <span class="appt-pill">Sexual Health Expert</span>
           </div>
 
           <!-- Google review carousel -->
-          <div class="appt-review-card">
+          <a class="appt-review-card" id="review-card" href="#" target="_blank" rel="noopener">
             <div class="appt-review__stars">★★★★★</div>
             <p class="appt-review__text" id="review-text"></p>
             <div class="appt-review__footer">
@@ -111,7 +115,7 @@ const reviews = [
                 </button>
               </div>
             </div>
-          </div>
+          </a>
 
           <div class="appt-book__ctas">
             <a href="#" class="btn-primary appt-book__cta">Book Via WhatsApp →</a>
@@ -137,8 +141,10 @@ const reviews = [
   function updateReview() {
     const textEl = document.getElementById('review-text');
     const nameEl = document.getElementById('review-name');
+    const cardEl = document.getElementById('review-card') as HTMLAnchorElement | null;
     if (textEl) textEl.textContent = reviews[currentIndex].text;
     if (nameEl) nameEl.textContent = reviews[currentIndex].name;
+    if (cardEl) cardEl.href = reviews[currentIndex].url;
   }
 
   const prevBtn = document.getElementById('review-prev');
@@ -380,6 +386,13 @@ const reviews = [
     flex-direction: column;
     gap: 16px;
     min-height: 180px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .appt-review-card:hover {
+    box-shadow: 2px 4px 12px 3px rgba(0, 0, 0, 0.35);
   }
 
   .appt-review__stars {
