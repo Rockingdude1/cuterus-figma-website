@@ -7,18 +7,35 @@ import divingJpg    from '../assets/images/photo_about diving.jpg?url';
 import podcastJpg   from '../assets/images/photo_about podcast.jpg?url';
 
 const logos = [
-  { src: '/logos/forbes.svg',         alt: 'Forbes India'                        },
-  { src: '/logos/who.svg',             alt: 'World Health Organization'           },
-  { src: '/logos/delhi.svg',           alt: 'Government of Delhi',     sq: true   },
-  { src: '/logos/natgeo.svg',          alt: 'National Geographic'                 },
-  { src: '/logos/gates.svg',           alt: 'Gates Foundation'                    },
-  { src: '/logos/better_india.svg',    alt: 'The Better India',        sq: true   },
-  { src: '/logos/cosmo.svg',           alt: 'Cosmopolitan India'                  },
-  { src: '/logos/hindustan_times.svg', alt: 'Hindustan Times'                     },
-  { src: '/logos/fii.svg',             alt: 'Feminism in India'                   },
-  { src: '/logos/vogue.svg',           alt: 'Vogue India'                         },
-  { src: '/logos/india_govt.svg',      alt: 'Ministry of Health'                  },
-  { src: '/logos/umich.svg',           alt: 'University of Michigan'              },
+  { src: '/logos/forbes.svg',                   alt: 'Forbes India'                },
+  { src: '/logos/deccan_herald.svg',            alt: 'Deccan Herald'               },
+  { src: '/logos/delhi.svg',                    alt: 'Government of Delhi', sq: true },
+  { src: '/logos/natgeo.svg',                   alt: 'National Geographic'         },
+  { src: '/logos/gates.svg',                    alt: 'Gates Foundation'            },
+  { src: '/logos/cosmo.svg',                    alt: 'Cosmopolitan India'          },
+  { src: '/logos/hindustan_times.svg',          alt: 'Hindustan Times',    sq: true },
+  { src: '/logos/vogue.svg',                    alt: 'Vogue India'                 },
+  { src: '/logos/india_govt.svg',               alt: 'Ministry of Health'          },
+  { src: '/logos/umich.svg',                    alt: 'University of Michigan'      },
+  { src: '/logos/livemint.svg',                 alt: 'Live Mint'                   },
+  { src: '/logos/grihshobha.svg',               alt: 'Grihshobha'                  },
+  { src: '/logos/who.svg',                      alt: 'World Health Organization'   },
+  { src: '/logos/mumbai_mirror.svg',            alt: 'Mumbai Mirror'               },
+  { src: '/logos/the_hindu_illustrations.svg',  alt: 'The Hindu'                   },
+  { src: '/logos/british_vogue.svg',            alt: 'British Vogue'               },
+  { src: '/logos/ndtv.svg',                     alt: 'NDTV'                        },
+  { src: '/logos/national_herald.svg',          alt: 'National Herald'             },
+  { src: '/logos/times_of_india.svg',           alt: 'Times of India'              },
+  { src: '/logos/dainik_jagran.svg',            alt: 'Dainik Jagran'               },
+  { src: '/logos/mint_lounge.svg',              alt: 'Mint Lounge'                 },
+  { src: '/logos/cnn_swades.svg',               alt: 'CNN Swades'                  },
+  { src: '/logos/cnn.svg',                      alt: 'CNN'                         },
+  { src: '/logos/the_week.svg',                 alt: 'The Week'                    },
+  { src: '/logos/mirror_now.svg',               alt: 'Mirror Now'                  },
+  { src: '/logos/brut.svg',                     alt: 'Brut'                        },
+  { src: '/logos/india_today.svg',              alt: 'India Today'                 },
+  { src: '/logos/elle.svg',                     alt: 'Elle'                        },
+  { src: '/logos/the_economist.svg',            alt: 'The Economist'               },
 ];
 
 ---
@@ -476,7 +493,7 @@ const logos = [
     gap: 64px;
     width: max-content;
     height: 100%;
-    animation: about-ticker 50s linear infinite;
+    animation: about-ticker 130s linear infinite;
     animation-play-state: paused;
     will-change: transform;
     padding: 0 32px;
@@ -488,13 +505,24 @@ const logos = [
 
   .about__ticker-logo {
     height: 30px;
-    width: auto;
+    width: 120px;
     flex-shrink: 0;
     display: block;
     object-fit: contain;
+    object-position: center;
     filter: brightness(0);
   }
-  .about__ticker-logo--sq  { height: 38px; }
+  .about__ticker-logo--sq { width: 40px; }
+
+  .about__ticker-logo[src*="delhi"]        { width: 40px;  height: 50px;  }
+  .about__ticker-logo[src*="india_govt"]   { height: 48px; width: 100px;  }
+  .about__ticker-logo[src*="times_of_india"] { height: 42px; width: 120px; }
+  .about__ticker-logo[src*="the_hindu"]    { width: 240px; height: 30px;  }
+  .about__ticker-logo[src*="india_today"]  { height: 38px; width: 150px;  }
+  .about__ticker-logo[src*="deccan_herald"] { height: 36px; width: 170px; }
+  .about__ticker-logo[src*="livemint"]     { height: 45px; width: 45px;   }
+  .about__ticker-logo[src*="grihshobha"]   { height: 38px; width: 150px;  }
+  .about__ticker-logo[src*="mumbai_mirror"] { height: 36px; width: 150px; }
 
 
   /* ─────────────────────────────────────────────

@@ -76,12 +76,11 @@ const bodyHtml = post.body
           </ul>
         </div>
 
-        <!-- CSS mail envelope -->
-        <div class="post__mail">
-          <div class="post__mail-body">
-            <div class="post__mail-flap"></div>
-          </div>
-        </div>
+        <!-- Mail doodle CTA -->
+        <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="post__mail-cta" aria-label="Ask your query via email">
+          <img src="/doodles/ask%20your%20query%20no%20hover.svg" alt="" class="post__mail-img post__mail-img--default" />
+          <img src="/doodles/ask%20your%20query%20on%20hover.svg.svg" alt="Ask your query" class="post__mail-img post__mail-img--hover" />
+        </a>
       </div>
     </main>
 
@@ -216,43 +215,41 @@ const bodyHtml = post.body
     color: var(--color-brand-400);
   }
 
-  /* ── CSS MAIL ENVELOPE ── */
-  .post__mail {
-    width: 110px;
-    height: 78px;
+  /* ── MAIL CTA ── */
+  .post__mail-cta {
     flex-shrink: 0;
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 88px;
+    text-decoration: none;
     margin-top: 8px;
   }
 
-  .post__mail-body {
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--color-brand-400);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .post__mail-flap::before,
-  .post__mail-flap::after {
-    content: '';
+  .post__mail-img {
     position: absolute;
     top: 0;
-    width: 51%;
-    height: 52%;
-    border-bottom: 2px solid var(--color-brand-400);
-  }
-
-  .post__mail-flap::before {
     left: 0;
-    transform-origin: top left;
-    transform: rotate(32deg);
+    width: 150px;
+    height: auto;
+    transition: opacity 0.25s ease;
+    display: block;
   }
 
-  .post__mail-flap::after {
-    right: 0;
-    transform-origin: top right;
-    transform: rotate(-32deg);
+  .post__mail-img--hover {
+    width: 170px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  .post__mail-cta:hover .post__mail-img--default {
+    opacity: 0;
+  }
+
+  .post__mail-cta:hover .post__mail-img--hover {
+    opacity: 1;
   }
 
   /* ── FOOTER ── */
@@ -305,13 +302,18 @@ const bodyHtml = post.body
       align-items: flex-start;
     }
 
-    /* Show mail on mobile, sized to fit beside the related list */
-    .post__mail {
-      display: block;
-      width: 90px;
-      height: 64px;
-      flex-shrink: 0;
-      margin-top: 36px;
+    .post__mail-cta {
+      width: 120px;
+      height: auto;
+      margin-top: 32px;
+    }
+
+    .post__mail-img {
+      width: 120px;
+    }
+
+    .post__mail-img--hover {
+      width: 135px;
     }
   }
 </style>
