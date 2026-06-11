@@ -74,7 +74,7 @@ const reviews = [
       </div>
 
       <div class="appt-hero-bottom">
-        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
+        <p class="appt-hero__tagline">For all these and more, you deserve a<br class="appt-mobile-br" /> doctor who actually listens.</p>
         <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
         <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
       </div>
@@ -331,6 +331,11 @@ const reviews = [
 
   /* Mobile-only intro above photo — hidden on desktop */
   .appt-book__intro {
+    display: none;
+  }
+
+  /* Mobile-only line break — hidden on desktop */
+  .appt-mobile-br {
     display: none;
   }
 
@@ -635,6 +640,14 @@ const reviews = [
     .appt-tag--p8 { transform: rotate(-2.68deg); }
     .appt-tag--p9 { transform: none;             }
 
+    .appt-mobile-br {
+      display: block;
+    }
+
+    .appt-hero__disclaimer {
+      display: none;
+    }
+
     .appt-hero__tagline {
       font-size: 1rem;
       margin: 16px 0 16px;
@@ -660,7 +673,7 @@ const reviews = [
     .appt-book__intro {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 16px;
     }
 
     .appt-book__content .appt-book__heading,
@@ -669,7 +682,7 @@ const reviews = [
     }
 
     .appt-book__intro .appt-book__heading {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
 
     .appt-book__photo {
