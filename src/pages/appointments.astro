@@ -79,7 +79,7 @@ const reviews = [
       </div>
 
       <div class="appt-hero-bottom">
-        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
+        <p class="appt-hero__tagline">For all these and more, you deserve<br/>a doctor who actually listens.</p>
         <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
         <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
       </div>
@@ -330,7 +330,7 @@ const reviews = [
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin: 12px 0 0;
+    margin: 12px 0 32px;
     text-align: center;
   }
 
@@ -431,7 +431,7 @@ const reviews = [
   .appt-pill {
     font-family: var(--font-sans);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--color-brand-400);
     background-color: var(--color-brand-50);
     border: 1px solid var(--color-brand-200);
@@ -631,7 +631,7 @@ const reviews = [
       display: flex;
       flex-direction: column;
       gap: 10px;
-      padding: 14px 0;
+      padding: 26px 0;
     }
 
     .appt-tag {
@@ -643,9 +643,9 @@ const reviews = [
 
     /* Per-tag alignment — viewport-relative via flex-start/end + margin */
     /* p1: flush left */
-    .appt-tag--p1 { align-self: flex-start; margin-left: 12px; transform: rotate(3.16deg); }
+    .appt-tag--p1 { display: none; }
     /* p2: flush right */
-    .appt-tag--p2 { align-self: flex-end;   margin-right: 12px; transform: rotate(-3.89deg); }
+    .appt-tag--p2 { display: none; }
     /* p3: slightly inward from left */
     .appt-tag--p3 { align-self: flex-start; margin-left: 44px; transform: rotate(1.71deg); }
     /* p4: slightly inward from right */
@@ -656,7 +656,7 @@ const reviews = [
     /* p8: flush left (second last) */
     .appt-tag--p8 { align-self: flex-start; margin-left: 12px; transform: rotate(-2.68deg); }
     /* p9: flush right (last) */
-    .appt-tag--p9 { align-self: flex-end;   margin-right: 12px; transform: none; }
+    .appt-tag--p9 { align-self: flex-end;   margin-right: 12px; transform: rotate(-2deg); }
 
     /* p5 + p6 side by side, centred as a unit */
     .appt-tag-pair {
