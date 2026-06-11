@@ -1,12 +1,6 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import { Image } from 'astro:assets';
-import billgatesImg from '../assets/images/billgates.png';
-import ndtvImg from '../assets/images/ndtv.png';
-import rajshaminiImg from '../assets/images/rajshamini.png';
-import introStoryImg from '../assets/images/intro story.png';
-import cosmoindiaImg from '../assets/images/cosmoindia.png';
 ---
 
 <html lang="en">
@@ -14,191 +8,94 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Partnerships — Dr. Cuterus</title>
-    <meta name="description" content="Dr. Tanaya Narendra in the news, on stage, award winner, and media appearances." />
+    <title>Corporate Workshops — Dr. Cuterus</title>
+    <meta name="description" content="Interactive workshops on sexual and reproductive health, built for teams who want to do inclusion right." />
   </head>
   <body>
     <Navbar />
 
-    <div class="gazette">
-
-      <!-- ── LOGO TICKER ── -->
-      <div class="gazette__ticker" aria-hidden="true">
-        <div class="gazette__ticker-track">
-          <img src="/logos/forbes.svg"          alt="Forbes India"                        class="gazette__ticker-logo" />
-          <img src="/logos/who.svg"              alt="World Health Organization"           class="gazette__ticker-logo" />
-          <img src="/logos/delhi.svg"            alt="Government of Delhi"                 class="gazette__ticker-logo gazette__ticker-logo--square" />
-          <img src="/logos/natgeo.svg"           alt="National Geographic"                 class="gazette__ticker-logo" />
-          <img src="/logos/gates.svg"            alt="Bill &amp; Melinda Gates Foundation" class="gazette__ticker-logo" />
-          <img src="/logos/better_india.svg"     alt="The Better India"                    class="gazette__ticker-logo gazette__ticker-logo--square" />
-          <img src="/logos/cosmo.svg"            alt="Cosmopolitan India"                  class="gazette__ticker-logo" />
-          <img src="/logos/hindustan_times.svg"  alt="Hindustan Times"                     class="gazette__ticker-logo" />
-          <img src="/logos/fii.png"              alt="Feminism in India"                   class="gazette__ticker-logo gazette__ticker-logo--png-bg" />
-          <img src="/logos/vogue.svg"            alt="Vogue India"                         class="gazette__ticker-logo" />
-          <img src="/logos/india_govt.svg"       alt="Ministry of Health &amp; Family Welfare" class="gazette__ticker-logo" />
-          <img src="/logos/umich.svg"            alt="University of Michigan"              class="gazette__ticker-logo" />
-          <!-- Duplicate set for seamless loop -->
-          <img src="/logos/forbes.svg"          alt="" class="gazette__ticker-logo" />
-          <img src="/logos/who.svg"              alt="" class="gazette__ticker-logo" />
-          <img src="/logos/delhi.svg"            alt="" class="gazette__ticker-logo gazette__ticker-logo--square" />
-          <img src="/logos/natgeo.svg"           alt="" class="gazette__ticker-logo" />
-          <img src="/logos/gates.svg"            alt="" class="gazette__ticker-logo" />
-          <img src="/logos/better_india.svg"     alt="" class="gazette__ticker-logo gazette__ticker-logo--square" />
-          <img src="/logos/cosmo.svg"            alt="" class="gazette__ticker-logo" />
-          <img src="/logos/hindustan_times.svg"  alt="" class="gazette__ticker-logo" />
-          <img src="/logos/fii.png"              alt="" class="gazette__ticker-logo gazette__ticker-logo--png-bg" />
-          <img src="/logos/vogue.svg"            alt="" class="gazette__ticker-logo" />
-          <img src="/logos/india_govt.svg"       alt="" class="gazette__ticker-logo" />
-          <img src="/logos/umich.svg"            alt="" class="gazette__ticker-logo" />
-        </div>
-      </div>
-
-      <!-- ── MASTHEAD ── -->
-      <div class="gazette__masthead">
-        <h1 class="gazette__title">THE DR. CUTERUS GAZETTE</h1>
-        <div class="gazette__rule"></div>
-        <div class="gazette__subheader">
-          <span class="gazette__sub-item">IN THE NEWS</span>
-          <span class="gazette__star">★</span>
-          <span class="gazette__sub-item">ON STAGE</span>
-          <span class="gazette__star">★</span>
-          <span class="gazette__sub-item">AWARDS</span>
-          <span class="gazette__star">★</span>
-          <span class="gazette__sub-item">ON THE RECORD</span>
-        </div>
-        <div class="gazette__rule"></div>
-      </div>
-
-      <!--
-        ── MAIN CONTENT GRID ──
-        Persistent 2-column layout mirroring the Figma reference:
-          LEFT  (387px): Intro story → divider → NDTV (full content)
-          RIGHT (rest):  Gates box  → divider → Forbes|Cosmo → Raj Shamani box
-        Raj Shamani lives only in the right column, NOT full-width.
-      -->
-      <div class="gazette__main-grid">
-
-        <!-- ════════ LEFT COLUMN ════════ -->
-        <div class="gazette__left-col">
-
-          <!-- Intro story -->
-          <div class="gazette__intro">
-            <h2 class="gazette__article-title">The doctor who turned the internet into a classroom</h2>
-            <div class="gazette__intro-photo-wrap">
-              <Image
-                src={introStoryImg}
-                alt="Dr. Tanaya Narendra"
-                class="gazette__intro-photo"
-                widths={[400, 600]}
-                sizes="387px"
-              />
-            </div>
-            <p class="gazette__caption">Dr. Tanaya Narendra · @dr_cuterus</p>
-            <p class="gazette__body-text">Okay, yes, I've been in a few places. Here's where you can find me; other than your Instagram feed at 2am.</p>
-          </div>
-
-          <!-- Column divider between intro and NDTV -->
-          <div class="gazette__col-rule"></div>
-
-          <!-- NDTV — full content, full image -->
-          <div class="gazette__ndtv">
-            <h2 class="gazette__article-title">At NDTV Banega Swastha India</h2>
-            <div class="gazette__ndtv-image-wrap">
-              <Image
-                src={ndtvImg}
-                alt="Dr. Tanaya at NDTV Banega Swastha India"
-                class="gazette__ndtv-image"
-                widths={[400, 600]}
-                sizes="370px"
-              />
-            </div>
-            <p class="gazette__body-text">A special Menstrual Hygiene Day episode was held featuring campaign ambassador Ayushmann Khurrana. The discussion focused on breaking long-standing taboos around menstruation and encouraging women to adopt science-backed and practical hygiene solutions in their everyday lives. It highlighted the importance of sustainable and reusable menstrual products, while also drawing attention to the connection between menstrual hygiene and uterine health. Experts and speakers discussed common issues such as UTIs and explained how poor menstrual and intimate hygiene practices can increase health risks. The conversation also addressed several mistakes and misconceptions that many women continue to overlook.</p>
-          </div>
-
-        </div><!-- end .gazette__left-col -->
-
-        <!-- ════════ RIGHT COLUMN ════════ -->
-        <div class="gazette__right-col">
-
-          <!-- Gates bordered article -->
-          <article class="gazette__gates">
-            <div class="gazette__gates-text">
-              <p class="gazette__body-text">Dr. Tanaya was invited by the Bill &amp; Melinda Gates Foundation to be a Global Goals Goalkeeper — a prestigious global initiative tied to the United Nations' goals for a healthier, more equal world. As part of this, she sat down with Bill Gates himself for a direct conversation on maternal health, child mortality, and the future of public health education. It's a rare honour that puts her in the company of world leaders, scientists, and changemakers.</p>
-              <h3 class="gazette__article-title gazette__article-title--gates">At the Bill &amp; Melinda Gates Foundation, Global Goals Goalkeeper</h3>
-            </div>
-            <div class="gazette__gates-image-wrap">
-              <Image
-                src={billgatesImg}
-                alt="Dr. Tanaya Narendra with Bill Gates"
-                class="gazette__gates-image"
-                widths={[400, 700]}
-                sizes="364px"
-              />
-            </div>
-          </article>
-
-          <!-- Column divider between Gates and Forbes/Cosmo -->
-          <div class="gazette__col-rule"></div>
-
-          <!-- Forbes + Cosmo side by side -->
-          <div class="gazette__forbes-cosmo">
-
-            <div class="gazette__forbes">
-              <h2 class="gazette__article-title">Among Forbes India Top 100 Digital Stars for Two Consecutive Years</h2>
-              <p class="gazette__body-text">Forbes India featured Dr Tanaya Narendra in its prestigious Top 100 Digital Stars list for both 2023 and 2024, recognising her as one of the few healthcare professionals to receive this honour consistently. This list celebrates the most influential and impactful voices on the internet in India. Known widely online as "Dr. Cuterus," she has built a large audience by simplifying conversations around women's health, sexual wellness, anatomy, and medical myths in an accessible and stigma-free way.</p>
-            </div>
-
-            <div class="gazette__vdivider" aria-hidden="true"></div>
-
-            <div class="gazette__cosmo">
-              <div class="gazette__cosmo-image-wrap">
-                <Image
-                  src={cosmoindiaImg}
-                  alt="Dr. Tanaya Narendra in Cosmopolitan India"
-                  class="gazette__cosmo-image"
-                  widths={[300, 500]}
-                  sizes="221px"
-                />
-              </div>
-              <div class="gazette__cosmo-text">
-                <h3 class="gazette__article-title gazette__article-title--cosmo">Cosmopolitan India Recognises Dr. Tanaya Narendra as One of India's Top 25 Disruptors</h3>
-                <p class="gazette__body-text gazette__body-text--sm">Recognising voices that were challenging long-standing norms and changing conversations in the country, the same year she crossed one million followers.</p>
-              </div>
-            </div>
-
-          </div><!-- end .gazette__forbes-cosmo -->
-
-          <!-- Raj Shamani — only in right column -->
-          <article class="gazette__raj">
-            <div class="gazette__raj-text">
-              <h3 class="gazette__article-title gazette__article-title--raj">Dr. Tanaya Narendra Talks Sexual Health on Raj Shamani's Podcast</h3>
-              <p class="gazette__body-text">Dr Tanaya Narendra recently appeared on Episode 147 of Figuring Out with Raj Shamani, one of India's most popular podcasts. During the episode, Dr. Tanaya spoke openly about sexual health, contraception, body awareness, and the urgent need for better sex education in India. The discussion aimed to break common myths and encourage young audiences to approach these topics with more awareness and less shame.</p>
-            </div>
-            <div class="gazette__raj-image-wrap">
-              <Image
-                src={rajshaminiImg}
-                alt="Dr. Tanaya Narendra on Figuring Out with Raj Shamani"
-                class="gazette__raj-image"
-                widths={[400, 700]}
-                sizes="337px"
-              />
-            </div>
-          </article>
-
-        </div><!-- end .gazette__right-col -->
-
-      </div><!-- end .gazette__main-grid -->
-
-      <div class="gazette__rule gazette__rule--footer"></div>
-
+    <!-- HERO TEXT -->
+    <div class="workshops-hero">
+      <h1 class="workshops-hero__heading">Want to conduct a workshop? Get in touch.</h1>
+      <p class="workshops-hero__sub">Interactive workshops on sexual and reproductive health, built for teams who want to do inclusion right</p>
     </div>
 
-    <!-- Footer -->
+    <!-- PHOTO COLLAGE -->
+    <div class="workshops-collage">
+
+      <!-- Washi tape strips -->
+      <img src="/workshops/tape.png"  class="col-tape col-tape--left"  alt="" aria-hidden="true" />
+      <img src="/workshops/tape2.png" class="col-tape col-tape--right" alt="" aria-hidden="true" />
+
+      <!-- Heart decoration -->
+      <img src="/workshops/heart.svg" class="col-heart" alt="" aria-hidden="true" />
+
+      <!-- Pin dots -->
+      <img src="/workshops/ellipse-b.svg" class="col-dot" style="left:665px;top:63px"  alt="" aria-hidden="true" />
+      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:1061px;top:297px" alt="" aria-hidden="true" />
+      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:367px;top:316px"  alt="" aria-hidden="true" />
+
+      <!-- photo-64: large yellow landscape (top right) -->
+      <div class="col-photo col-photo--64">
+        <img src="/workshops/photo-64.png" alt="" />
+      </div>
+
+      <!-- photo-53: large white polaroid (left) -->
+      <div class="col-photo col-photo--53">
+        <img src="/workshops/photo-53.png" alt="Dr. Tanaya at a speaking event" />
+      </div>
+
+      <!-- photo-61: medium purple polaroid (center) -->
+      <div class="col-photo col-photo--61">
+        <img src="/workshops/photo-61.png" alt="" />
+      </div>
+
+      <!-- photo-59: small square (top centre) -->
+      <div class="col-photo col-photo--59">
+        <img src="/workshops/photo-59.png" alt="" />
+      </div>
+
+      <!-- photo-57: small white photo -->
+      <div class="col-photo col-photo--57">
+        <img src="/workshops/photo-57.png" alt="" />
+      </div>
+
+      <!-- photo-56: small yellow polaroid -->
+      <div class="col-photo col-photo--56">
+        <img src="/workshops/photo-56.png" alt="" />
+      </div>
+
+      <!-- photo-62: medium yellow-light polaroid (right centre) -->
+      <div class="col-photo col-photo--62">
+        <img src="/workshops/photo-62.png" alt="" />
+      </div>
+
+      <!-- photo-58: small purple polaroid (far right) -->
+      <div class="col-photo col-photo--58">
+        <img src="/workshops/photo-58.png" alt="" />
+      </div>
+
+      <!-- photo-51: wide landscape (bottom right, no border) -->
+      <div class="col-photo col-photo--51">
+        <img src="/workshops/photo-51.png" alt="" />
+      </div>
+
+      <!-- Dr Cuterus badges -->
+      <img src="/workshops/badge.png" class="col-badge col-badge--1" alt="" aria-hidden="true" />
+      <img src="/workshops/badge.png" class="col-badge col-badge--2" alt="" aria-hidden="true" />
+
+    </div><!-- end .workshops-collage -->
+
+    <!-- YELLOW RECTANGLE -->
+    <div class="workshops-yellow" aria-hidden="true"></div>
+
+    <!-- FOOTER -->
     <div class="partnerships-footer">
       <p class="partnerships-footer__heading">Found something you liked? Let's talk.</p>
       <p class="partnerships-footer__sub">For collabs, speaking, and partnerships — or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
+
   </body>
 </html>
 
@@ -207,467 +104,185 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     background-color: var(--color-beige-500);
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
-  /* ── WRAPPER ── */
-  .gazette {
-    padding-top: 80px;
+  /* ── HERO ── */
+  .workshops-hero {
     max-width: 1280px;
     margin: 0 auto;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-bottom: 48px;
+    padding: 120px 60px 0;
     box-sizing: border-box;
-  }
-
-  /* ── HORIZONTAL RULES ── */
-  .gazette__rule {
-    height: 1px;
-    background-color: rgba(28, 20, 23, 0.45);
-    margin: 0;
-  }
-
-  .gazette__rule--footer {
-    margin-top: 40px;
-  }
-
-  /* Rule inside a column (between articles) */
-  .gazette__col-rule {
-    height: 1px;
-    background-color: rgba(28, 20, 23, 0.45);
-    margin: 16px 0;
-  }
-
-  /* ── MASTHEAD ── */
-  .gazette__masthead {
-    padding-top: 0;
-  }
-
-  .gazette__title {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    color: var(--color-brand-900);
-    letter-spacing: -0.06em;
-    line-height: 0.95;
-    margin: 0 0 14px;
     text-align: center;
   }
 
-  .gazette__subheader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 14px 0;
-    flex-wrap: wrap;
-  }
-
-  .gazette__sub-item {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: clamp(0.875rem, 1.2vw, 1.125rem);
-    color: rgba(28, 20, 23, 0.69);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-  }
-
-  .gazette__star {
-    color: rgba(28, 20, 23, 0.69);
-    font-size: 1.25rem;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  /* ── SHARED TYPOGRAPHY ── */
-  .gazette__article-title {
+  .workshops-hero__heading {
     font-family: var(--font-display);
+    font-style: italic;
     font-weight: 500;
-    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
+    font-size: clamp(2rem, 3.75vw, 3rem);
     color: var(--color-brand-400);
     letter-spacing: -0.06em;
-    line-height: 1;
-    margin: 0 0 12px;
-    text-align: justify;
+    line-height: 0.95;
+    margin: 0 0 20px;
   }
 
-  .gazette__article-title--gates {
-    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
-  }
-
-  .gazette__article-title--cosmo {
-    font-size: clamp(1rem, 1.3vw, 1.5rem);
-    text-align: right;
-  }
-
-  .gazette__article-title--raj {
-    font-size: clamp(1.1rem, 1.6vw, 1.75rem);
-  }
-
-  .gazette__body-text {
+  .workshops-hero__sub {
     font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: clamp(0.875rem, 1.05vw, 1.05rem);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     color: var(--color-brand-900);
-    line-height: 1.45;
-    text-align: justify;
-    margin: 0 0 10px;
+    margin: 0 0 28px;
+    line-height: 1.4;
   }
 
-  .gazette__body-text--sm {
-    font-size: 0.875rem;
-    text-align: right;
-  }
-
-  .gazette__caption {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 0.75rem;
-    color: var(--color-brand-900);
-    margin: 6px 0 8px;
-  }
-
-  /* ── LOGO TICKER ── */
-  .gazette__ticker {
-    background-color: var(--color-yellow-500);
-    overflow: hidden;
-    padding: 14px 0;
-    /* Full viewport bleed regardless of container max-width */
-    width: 100vw;
+  /* ── COLLAGE ── */
+  .workshops-collage {
     position: relative;
-    left: 50%;
-    margin-left: -50vw;
-    /* Equal gap above (navbar→ticker) and below (ticker→masthead) */
-    margin-top: 24px;
-    margin-bottom: 24px;
+    height: 620px;
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
-  @keyframes gazette-ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  /* Shared polaroid frame */
+  .col-photo {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
   }
-
-  .gazette__ticker-track {
-    display: flex;
-    align-items: center;
-    gap: 64px;
-    width: max-content;
-    animation: gazette-ticker 50s linear infinite;
-    will-change: transform;
-    padding: 0 32px;
-  }
-
-  /* SVG logos all have transparent backgrounds — brightness(0) → pure black */
-  .gazette__ticker-logo {
-    height: 30px;
-    width: auto;
-    flex-shrink: 0;
+  .col-photo img {
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* ── Individual photo positions & borders ── */
+
+  /* Large yellow landscape — top right */
+  .col-photo--64 {
+    left: 754px; top: 127px;
+    width: 499px; height: 208px;
+    border: 12px solid var(--color-yellow-500);
+    border-bottom-width: 49px;
+  }
+
+  /* Large white polaroid — left */
+  .col-photo--53 {
+    left: 57px; top: 74px;
+    width: 356px; height: 414px;
+    transform: rotate(-1.6deg);
+    border: 16px solid var(--color-white);
+    border-bottom-width: 48px;
+  }
+
+  /* Medium purple polaroid — centre */
+  .col-photo--61 {
+    left: 420px; top: 97px;
+    width: 328px; height: 471px;
+    transform: rotate(1.64deg);
+    border: 16px solid var(--color-brand-100);
+    border-bottom-width: 48px;
+  }
+
+  /* Small square — top centre */
+  .col-photo--59 {
+    left: 370px; top: 35px;
+    width: 127px; height: 127px;
+    border: 4px solid var(--color-yellow-200);
+    border-bottom-width: 17px;
+  }
+
+  /* Small white photo */
+  .col-photo--57 {
+    left: 586px; top: 81px;
+    width: 180px; height: 120px;
+    border: 8px solid var(--color-white);
+    border-bottom-width: 23px;
+  }
+
+  /* Small yellow polaroid */
+  .col-photo--56 {
+    left: 306px; top: 319px;
+    width: 130px; height: 173px;
+    border: 8px solid var(--color-yellow-500);
+    border-bottom-width: 24px;
+  }
+
+  /* Medium yellow-light polaroid — right centre */
+  .col-photo--62 {
+    left: 773px; top: 313px;
+    width: 205px; height: 210px;
+    transform: rotate(7.71deg);
+    border: 7px solid var(--color-yellow-200);
+    border-bottom-width: 28px;
+  }
+
+  /* Small purple polaroid — far right */
+  .col-photo--58 {
+    left: 1004px; top: 308px;
+    width: 159px; height: 212px;
+    transform: rotate(-6.13deg);
+    border: 6px solid var(--color-brand-100);
+    border-bottom-width: 23px;
+  }
+
+  /* Wide landscape — bottom right, no polaroid border */
+  .col-photo--51 {
+    left: 876px; top: 419px;
+    width: 257px; height: 159px;
+    box-shadow: none;
+  }
+
+  /* ── Decorative elements ── */
+  .col-badge {
+    position: absolute;
+    width: 99px;
+    height: 90px;
     object-fit: contain;
-    filter: brightness(0);
+    pointer-events: none;
+  }
+  .col-badge--1 { left: 721px; top: 239px; }
+  .col-badge--2 { left: 366px; top: 464px; }
+
+  .col-tape {
+    position: absolute;
+    width: 185px;
+    height: 91px;
+    object-fit: contain;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .col-tape--left  { left: 125px; top: 23px; }
+  .col-tape--right {
+    left: 1117px; top: 81px;
+    transform: rotate(24.31deg);
+    transform-origin: center center;
   }
 
-  .gazette__ticker-logo--square {
-    height: 38px;
+  .col-heart {
+    position: absolute;
+    left: 485px; top: 16px;
+    width: 77px; height: 52px;
+    pointer-events: none;
   }
 
-  /* FII PNG has a white background — multiply blend makes white disappear into yellow */
-  .gazette__ticker-logo--png-bg {
-    filter: grayscale(1) contrast(10);
-    mix-blend-mode: multiply;
+  .col-dot {
+    position: absolute;
+    width: 20px; height: 20px;
+    pointer-events: none;
   }
 
-  /* ── MAIN GRID: persistent 2-column ── */
-  .gazette__main-grid {
-    display: grid;
-    grid-template-columns: 387px 1fr;
-    align-items: start;
-    padding-top: 16px;
-  }
-
-  /* ── LEFT COLUMN ── */
-  .gazette__left-col {
-    padding-right: 20px;
-    border-right: 1px solid rgba(28, 20, 23, 0.45);
-  }
-
-  .gazette__intro-photo-wrap {
-    border: 2px solid var(--color-brand-900);
-    margin-bottom: 6px;
-    overflow: hidden;
-  }
-
-  .gazette__intro-photo {
+  /* ── YELLOW RECTANGLE ── */
+  .workshops-yellow {
     width: 100%;
-    height: 172px;
-    object-fit: cover;
-    display: block;
+    height: 60px;
+    background-color: var(--color-yellow-500);
   }
 
-  .gazette__ndtv-image-wrap {
-    border: 1px solid var(--color-black);
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-
-  .gazette__ndtv-image {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* ── RIGHT COLUMN ── */
-  .gazette__right-col {
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  /* Gates bordered article */
-  .gazette__gates {
-    display: grid;
-    grid-template-columns: 1fr 364px;
-    border: 1px solid var(--color-brand-900);
-    overflow: hidden;
-  }
-
-  .gazette__gates-text {
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .gazette__gates-image-wrap {
-    border-left: 1px solid var(--color-black);
-    overflow: hidden;
-  }
-
-  .gazette__gates-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    min-height: 320px;
-  }
-
-  /* Forbes + Cosmo side-by-side grid */
-  .gazette__forbes-cosmo {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    align-items: stretch;
-    margin-bottom: 16px;
-  }
-
-  .gazette__vdivider {
-    background: rgba(28, 20, 23, 0.45);
-    align-self: stretch;
-    width: 1px;
-  }
-
-  .gazette__forbes {
-    padding-right: 20px;
-  }
-
-  .gazette__cosmo {
-    display: grid;
-    grid-template-columns: 55% 1fr;
-    gap: 14px;
-    align-items: stretch;
-    padding-left: 20px;
-  }
-
-  .gazette__cosmo-image-wrap {
-    border: 1px solid var(--color-black);
-    overflow: hidden;
-  }
-
-  .gazette__cosmo-image {
-    width: 100%;
-    height: 100%;
-    min-height: 180px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-
-  .gazette__cosmo-text {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* Raj Shamani — right column only */
-  .gazette__raj {
-    display: grid;
-    grid-template-columns: 1fr 337px;
-    border: 1px solid var(--color-brand-900);
-    overflow: hidden;
-  }
-
-  .gazette__raj-text {
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .gazette__raj-image-wrap {
-    border-left: 1px solid var(--color-black);
-    overflow: hidden;
-  }
-
-  .gazette__raj-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    min-height: 260px;
-  }
-
-  /* ── TABLET (769–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .gazette {
-      padding-left: 32px;
-      padding-right: 32px;
-    }
-
-
-    .gazette__main-grid {
-      grid-template-columns: 260px 1fr;
-    }
-
-    .gazette__gates {
-      grid-template-columns: 1fr 240px;
-    }
-
-    .gazette__gates-image {
-      min-height: 280px;
-    }
-
-    .gazette__raj {
-      grid-template-columns: 1fr 240px;
-    }
-
-    .gazette__raj-image {
-      min-height: 240px;
-    }
-  }
-
-  /* ── MOBILE (≤768px) ── */
-  @media (max-width: 768px) {
-    .gazette {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-
-    .gazette__subheader {
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      gap: 0;
-      padding: 10px 12px;
-      margin-left: -20px;
-      margin-right: -20px;
-      overflow: hidden;
-    }
-
-    .gazette__sub-item {
-      font-size: 0.6rem;
-      white-space: nowrap;
-    }
-
-    .gazette__star {
-      font-size: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    /* Stack columns vertically on mobile */
-    .gazette__main-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .gazette__left-col {
-      border-right: none;
-      padding-right: 0;
-      border-bottom: 1px solid rgba(28, 20, 23, 0.3);
-      padding-bottom: 20px;
-    }
-
-    .gazette__right-col {
-      padding-left: 0;
-      padding-top: 20px;
-    }
-
-    .gazette__intro-photo {
-      height: 200px;
-    }
-
-    .gazette__ndtv-image {
-      height: 200px;
-    }
-
-    .gazette__gates {
-      grid-template-columns: 1fr;
-    }
-
-    .gazette__gates-image-wrap {
-      border-left: none;
-      border-top: 1px solid var(--color-black);
-      height: 200px;
-    }
-
-    .gazette__gates-image {
-      min-height: 200px;
-    }
-
-    .gazette__forbes-cosmo {
-      grid-template-columns: 1fr;
-    }
-
-    .gazette__vdivider {
-      display: none;
-    }
-
-    .gazette__forbes {
-      padding-right: 0;
-      border-bottom: 1px solid rgba(28, 20, 23, 0.3);
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-    }
-
-    .gazette__cosmo {
-      padding-left: 0;
-      grid-template-columns: 160px 1fr;
-    }
-
-    .gazette__cosmo-image {
-      height: 200px;
-    }
-
-    .gazette__raj {
-      grid-template-columns: 1fr;
-    }
-
-    .gazette__raj-image-wrap {
-      border-left: none;
-      border-top: 1px solid var(--color-black);
-      height: 220px;
-    }
-
-    .gazette__raj-image {
-      min-height: 220px;
-    }
-  }
-
-  /* ── FOOTER ── */
+  /* ── FOOTER (same as existing partnerships footer) ── */
   .partnerships-footer {
     background-color: var(--color-brand-100);
     background-image:
@@ -680,33 +295,6 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     align-items: center;
     justify-content: center;
     gap: 10px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .partnerships-footer__flower {
-    position: absolute;
-    width: 48px;
-    height: 46px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .partnerships-footer__flower--yellow {
-    left: clamp(20px, 6vw, 80px);
-    top: clamp(30px, 4vh, 55px);
-  }
-
-  .partnerships-footer__flower--purple {
-    right: clamp(20px, 6vw, 80px);
-    top: clamp(60px, 8vh, 96px);
-  }
-
-  .partnerships-footer__heading,
-  .partnerships-footer__sub,
-  .partnerships-footer > .btn-primary {
-    position: relative;
-    z-index: 1;
   }
 
   .partnerships-footer__heading {
@@ -728,5 +316,60 @@ import cosmoindiaImg from '../assets/images/cosmoindia.png';
     color: var(--color-brand-900);
     margin: 0;
     text-align: center;
+  }
+
+  /* ── MOBILE (≤768px) ── */
+  @media (max-width: 768px) {
+    .workshops-hero {
+      padding: 32px 20px 0;
+    }
+
+    /* Hide the absolute collage; show a simple photo grid instead */
+    .workshops-collage {
+      height: auto;
+      overflow: visible;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Hide decorative elements on mobile */
+    .col-tape,
+    .col-heart,
+    .col-dot,
+    .col-badge {
+      display: none;
+    }
+
+    /* Reset all absolute positions so photos flow in the grid */
+    .col-photo {
+      position: static;
+      width: 100% !important;
+      height: 160px !important;
+      transform: none !important;
+      left: auto !important;
+      top: auto !important;
+    }
+
+    /* Show only the main photos on mobile; hide the very small ones */
+    .col-photo--57,
+    .col-photo--59 {
+      display: none;
+    }
+  }
+
+  /* ── TABLET (769–1100px) ── */
+  @media (min-width: 769px) and (max-width: 1100px) {
+    .workshops-collage {
+      height: 520px;
+      transform-origin: top left;
+    }
+
+    /* Scale the collage proportionally */
+    .workshops-collage > * {
+      transform-origin: top left;
+    }
   }
 </style>
