@@ -154,10 +154,15 @@
       flex: 0 0 55%;
     }
 
-    /* Right takes remaining space */
+    /* Right takes remaining space — no grid on mobile */
     .columnist__right {
       flex: 1;
       padding: 20px 24px;
+      background-image: none;
+    }
+
+    .columnist__desc-box {
+      background-color: var(--color-brand-100);
     }
 
     .columnist__content-group {
