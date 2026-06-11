@@ -32,8 +32,8 @@ const episodes = [
         </div>
         <div class="fursat__desc-box">
           <p class="fursat__desc">
-            and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
-            <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.
+            and I present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
+            <strong>medium-impact bra</strong>.
           </p>
         </div>
       </div>
@@ -398,7 +398,7 @@ const episodes = [
     align-items: center;
     flex: 1;
     min-height: 0;
-    padding: 12px 0;
+    padding: clamp(10px, 2.5vh, 28px) 0;
   }
 
   .fursat__podcast-nav {
@@ -497,13 +497,6 @@ const episodes = [
     background: rgba(0, 0, 0, 0.06);
   }
 
-  .fursat__episode-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-    background: var(--color-brand-900);
-  }
 
   /* Hide sub-text on short laptop screens where it would encroach on the podcast grid */
   @media (min-width: 769px) and (max-height: 820px) {
@@ -604,7 +597,7 @@ const episodes = [
     .fursat__heading {
       font-size: clamp(1.75rem, 8vw, 2.25rem);
       color: var(--color-brand-900);
-      text-align: left;
+      text-align: center;
       width: 100%;
       max-width: 100%;
     }
@@ -627,7 +620,7 @@ const episodes = [
 
     /* CTA wrap: less top spacing on mobile */
     .fursat__cta-wrap {
-      margin-top: 8px;
+      margin-top: 13px;
     }
 
     .fursat__cat {
@@ -654,11 +647,11 @@ const episodes = [
     }
 
     .fursat__podcast-title {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
 
     .fursat__podcast-body {
-      padding: 6px 0;
+      padding: clamp(6px, 1.5vh, 16px) 0;
     }
 
     .fursat__podcast-nav {
@@ -715,9 +708,12 @@ const episodes = [
 
     // Width constraint: how wide each slide can be to fit N side-by-side
     const maxW = (viewport.clientWidth - GAP * (vis - 1)) / vis;
-    // Height constraint: pill (≈28px) + gap (6px) + video — reserve space for pill above video
+    // Height constraint: subtract actual rendered padding + pill reserve so video never overflows
     const PILL_RESERVE = 34;
-    const maxH = body ? body.clientHeight - 24 - PILL_RESERVE : 9999;
+    const bodyPad = body
+      ? parseFloat(getComputedStyle(body).paddingTop) + parseFloat(getComputedStyle(body).paddingBottom)
+      : 24;
+    const maxH = body ? body.clientHeight - bodyPad - PILL_RESERVE : 9999;
 
     // Pick whichever constraint keeps the video smaller (contain behaviour)
     const wFromH = maxH * (16 / 9);
@@ -753,22 +749,14 @@ const episodes = [
     if (podcastIdx < TOTAL - getVisibleCount()) { podcastIdx++; updateTrack(); }
   });
 
-  // Click-to-play: replace thumbnail with iframe on click
+  // Click-to-play: open YouTube video in new tab
   document.querySelectorAll<HTMLElement>('.fursat__play').forEach(btn => {
     btn.addEventListener('click', () => {
       const ep = btn.closest<HTMLElement>('.fursat__episode');
-      const video = btn.closest<HTMLElement>('.fursat__video');
-      if (!ep || !video) return;
+      if (!ep) return;
       const id = ep.dataset.epId;
-      const title = ep.dataset.epTitle || '';
       if (!id) return;
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
-      iframe.title = title;
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.className = 'fursat__episode-iframe';
-      video.replaceWith(iframe);
+      window.open(`https://www.youtube.com/watch?v=${id}`, '_blank', 'noopener,noreferrer');
     });
   });
 
