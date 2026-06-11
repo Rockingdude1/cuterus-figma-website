@@ -83,6 +83,14 @@ const reviews = [
     <!-- SECTION 2: Doctor + booking -->
     <div class="appt-book-outer">
       <section class="appt-book">
+        <!-- Mobile-only: heading + pill above the photo -->
+        <div class="appt-book__intro">
+          <h2 class="appt-book__heading">Book A Private Consultation</h2>
+          <div class="appt-book__pills">
+            <span class="appt-pill">For all your women health and sexual health needs</span>
+          </div>
+        </div>
+
         <div class="appt-book__photo-wrap">
           <Image
             src={clinicImage}
@@ -319,6 +327,11 @@ const reviews = [
     letter-spacing: 0.04em;
     margin: 12px 0 0;
     text-align: center;
+  }
+
+  /* Mobile-only intro above photo — hidden on desktop */
+  .appt-book__intro {
+    display: none;
   }
 
   /* ── SECTION 2: BOOKING ── */
@@ -641,6 +654,22 @@ const reviews = [
       grid-template-columns: 1fr;
       padding: 40px 24px;
       gap: 32px;
+    }
+
+    /* Show intro above photo, hide duplicates in content column */
+    .appt-book__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .appt-book__content .appt-book__heading,
+    .appt-book__content .appt-book__pills {
+      display: none;
+    }
+
+    .appt-book__intro .appt-book__heading {
+      font-size: 1.5rem;
     }
 
     .appt-book__photo {
