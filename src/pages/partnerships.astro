@@ -408,43 +408,105 @@ import Navbar from '../components/Navbar.astro';
   /* ── MOBILE (≤768px) ── */
   @media (max-width: 768px) {
     .workshops-hero {
-      padding: 32px 20px 0;
+      padding: 72px 20px 0;
     }
 
-    /* Hide the absolute collage; show a simple photo grid instead */
+    .workshops-hero__heading {
+      font-size: 32px;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    /* Subheading not shown on mobile */
+    .workshops-hero__sub {
+      display: none;
+    }
+
+    /* Collage: absolute layout matching Figma 390px mobile frame */
     .workshops-collage {
-      height: auto;
-      overflow: visible;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 20px;
-      box-sizing: border-box;
+      display: block;
+      height: 470px;
+      max-width: 390px;
+      overflow: hidden;
+      padding: 0;
     }
 
-    /* Hide decorative elements on mobile */
-    .col-tape,
-    .col-heart,
-    .col-dot,
-    .col-badge {
-      display: none;
+    /* Re-show all decorative elements */
+    .col-tape, .col-heart, .col-dot, .col-badge { display: block; }
+
+    /* Reset any desktop img scale transforms */
+    .col-photo--58 img, .col-photo--59 img { transform: none; }
+
+    /* ── Mobile photo positions (ref: 390px frame) ── */
+
+    .col-photo--64 {
+      left: 162px; top: 67px;
+      width: 246px; height: 102px;
+      border-width: 5px; border-bottom-width: 20px;
     }
 
-    /* Reset all absolute positions so photos flow in the grid */
-    .col-photo {
-      position: static;
-      width: 100% !important;
-      height: 160px !important;
-      transform: none !important;
-      left: auto !important;
-      top: auto !important;
+    .col-photo--53 {
+      left: -8px; top: 22px;
+      width: 175px; height: 204px;
+      border-width: 6.5px; border-bottom-width: 20px;
     }
 
-    /* Show only the main photos on mobile; hide the very small ones */
-    .col-photo--57,
+    .col-photo--61 {
+      left: 112px; top: 192px;
+      width: 161px; height: 232px;
+      border-width: 6.5px; border-bottom-width: 20px;
+    }
+
     .col-photo--59 {
-      display: none;
+      left: 149px; top: 13px;
+      width: 63px; height: 63px;
+      transform: rotate(-7.74deg);
+      border-width: 2px; border-bottom-width: 7px;
     }
+
+    .col-photo--56 {
+      left: 47px; top: 253px;
+      width: 64px; height: 85px;
+      border-width: 3px; border-bottom-width: 10px;
+    }
+
+    .col-photo--57 {
+      display: block;
+      left: 278px; top: 295px;
+      width: 89px; height: 59px;
+      border-width: 3px; border-bottom-width: 9px;
+    }
+
+    .col-photo--58 {
+      left: 35px; top: 346px;
+      width: 78px; height: 104px;
+      border-width: 2px; border-bottom-width: 10px;
+    }
+
+    .col-photo--62 {
+      left: 275px; top: 183px;
+      width: 101px; height: 103px;
+      border-width: 3px; border-bottom-width: 11px;
+    }
+
+    .col-photo--51 {
+      left: 267px; top: 338px;
+      width: 126px; height: 79px;
+    }
+
+    /* ── Mobile decorative element positions ── */
+
+    .col-tape--left  { left: 35px;  top: 0px;  width: 91px; height: 45px; transform: none; }
+    .col-tape--right { left: 328px; top: 40px; width: 91px; height: 45px; transform: rotate(24.31deg); }
+
+    .col-heart { left: 29px; top: 233px; width: 35px; height: 30px; }
+
+    .col-badge--1 { left: 148px; top: 169px; width: 49px; height: 44px; }
+    .col-badge--2 { left: 249px; top: 272px; width: 49px; height: 44px; }
+
+    .col-dot[style*="left:665px"]  { left: 72px  !important; top: 243px !important; }
+    .col-dot[style*="left:1061px"] { left: 335px !important; top: 180px !important; }
+    .col-dot[style*="left:367px"]  { display: none; }
   }
 
   /* ── TABLET (769–1100px) ── */
