@@ -15,7 +15,7 @@ const logos = [
   { src: '/logos/better_india.svg',    alt: 'The Better India',        sq: true   },
   { src: '/logos/cosmo.svg',           alt: 'Cosmopolitan India'                  },
   { src: '/logos/hindustan_times.svg', alt: 'Hindustan Times'                     },
-  { src: '/logos/fii.svg',             alt: 'Feminism in India'                   },
+  { src: '/logos/fii.svg',             alt: 'Feminism in India',    raster: true },
   { src: '/logos/vogue.svg',           alt: 'Vogue India'                         },
   { src: '/logos/india_govt.svg',      alt: 'Ministry of Health'                  },
   { src: '/logos/umich.svg',           alt: 'University of Michigan'              },
@@ -119,14 +119,14 @@ const logos = [
         <img
           src={l.src}
           alt={l.alt}
-          class={`about__ticker-logo${l.sq  ? ' about__ticker-logo--sq'  : ''}${l.png ? ' about__ticker-logo--png' : ''}`}
+          class={`about__ticker-logo${l.sq ? ' about__ticker-logo--sq' : ''}${l.raster ? ' about__ticker-logo--raster' : ''}`}
         />
       ))}
       {logos.map(l => (
         <img
           src={l.src}
           alt=""
-          class={`about__ticker-logo${l.sq  ? ' about__ticker-logo--sq'  : ''}${l.png ? ' about__ticker-logo--png' : ''}`}
+          class={`about__ticker-logo${l.sq ? ' about__ticker-logo--sq' : ''}${l.raster ? ' about__ticker-logo--raster' : ''}`}
         />
       ))}
     </div>
@@ -494,7 +494,8 @@ const logos = [
     object-fit: contain;
     filter: brightness(0);
   }
-  .about__ticker-logo--sq  { height: 38px; }
+  .about__ticker-logo--sq     { height: 38px; }
+  .about__ticker-logo--raster { filter: none; mix-blend-mode: multiply; }
 
 
   /* ─────────────────────────────────────────────
