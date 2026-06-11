@@ -9,7 +9,6 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
   <!-- Desktop: col 2 top / Mobile: top (heading + CTAs) -->
   <div class="contact__top">
     <div class="contact__heading-wrap">
-<img src="/doodles/contact-flower-purple.svg" class="contact__flower contact__flower--purple" alt="" />
       <h2 class="contact__heading">
         Found something you liked?<br />Let's talk.
       </h2>
@@ -198,25 +197,6 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     padding: 40px 0 0;
   }
 
-  .contact__flower {
-    position: absolute;
-    width: 48px;
-    height: 46px;
-    display: block;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .contact__flower--yellow {
-    top: clamp(32px, 4vw, 40px);
-    left: clamp(8px, 2vw, 12px);
-  }
-
-  .contact__flower--purple {
-    top: clamp(52px, 8vw, 85px);
-    right: clamp(86px, 12vw, 100px);
-  }
-
   .contact__heading {
     font-family: var(--font-display);
     font-weight: 500;
@@ -393,22 +373,6 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       text-align: center;
       position: relative;
       z-index: 1;
-    }
-
-    .contact__flower {
-      width: 36px;
-      height: 34px;
-      z-index: 0;
-    }
-
-    .contact__flower--yellow {
-      top: 2px;
-      left: 4px;
-    }
-
-    .contact__flower--purple {
-      top: 58px;
-      right: 8px;
     }
 
     /* Remove subheading on mobile */
