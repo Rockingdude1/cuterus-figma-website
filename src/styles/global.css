@@ -72,6 +72,12 @@ body {
   overflow-x: hidden;
 }
 
+@media (min-width: 769px) {
+  h1 {
+    line-height: 1.3;
+  }
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

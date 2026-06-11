@@ -91,10 +91,10 @@ const logos = [
 
     <!-- Bio — mobile (single paragraph, shorter, centred) -->
     <p class="about__bio-mobile about__bio-mobile--hinglish">
-      Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
+      Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.<br/>A doctor, author, podcast host, educator.
     </p>
     <p class="about__bio-mobile about__bio-mobile--english">
-      Hey, I'm <strong>Dr Tanaya Narendra</strong>. Better known as <strong>Dr Cuterus</strong>. A doctor, author, podcast host, educator.
+      Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.<br/>A doctor, author, podcast host, educator.
     </p>
 
     <!-- CTA -->
@@ -639,10 +639,10 @@ const logos = [
     .about__cta-wrap {
       right: auto;
       left: 50%;
-      top: 84%;
+      top: 87%;
       transform: translateX(-50%);
     }
-    .about__cta { font-size: 18px; }
+    .about__cta { font-size: 19px; }
 
     /* ── scroll indicator ── */
     .about__scroll {
@@ -678,6 +678,8 @@ const logos = [
   const DESIGN_W = 402;
   const DESIGN_H = 772;
   const TICKER_H = 60;
+  const SCALE_MIN = 0.62;   // floor: keeps text readable on very small phones
+  const SAFE_PAD = 8;       // px of breathing room against navbar + ticker edges
 
   function applyAboutScale() {
     const scene = document.querySelector<HTMLElement>('.about__scene');
@@ -690,13 +692,15 @@ const logos = [
     }
 
     const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const navbarH = (document.querySelector<HTMLElement>('.navbar')?.offsetHeight) ?? 60;
-    const availH = vh - TICKER_H - navbarH;
-    const scale = Math.min(vw / DESIGN_W, availH / DESIGN_H);
-    const scaledH = DESIGN_H * scale;
+    // Use the section's own height (matches 100svh) instead of window.innerHeight
+    // so iOS address-bar show/hide never mis-positions the scene.
+    const sectionH = (scene.closest<HTMLElement>('section')?.offsetHeight) ?? window.innerHeight;
+    const navbarH  = (document.querySelector<HTMLElement>('.navbar')?.offsetHeight) ?? 56;
+    const availH   = sectionH - TICKER_H - navbarH - SAFE_PAD * 2;
+    const scale    = Math.max(SCALE_MIN, Math.min(vw / DESIGN_W, availH / DESIGN_H));
+    const scaledH  = DESIGN_H * scale;
     // Centre the scene in the space between navbar and ticker
-    const topOffset = navbarH + (availH - scaledH) / 2;
+    const topOffset = navbarH + SAFE_PAD + Math.max(0, (availH - scaledH) / 2);
 
     scene.style.top = `${topOffset}px`;
     scene.style.transform = `translateX(-50%) scale(${scale})`;
