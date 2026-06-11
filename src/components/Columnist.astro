@@ -1,43 +1,22 @@
 ---
-import { Image } from 'astro:assets';
-import frontDoorSvg from '../assets/images/front of door.svg?url';
-import backDoorImg  from '../assets/images/back of door.jpg';
 ---
 
 <div class="columnist-outer" id="columnist">
   <section class="columnist">
 
-    <!-- scene wrapper: display:contents on desktop, fixed canvas + scale on mobile -->
-  <div class="columnist__scene">
-
-    <!-- LEFT: DOOR ANIMATION -->
-    <div class="columnist__door-col">
-      <p class="columnist__knock">Knock to meet her.</p>
-      <div class="columnist__door-scene">
-        <!-- Back face — revealed as front door swings open -->
-        <Image src={backDoorImg} alt="" class="columnist__door-back" aria-hidden="true" widths={[400, 800]} sizes="50vw" />
-        <!-- Front face — rotates open on click, hinge on left edge -->
-        <img src={frontDoorSvg} alt="Click to open the door"
-             class="columnist__door-front" id="columnist-door-front"
-             role="button" tabindex="0" />
-      </div>
+    <!-- LEFT: composited stamp + photo -->
+    <div class="columnist__photo-col">
+      <img src="/columnist/image-columnist.png" class="col__image" alt="Dr. Tanaya Narendra holding Mumbai Mirror" />
     </div>
 
-    <!-- RIGHT: CONTENT -->
+    <!-- RIGHT: grid bg + content -->
     <div class="columnist__right">
       <div class="columnist__content-group">
-
-        <div class="columnist__badge">
-          <span class="columnist__badge-hinglish">answering sex queries with</span>
-          <span class="columnist__badge-hinglish">aaj ki taaza khabhar</span>
-          <span class="columnist__badge-english">your Sunday paper just got</span>
-          <span class="columnist__badge-english">a lot more interesting</span>
-        </div>
 
         <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
 
         <div class="columnist__desc-box">
-          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries.<span class="columnist__desc-extra"> Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</span></p>
+          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
         </div>
 
         <a href="https://mumbaimirror.indiatimes.com/topics/dr-cuterus"
@@ -47,7 +26,6 @@ import backDoorImg  from '../assets/images/back of door.jpg';
       </div>
     </div>
 
-  </div><!-- /.columnist__scene -->
   </section>
 </div>
 
@@ -56,125 +34,55 @@ import backDoorImg  from '../assets/images/back of door.jpg';
   .columnist-outer {
     position: relative;
     overflow: hidden;
-    background-color: var(--color-beige-500);
     width: 100%;
-    scroll-margin-top: 80px; /* accounts for sticky navbar on hash navigation */
   }
 
   /* ── SECTION: two-column grid ── */
   .columnist {
     width: 100%;
     display: grid;
-    grid-template-columns: max(42vw, 574px) 1fr;
+    grid-template-columns: 41.67% 1fr;
     min-height: 100svh;
     max-height: 900px;
   }
 
-  /* ── LEFT: DOOR COLUMN ── */
-  .columnist__door-col {
+  /* ── LEFT: photo column ── */
+  .columnist__photo-col {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 88px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    overflow: hidden;
+    background-color: var(--color-beige-500);
   }
 
-  /* ── KNOCK TEXT ── */
-  .columnist__knock {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.2rem, 1.1vw, 1.1rem);
-    color: var(--color-brand-900);
-    margin: 0 0 10px 0;
-    letter-spacing: 0;
-  }
-
-  /* ── 3-D PERSPECTIVE WRAPPER ── */
-  .columnist__door-scene {
-    position: relative;
-    width: 486px;
-    height: 711px;
-    /* perspective on parent so the door looks 3-D as it rotates */
-    perspective: 1200px;
-    perspective-origin: 0% 50%; /* vanishing point at left edge = hinge */
-  }
-
-  .columnist__door-back,
-  .columnist__door-front {
+  /* Composited stamp + photo — fits visible height below navbar, never crops */
+  .col__image {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: fill;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    height: calc(100% - 80px);
+    width: auto;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  /* ── FRONT DOOR — the panel that swings open ── */
-  .columnist__door-front {
-    transform-origin: left center; /* hinge on the left */
-    transition: transform 0.85s cubic-bezier(0.4, 0, 0.1, 1),
-                filter  0.85s ease;
-    cursor: pointer;
-    will-change: transform;
-  }
-
-  /* Hover hint: door nudges ajar so users know it's interactive */
-  .columnist__door-front:not(.door--open):hover {
-    transform: rotateY(-9deg);
-  }
-  .columnist__door-front:not(.door--open):focus-visible {
-    outline: 3px solid var(--color-brand-400);
-    outline-offset: 4px;
-    transform: rotateY(-9deg);
-  }
-
-  /* Opened state: door swings ~87° around its left (hinge) edge */
-  .columnist__door-front.door--open {
-    transform: rotateY(-87deg);
-    filter: drop-shadow(-14px 6px 28px rgba(0, 0, 0, 0.45));
-  }
-
-  /* ── RIGHT: CONTENT ── */
+  /* ── RIGHT: grid background ── */
   .columnist__right {
+    background-color: var(--color-brand-100);
+    background-image:
+      linear-gradient(rgba(110, 57, 151, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 57, 151, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 60px 40px 20px;
+    padding: 80px 74px 40px 74px;
   }
 
-  /* Content group stacks vertically, centred */
+  /* Content group */
   .columnist__content-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
-    width: min(524px, 100%);
-  }
-
-  /* Badge / pill */
-  .columnist__badge {
-    background-color: var(--color-yellow-500);
-    padding: 8px 24px;
-    border-radius: 999px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .columnist__badge span {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2vw, 1.75rem);
-    color: var(--color-brand-900);
-    letter-spacing: -0.06em;
-    line-height: 0.95;
-    white-space: nowrap;
+    gap: 20px;
+    width: min(570px, 100%);
   }
 
   /* Heading */
@@ -182,18 +90,17 @@ import backDoorImg  from '../assets/images/back of door.jpg';
     font-family: var(--font-display);
     font-weight: 500;
     font-style: italic;
-    font-size: clamp(2rem, 3.3vw, 3rem);
+    font-size: clamp(2rem, 3.75vw, 3rem);
     color: var(--color-brand-900);
     letter-spacing: -0.06em;
     line-height: 0.95;
     margin: 0;
-    white-space: nowrap;
     text-align: center;
   }
 
-  /* Description box */
+  /* Description box — white background */
   .columnist__desc-box {
-    background-color: var(--color-brand-100);
+    background-color: var(--color-white);
     padding: 8px 26px;
     width: 100%;
   }
@@ -201,7 +108,7 @@ import backDoorImg  from '../assets/images/back of door.jpg';
   .columnist__desc-box p {
     font-family: var(--font-sans);
     font-weight: 400;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-size: clamp(1rem, 1.5vw, 1.75rem);
     color: var(--color-black);
     text-align: center;
     margin: 0;
@@ -213,192 +120,59 @@ import backDoorImg  from '../assets/images/back of door.jpg';
   /* CTA */
   .columnist__cta {
     font-size: clamp(1.125rem, 2vw, 1.5rem);
-    padding: 12px 24px;
+    padding: 12px 20px;
   }
-
-  /* ── LANGUAGE VARIANTS ── */
-  .columnist__badge-english { display: none; }
-  :global([data-lang="english"]) .columnist__badge-english  { display: inline; }
-  :global([data-lang="english"]) .columnist__badge-hinglish { display: none; }
 
   /* ── TABLET (769–1024px) ── */
   @media (max-width: 1024px) and (min-width: 769px) {
-    .columnist {
-      grid-template-columns: 42vw 1fr;
-    }
-
-    .columnist__door-col {
-      padding-left: 32px;
-      padding-top: 100px;
-    }
-
-    .columnist__door-scene {
-      /* scale door proportionally: keeps ~35 vw wide, height follows 486:711 ratio */
-      width: clamp(260px, 35vw, 420px);
-      height: calc(clamp(260px, 35vw, 420px) * (711 / 486));
-    }
-
     .columnist__right {
-      padding: 80px 32px 40px 16px;
+      padding: 80px 32px 40px 32px;
     }
-
     .columnist__heading {
       font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-      white-space: normal;
     }
-
     .columnist__desc-box p { font-size: 1.125rem; }
     .columnist__cta { font-size: 1.125rem; padding: 10px 20px; }
-  }
-
-  /* ── SCENE — display:contents on desktop (grid passthrough),
-     fixed 390×750 design canvas on mobile scaled by JS ── */
-  .columnist__scene {
-    display: contents;
   }
 
   /* ── MOBILE (≤768px) ── */
   @media (max-width: 768px) {
     .columnist-outer {
       height: 100svh;
-      min-height: unset;
-      scroll-margin-top: 0;
       overflow: hidden;
-      clip-path: inset(0);
-      position: relative;
     }
 
-    /* Section is just a positioning context — scene handles layout */
     .columnist {
-      display: block;
+      display: flex;
+      flex-direction: column;
       height: 100svh;
       max-height: unset;
-      padding: 0;
-      min-height: unset;
     }
 
-    /* Fixed design canvas — JS scales it to fit any phone */
-    .columnist__scene {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      width: 390px;
-      height: 750px;
-      top: 0;       /* JS sets exact top for vertical centering */
-      left: 50%;
-      transform: translateX(-50%);
-      transform-origin: top center;
-      gap: 10px;
-      padding: 0 20px;
-      box-sizing: border-box;
+    /* Photo col takes the top ~55% */
+    .columnist__photo-col {
+      flex: 0 0 55%;
     }
 
-    /* Flatten both column wrappers so children are direct scene flex items */
-    .columnist__door-col,
+    /* Right takes remaining space */
     .columnist__right {
-      display: contents;
+      flex: 1;
+      padding: 20px 24px;
     }
 
-    .columnist__desc-extra {
-      display: none;
-    }
-
-    /* ── knock text ── */
-    .columnist__knock {
-      font-size: 16px;
-      margin: 0;
-      text-align: center;
-    }
-
-    /* ── door ── */
-    .columnist__door-scene {
-      width: 250px;
-      height: calc(250px * (711 / 486)); /* ≈ 366px */
-      flex-shrink: 0;
-    }
-
-    /* ── content group: badge + heading + desc + cta ── */
     .columnist__content-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .columnist__badge {
-      padding: 6px 18px;
-    }
-
-    .columnist__badge span {
-      font-size: 16px;
-      white-space: normal;
-      text-align: center;
+      gap: 12px;
     }
 
     .columnist__heading {
-      font-size: 36px;
-      white-space: normal;
-      text-align: center;
-      margin: 0;
+      font-size: 28px;
     }
 
     .columnist__desc-box {
-      padding: 6px 18px;
-      width: 100%;
+      padding: 6px 16px;
     }
 
     .columnist__desc-box p { font-size: 14px; }
-
     .columnist__cta { font-size: 16px; padding: 8px 16px; }
   }
 </style>
-
-<script>
-  const door = document.getElementById('columnist-door-front') as HTMLElement | null;
-
-  function toggleDoor() {
-    const isOpen = door!.classList.toggle('door--open');
-    door!.setAttribute('aria-label', isOpen ? 'Close the door' : 'Open the door');
-  }
-
-  door?.addEventListener('click', toggleDoor);
-
-  door?.addEventListener('keydown', (e) => {
-    if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
-      e.preventDefault();
-      toggleDoor();
-    }
-  });
-
-  /* ── Mobile scene scaling — same pattern as About and Book ── */
-  const COL_DESIGN_W = 390;
-  const COL_DESIGN_H = 750;
-
-  function applyColumnistScale() {
-    const scene = document.querySelector<HTMLElement>('.columnist__scene');
-    if (!scene) return;
-
-    if (window.innerWidth > 768) {
-      scene.style.transform = '';
-      scene.style.top = '';
-      return;
-    }
-
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const navbarH = (document.querySelector<HTMLElement>('.navbar')?.offsetHeight) ?? 60;
-    const availH = vh - navbarH;
-    const scale = Math.min(vw / COL_DESIGN_W, availH / COL_DESIGN_H);
-    const scaledH = COL_DESIGN_H * scale;
-    const topOffset = navbarH + (availH - scaledH) / 2;
-
-    scene.style.top = `${topOffset}px`;
-    scene.style.transform = `translateX(-50%) scale(${scale})`;
-  }
-
-  applyColumnistScale();
-  window.addEventListener('resize', applyColumnistScale);
-</script>
