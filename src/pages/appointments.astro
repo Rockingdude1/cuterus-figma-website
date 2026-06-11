@@ -57,6 +57,9 @@ const reviews = [
         <p class="appt-hero__label">Online consultations available</p>
       </div>
 
+      <!-- Mobile-only: heading lives above the grid -->
+      <h1 class="appt-hero__heading appt-hero__heading--above">Does Any of These<br/>Sound Like You?</h1>
+
       <!-- Purple grid tag cloud — full viewport width, heading inside -->
       <div class="appt-hero__tag-cloud">
         <div class="appt-tag-group">
@@ -65,8 +68,10 @@ const reviews = [
           <div class="appt-tag appt-tag--white appt-tag--p2">Struggling to orgasm?</div>
           <div class="appt-tag appt-tag--purple-dark appt-tag--p3">Have PCOD/PCOS/PMOS?</div>
           <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Worried about your breasts?</div>
-          <div class="appt-tag appt-tag--white appt-tag--p5">Discharge from breasts?</div>
-          <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Not able to have sex?</div>
+          <div class="appt-tag-pair">
+            <div class="appt-tag appt-tag--white appt-tag--p5">Discharge from breasts?</div>
+            <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Not able to have sex?</div>
+          </div>
           <div class="appt-tag appt-tag--yellow-light appt-tag--p7">Does sex hurt?</div>
           <div class="appt-tag appt-tag--purple-dark appt-tag--p8">Worried about vaginal discharge?</div>
           <div class="appt-tag appt-tag--white appt-tag--p9">Need queer-friendly sexual health?</div>
@@ -74,7 +79,7 @@ const reviews = [
       </div>
 
       <div class="appt-hero-bottom">
-        <p class="appt-hero__tagline">For all these and more, you deserve a<br class="appt-mobile-br" /> doctor who actually listens.</p>
+        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
         <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
         <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
       </div>
@@ -334,11 +339,6 @@ const reviews = [
     display: none;
   }
 
-  /* Mobile-only line break — hidden on desktop */
-  .appt-mobile-br {
-    display: none;
-  }
-
   /* ── SECTION 2: BOOKING ── */
   .appt-book-outer {
     background-color: var(--color-yellow-400);
@@ -594,59 +594,81 @@ const reviews = [
     }
   }
 
+  /* Desktop: hide the above-grid heading */
+  .appt-hero__heading--above {
+    display: none;
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
-    /* Mobile: switch tag cloud to centered flex */
-    .appt-hero__tag-cloud {
-      height: auto;
-      min-height: 200px;
+    /* Show heading above the grid, hide the one inside */
+    .appt-hero__heading--above {
+      display: block;
+      position: static;
+      transform: none;
+      font-size: clamp(1.75rem, 7vw, 2.5rem);
+      white-space: normal;
+      text-align: center;
+      padding: 0 20px;
+      margin: 16px 0 8px;
+      width: auto;
+      pointer-events: auto;
     }
 
+    .appt-tag-group .appt-hero__heading {
+      display: none;
+    }
+
+    /* Tag cloud: auto height */
+    .appt-hero__tag-cloud {
+      height: auto;
+      min-height: 0;
+    }
+
+    /* Tag group: column layout — each tag on its own row */
     .appt-tag-group {
       position: static;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-      gap: 8px 10px;
-      padding: 16px 20px;
-    }
-
-    /* Heading resets to flow inside the flex group on mobile */
-    .appt-hero__heading {
-      position: static;
-      transform: none;
-      width: 100%;
-      font-size: clamp(2rem, 6vw, 2.5rem);
-      white-space: normal;
-      margin-bottom: 8px;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 0;
     }
 
     .appt-tag {
       position: static;
+      width: fit-content;
       font-size: 0.875rem;
       padding: 6px 12px;
     }
 
-    /* Rotations on mobile */
-    .appt-tag--p1 { transform: rotate(3.16deg);  }
-    .appt-tag--p2 { transform: rotate(-3.89deg); }
-    .appt-tag--p3 { transform: rotate(1.71deg);  }
-    .appt-tag--p4 { transform: rotate(-3.23deg); }
-    .appt-tag--p5 { transform: rotate(2.49deg);  }
-    .appt-tag--p6 { transform: none;             }
-    .appt-tag--p7 { transform: rotate(5.14deg);  }
-    .appt-tag--p8 { transform: rotate(-2.68deg); }
-    .appt-tag--p9 { transform: none;             }
+    /* Per-tag alignment — viewport-relative via flex-start/end + margin */
+    /* p1: flush left */
+    .appt-tag--p1 { align-self: flex-start; margin-left: 12px; transform: rotate(3.16deg); }
+    /* p2: flush right */
+    .appt-tag--p2 { align-self: flex-end;   margin-right: 12px; transform: rotate(-3.89deg); }
+    /* p3: slightly inward from left */
+    .appt-tag--p3 { align-self: flex-start; margin-left: 44px; transform: rotate(1.71deg); }
+    /* p4: slightly inward from right */
+    .appt-tag--p4 { align-self: flex-end;   margin-right: 44px; transform: rotate(-3.23deg); }
+    /* p5+p6 handled via .appt-tag-pair below */
+    /* p7: centred */
+    .appt-tag--p7 { align-self: center; transform: rotate(5.14deg); }
+    /* p8: flush left (second last) */
+    .appt-tag--p8 { align-self: flex-start; margin-left: 12px; transform: rotate(-2.68deg); }
+    /* p9: flush right (last) */
+    .appt-tag--p9 { align-self: flex-end;   margin-right: 12px; transform: none; }
 
-    .appt-mobile-br {
-      display: block;
+    /* p5 + p6 side by side, centred as a unit */
+    .appt-tag-pair {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: center;
+      align-self: center;
     }
 
-    .appt-hero__disclaimer {
-      display: none;
-    }
+    .appt-tag--p5 { transform: rotate(2.49deg); }
+    .appt-tag--p6 { transform: none; }
 
     .appt-hero__tagline {
       font-size: 1rem;
@@ -656,7 +678,6 @@ const reviews = [
     .appt-hero__cta {
       font-size: 1rem;
       padding: 8px 20px;
-      margin-bottom: 20px;
     }
 
     .appt-hero-top,
@@ -674,9 +695,7 @@ const reviews = [
     .appt-book__intro {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 16px;
+      gap: 8px;
     }
 
     .appt-book__content .appt-book__heading,
@@ -714,11 +733,11 @@ const reviews = [
   /* ── VERY SMALL SCREENS (< 380px) ── */
   @media (max-width: 379px) {
     .appt-tag-group {
-      padding: 12px 14px;
-      gap: 6px 8px;
+      padding: 10px 0;
+      gap: 8px;
     }
 
-    .appt-hero__heading {
+    .appt-hero__heading--above {
       font-size: 1.75rem;
     }
 
