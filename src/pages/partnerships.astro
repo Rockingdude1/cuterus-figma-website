@@ -86,8 +86,36 @@ import Navbar from '../components/Navbar.astro';
 
     </div><!-- end .workshops-collage -->
 
-    <!-- YELLOW RECTANGLE -->
-    <div class="workshops-yellow" aria-hidden="true"></div>
+    <!-- YELLOW TICKER (same as home page) -->
+    <div class="workshops__ticker" aria-label="Featured in">
+      <div class="workshops__ticker-track">
+        <img src="/logos/forbes.svg"          alt="Forbes India"                        class="workshops__ticker-logo" />
+        <img src="/logos/who.svg"              alt="World Health Organization"           class="workshops__ticker-logo" />
+        <img src="/logos/delhi.svg"            alt="Government of Delhi"                 class="workshops__ticker-logo workshops__ticker-logo--sq" />
+        <img src="/logos/natgeo.svg"           alt="National Geographic"                 class="workshops__ticker-logo" />
+        <img src="/logos/gates.svg"            alt="Gates Foundation"                    class="workshops__ticker-logo" />
+        <img src="/logos/better_india.svg"     alt="The Better India"                    class="workshops__ticker-logo workshops__ticker-logo--sq" />
+        <img src="/logos/cosmo.svg"            alt="Cosmopolitan India"                  class="workshops__ticker-logo" />
+        <img src="/logos/hindustan_times.svg"  alt="Hindustan Times"                     class="workshops__ticker-logo" />
+        <img src="/logos/fii.svg"              alt="Feminism in India"                   class="workshops__ticker-logo" />
+        <img src="/logos/vogue.svg"            alt="Vogue India"                         class="workshops__ticker-logo" />
+        <img src="/logos/india_govt.svg"       alt="Ministry of Health"                  class="workshops__ticker-logo" />
+        <img src="/logos/umich.svg"            alt="University of Michigan"              class="workshops__ticker-logo" />
+        <!-- duplicate set for seamless loop -->
+        <img src="/logos/forbes.svg"          alt="" class="workshops__ticker-logo" />
+        <img src="/logos/who.svg"              alt="" class="workshops__ticker-logo" />
+        <img src="/logos/delhi.svg"            alt="" class="workshops__ticker-logo workshops__ticker-logo--sq" />
+        <img src="/logos/natgeo.svg"           alt="" class="workshops__ticker-logo" />
+        <img src="/logos/gates.svg"            alt="" class="workshops__ticker-logo" />
+        <img src="/logos/better_india.svg"     alt="" class="workshops__ticker-logo workshops__ticker-logo--sq" />
+        <img src="/logos/cosmo.svg"            alt="" class="workshops__ticker-logo" />
+        <img src="/logos/hindustan_times.svg"  alt="" class="workshops__ticker-logo" />
+        <img src="/logos/fii.svg"              alt="" class="workshops__ticker-logo" />
+        <img src="/logos/vogue.svg"            alt="" class="workshops__ticker-logo" />
+        <img src="/logos/india_govt.svg"       alt="" class="workshops__ticker-logo" />
+        <img src="/logos/umich.svg"            alt="" class="workshops__ticker-logo" />
+      </div>
+    </div>
 
     <!-- FOOTER -->
     <div class="partnerships-footer">
@@ -98,6 +126,21 @@ import Navbar from '../components/Navbar.astro';
 
   </body>
 </html>
+
+<script>
+  const track = document.querySelector<HTMLElement>('.workshops__ticker-track');
+  if (track) {
+    const imgs = track.querySelectorAll('img');
+    let loaded = 0;
+    const total = imgs.length;
+    const ready = () => { if (++loaded >= total) track.classList.add('ticker-ready'); };
+    imgs.forEach(img => {
+      if ((img as HTMLImageElement).complete) ready();
+      else img.addEventListener('load', ready);
+      img.addEventListener('error', ready);
+    });
+  }
+</script>
 
 <style>
   body {
@@ -138,7 +181,7 @@ import Navbar from '../components/Navbar.astro';
   /* ── COLLAGE ── */
   .workshops-collage {
     position: relative;
-    height: 620px;
+    height: 660px;
     max-width: 1280px;
     margin: 0 auto;
     overflow: hidden;
@@ -168,6 +211,9 @@ import Navbar from '../components/Navbar.astro';
     border: 12px solid var(--color-yellow-500);
     border-bottom-width: 49px;
   }
+  .col-photo--64 img {
+    object-position: center 55%;
+  }
 
   /* Large white polaroid — left */
   .col-photo--53 {
@@ -189,11 +235,12 @@ import Navbar from '../components/Navbar.astro';
 
   /* Small square — top centre */
   .col-photo--59 {
-    left: 370px; top: 35px;
-    width: 127px; height: 127px;
-    border: 4px solid var(--color-yellow-200);
-    border-bottom-width: 17px;
+    left: 354px; top: 19px;
+    width: 159px; height: 159px;
+    border: 5px solid var(--color-yellow-200);
+    border-bottom-width: 21px;
   }
+  .col-photo--59 img { transform: scale(1.5); }
 
   /* Small white photo */
   .col-photo--57 {
@@ -213,27 +260,34 @@ import Navbar from '../components/Navbar.astro';
 
   /* Medium yellow-light polaroid — right centre */
   .col-photo--62 {
-    left: 773px; top: 313px;
-    width: 205px; height: 210px;
+    left: 747px; top: 287px;
+    width: 256px; height: 262px;
     transform: rotate(7.71deg);
-    border: 7px solid var(--color-yellow-200);
-    border-bottom-width: 28px;
+    border: 9px solid var(--color-yellow-200);
+    border-bottom-width: 35px;
+  }
+  .col-photo--62 img {
+    object-position: center 55%;
   }
 
   /* Small purple polaroid — far right */
   .col-photo--58 {
-    left: 1004px; top: 308px;
-    width: 159px; height: 212px;
+    left: 984px; top: 282px;
+    width: 199px; height: 265px;
     transform: rotate(-6.13deg);
-    border: 6px solid var(--color-brand-100);
-    border-bottom-width: 23px;
+    border: 8px solid var(--color-brand-100);
+    border-bottom-width: 29px;
   }
+  .col-photo--58 img { transform: scale(1.5); }
 
   /* Wide landscape — bottom right, no polaroid border */
   .col-photo--51 {
-    left: 876px; top: 419px;
+    left: 876px; top: 460px;
     width: 257px; height: 159px;
     box-shadow: none;
+  }
+  .col-photo--51 img {
+    object-position: center 68%;
   }
 
   /* ── Decorative elements ── */
@@ -267,6 +321,7 @@ import Navbar from '../components/Navbar.astro';
     left: 485px; top: 16px;
     width: 77px; height: 52px;
     pointer-events: none;
+    z-index: 10;
   }
 
   .col-dot {
@@ -275,12 +330,44 @@ import Navbar from '../components/Navbar.astro';
     pointer-events: none;
   }
 
-  /* ── YELLOW RECTANGLE ── */
-  .workshops-yellow {
+  /* ── YELLOW TICKER ── */
+  .workshops__ticker {
     width: 100%;
     height: 60px;
     background-color: var(--color-yellow-500);
+    overflow: hidden;
   }
+
+  @keyframes workshops-ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .workshops__ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: max-content;
+    height: 100%;
+    animation: workshops-ticker 50s linear infinite;
+    animation-play-state: paused;
+    will-change: transform;
+    padding: 0 32px;
+  }
+
+  .workshops__ticker-track.ticker-ready {
+    animation-play-state: running;
+  }
+
+  .workshops__ticker-logo {
+    height: 30px;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0);
+  }
+  .workshops__ticker-logo--sq { height: 38px; }
 
   /* ── FOOTER (same as existing partnerships footer) ── */
   .partnerships-footer {
