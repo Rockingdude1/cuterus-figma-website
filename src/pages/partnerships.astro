@@ -1,6 +1,14 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import img53 from '../assets/images/image 53.jpg?url';
+import img56 from '../assets/images/image 56.jpg?url';
+import img57 from '../assets/images/image 57.jpg?url';
+import img58 from '../assets/images/image 58.jpg?url';
+import img59 from '../assets/images/image 59.jpg?url';
+import img61 from '../assets/images/image 61.jpg?url';
+import img62 from '../assets/images/image 62.jpg?url';
+import img64 from '../assets/images/image 64.jpg?url';
 ---
 
 <html lang="en">
@@ -31,48 +39,48 @@ import Navbar from '../components/Navbar.astro';
       <img src="/workshops/heart.svg" class="col-heart" alt="" aria-hidden="true" />
 
       <!-- Pin dots -->
-      <img src="/workshops/ellipse-b.svg" class="col-dot" style="left:665px;top:63px"  alt="" aria-hidden="true" />
-      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:1061px;top:297px" alt="" aria-hidden="true" />
-      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:367px;top:316px"  alt="" aria-hidden="true" />
+      <img src="/workshops/ellipse-b.svg" class="col-dot" style="left:665px;top:64px"  alt="" aria-hidden="true" />
+      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:1061px;top:275px" alt="" aria-hidden="true" />
+      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:360px;top:305px"  alt="" aria-hidden="true" />
 
       <!-- photo-64: large yellow landscape (top right) -->
       <div class="col-photo col-photo--64">
-        <img src="/workshops/photo-64.png" alt="" />
+        <img src={img64} alt="" />
       </div>
 
       <!-- photo-53: large white polaroid (left) -->
       <div class="col-photo col-photo--53">
-        <img src="/workshops/photo-53.png" alt="Dr. Tanaya at a speaking event" />
+        <img src={img53} alt="Dr. Tanaya at a speaking event" />
       </div>
 
       <!-- photo-61: medium purple polaroid (center) -->
       <div class="col-photo col-photo--61">
-        <img src="/workshops/photo-61.png" alt="" />
+        <img src={img61} alt="" />
       </div>
 
       <!-- photo-59: small square (top centre) -->
       <div class="col-photo col-photo--59">
-        <img src="/workshops/photo-59.png" alt="" />
+        <img src={img59} alt="" />
       </div>
 
       <!-- photo-57: small white photo -->
       <div class="col-photo col-photo--57">
-        <img src="/workshops/photo-57.png" alt="" />
+        <img src={img57} alt="" />
       </div>
 
       <!-- photo-56: small yellow polaroid -->
       <div class="col-photo col-photo--56">
-        <img src="/workshops/photo-56.png" alt="" />
+        <img src={img56} alt="" />
       </div>
 
       <!-- photo-62: medium yellow-light polaroid (right centre) -->
       <div class="col-photo col-photo--62">
-        <img src="/workshops/photo-62.png" alt="" />
+        <img src={img62} alt="" />
       </div>
 
       <!-- photo-58: small purple polaroid (far right) -->
       <div class="col-photo col-photo--58">
-        <img src="/workshops/photo-58.png" alt="" />
+        <img src={img58} alt="" />
       </div>
 
       <!-- photo-51: wide landscape (bottom right, no border) -->
@@ -121,7 +129,7 @@ import Navbar from '../components/Navbar.astro';
     <div class="partnerships-footer">
       <p class="partnerships-footer__heading">Found something you liked? Let's talk.</p>
       <p class="partnerships-footer__sub">For collabs, speaking, and partnerships or just to say hi!</p>
-      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Book a Workshop</a>
     </div>
 
   </body>
@@ -297,6 +305,7 @@ import Navbar from '../components/Navbar.astro';
     height: 90px;
     object-fit: contain;
     pointer-events: none;
+    z-index: 10;
   }
   .col-badge--1 { left: 721px; top: 239px; }
   .col-badge--2 { left: 366px; top: 464px; }
@@ -326,8 +335,9 @@ import Navbar from '../components/Navbar.astro';
 
   .col-dot {
     position: absolute;
-    width: 20px; height: 20px;
+    width: 10px; height: 10px;
     pointer-events: none;
+    z-index: 10;
   }
 
   /* ── YELLOW TICKER ── */
@@ -504,8 +514,8 @@ import Navbar from '../components/Navbar.astro';
     .col-badge--1 { left: 148px; top: 169px; width: 49px; height: 44px; }
     .col-badge--2 { left: 249px; top: 272px; width: 49px; height: 44px; }
 
-    .col-dot[style*="left:665px"]  { left: 72px  !important; top: 243px !important; }
-    .col-dot[style*="left:1061px"] { left: 335px !important; top: 180px !important; }
+    .col-dot[style*="left:665px"]  { left: 74px  !important; top: 243px !important; z-index: 10 !important; }
+    .col-dot[style*="left:1061px"] { left: 325px !important; top: 180px !important; z-index: 10 !important; }
     .col-dot[style*="left:367px"]  { display: none; }
   }
 

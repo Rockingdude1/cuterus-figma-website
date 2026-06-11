@@ -31,8 +31,12 @@ const episodes = [
           <Image src={fursatLogo} alt="Fursat" class="fursat__logo" />
         </div>
         <div class="fursat__desc-box">
-          <p class="fursat__desc">
-            and I present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
+          <p class="fursat__desc fursat__desc--desktop">
+            and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
+            <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.
+          </p>
+          <p class="fursat__desc fursat__desc--mobile">
+            and I present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,<br/>
             <strong>medium-impact bra</strong>.
           </p>
         </div>
@@ -210,6 +214,10 @@ const episodes = [
     color: var(--color-black);
     margin: 0;
     line-height: 1.3;
+  }
+
+  .fursat__desc--mobile {
+    display: none;
   }
 
   .fursat__features {
@@ -586,8 +594,7 @@ const episodes = [
       background-color: var(--color-beige-500);
     }
 
-    /* Hide tilt logo, feature bullets, quote pill on mobile */
-    .fursat__logo-row,
+    /* Hide feature bullets, quote pill on mobile */
     .fursat__features,
     .fursat__quote-box {
       display: none !important;
@@ -610,6 +617,14 @@ const episodes = [
 
     .fursat__desc-box {
       max-width: 100%;
+    }
+
+    .fursat__desc--desktop {
+      display: none;
+    }
+
+    .fursat__desc--mobile {
+      display: block;
     }
 
     .fursat__desc {

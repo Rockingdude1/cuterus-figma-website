@@ -13,9 +13,27 @@ if (!post) return Astro.redirect('/blog');
 
 const related = posts.filter(p => p.slug !== post.slug).slice(0, 4);
 
+function applyInline(text: string): string {
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
 const bodyHtml = post.body
-  .split('\n\n')
-  .map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`)
+  .split(/\n[ \t]*\n/)
+  .map(p => p.trim())
+  .filter(p => p.length > 0)
+  .map(p => {
+    const lines = p.split('\n').map(l => l.trim());
+    const isNumbered = lines.some(l => /^\d+\./.test(l));
+    if (isNumbered) {
+      const items = lines
+        .filter(l => /^\d+\./.test(l))
+        .map(l => `<li>${applyInline(l.replace(/^\d+\.\s*/, ''))}</li>`)
+        .join('');
+      const heading = lines.find(l => !/^\d+\./.test(l));
+      return `${heading ? `<p>${applyInline(heading)}</p>` : ''}<ol>${items}</ol>`;
+    }
+    return `<p>${applyInline(lines.join(' '))}</p>`;
+  })
   .join('');
 ---
 
@@ -128,6 +146,20 @@ const bodyHtml = post.body
 
   .post__body :global(p:last-child) {
     margin-bottom: 0;
+  }
+
+  .post__body :global(p + ol) {
+    margin-top: -12px;
+  }
+
+  .post__body :global(ol) {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    margin: 0 0 16px;
+  }
+
+  .post__body :global(ol li) {
+    margin-bottom: 8px;
   }
 
   .post__body :global(strong) {

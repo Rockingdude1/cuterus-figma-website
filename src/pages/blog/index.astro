@@ -4,8 +4,9 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { Image } from 'astro:assets';
 import blogPhoto from '../../assets/images/blog-photo.jpg';
+import { posts } from '../../data/posts';
 
-const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
+const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
 ---
 
 <html lang="en">
@@ -72,7 +73,16 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
             ))}
           </div>
 
-          <ul class="blog__questions" id="blog-questions"></ul>
+          <ul class="blog__questions" id="blog-questions">
+            {posts.map((post, i) => (
+              <>
+                <li class="blog__question-item" data-category={post.category}>
+                  <a href={`/blog/${post.slug}`} class="blog__question-link">{post.question}</a>
+                </li>
+                {i < posts.length - 1 && <li class="blog__question-divider" aria-hidden="true"></li>}
+              </>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -174,11 +184,9 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
   }
 
   .blog__heading-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
     position: relative;
+    display: inline-block;
+    align-self: flex-start;
   }
 
   .blog__heading {
@@ -196,9 +204,9 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
 
   .blog__pill-wrap {
     position: absolute;
-    right: 0;
-    top: -38px;
-    transform: rotate(6deg);
+    top: -25px;
+    right: -100px;
+    transform: rotate(5deg);
     z-index: 0;
   }
 
@@ -272,6 +280,7 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    max-height: calc(3 * 4rem);
     scrollbar-width: thin;
     scrollbar-color: var(--color-brand-200) transparent;
   }
@@ -482,6 +491,10 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
+    .blog__pill-wrap {
+      top: -30px;
+      right: -12px;
+    }
     /* Stack to single column; content first, photo second */
     .blog__body {
       display: flex;
@@ -550,13 +563,7 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
     }
 
     .blog__arrow-icon {
-      display: block;
-      position: absolute;
-      left: -86px;
-      top: 50%;
-      translate: 0 -50%;
-      transform: rotate(70deg);
-      opacity: 0.7;
+      display: none;
     }
 
     .blog__mail-cta {
@@ -567,10 +574,16 @@ const categories = ['All', 'Menstrual Health', 'Vaginal Health'];
 
 <script>
   const catBtns = document.querySelectorAll<HTMLButtonElement>('.blog__cat-btn');
+  const items = document.querySelectorAll<HTMLElement>('.blog__question-item');
+
   catBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       catBtns.forEach(b => b.classList.remove('blog__cat-btn--active'));
       btn.classList.add('blog__cat-btn--active');
+      const selected = btn.dataset.category;
+      items.forEach(item => {
+        item.classList.toggle('is-hidden', selected !== 'All' && item.dataset.category !== selected);
+      });
     });
   });
 </script>
