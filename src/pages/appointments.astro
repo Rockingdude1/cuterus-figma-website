@@ -55,23 +55,26 @@ const reviews = [
     <div class="appt-hero-outer">
       <div class="appt-hero-top">
         <p class="appt-hero__label">Online consultations available</p>
-        <h1 class="appt-hero__heading">Does any of these<br/> sound like you?</h1>
       </div>
 
-      <!-- Purple grid tag cloud — full viewport width -->
+      <!-- Purple grid tag cloud — full viewport width, heading inside -->
       <div class="appt-hero__tag-cloud">
         <div class="appt-tag-group">
-          <div class="appt-tag appt-tag--yellow appt-tag--p1">Irregular or painful periods</div>
-          <div class="appt-tag appt-tag--purple-dark appt-tag--p2">PCOS symptoms</div>
-          <div class="appt-tag appt-tag--beige appt-tag--p3">HPV, STIs?<br/>Don't know where to start.</div>
-          <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Questions about fertility<br/>or egg health</div>
-          <div class="appt-tag appt-tag--purple-dark appt-tag--p5">Confused about<br/>contraception options</div>
-          <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Want a second opinion<br/>without judgment</div>
+          <h1 class="appt-hero__heading">Does Any of These<br/>Sound Like You?</h1>
+          <div class="appt-tag appt-tag--yellow-light appt-tag--p1">Is your period late/missing?</div>
+          <div class="appt-tag appt-tag--white appt-tag--p2">Struggling to orgasm?</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p3">Have PCOD/PCOS/PMOS?</div>
+          <div class="appt-tag appt-tag--yellow-light appt-tag--p4">Worried about your breasts?</div>
+          <div class="appt-tag appt-tag--white appt-tag--p5">Discharge from breasts?</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p6">Not able to have sex?</div>
+          <div class="appt-tag appt-tag--yellow-light appt-tag--p7">Does sex hurt?</div>
+          <div class="appt-tag appt-tag--purple-dark appt-tag--p8">Worried about vaginal discharge?</div>
+          <div class="appt-tag appt-tag--white appt-tag--p9">Need queer-friendly sexual health?</div>
         </div>
       </div>
 
       <div class="appt-hero-bottom">
-        <p class="appt-hero__tagline">For all these and more, you deserve a <br/>doctor who actually listens.</p>
+        <p class="appt-hero__tagline">For all these and more, you deserve a doctor who actually listens.</p>
         <a href="#" class="btn-primary appt-hero__cta">Book Via WhatsApp →</a>
         <p class="appt-hero__disclaimer">*All consultations are confidential and judgment-free.</p>
       </div>
@@ -88,16 +91,17 @@ const reviews = [
             widths={[400, 700]}
             sizes="348px"
           />
+          <div class="appt-book__badge">
+            <span class="appt-book__badge-name">Dr. Tanaya Narendra</span>
+            <span class="appt-book__badge-creds">MBBS, MSc (Oxon), FRSPH</span>
+          </div>
         </div>
 
         <div class="appt-book__content">
           <h2 class="appt-book__heading">Book A Private Consultation</h2>
 
           <div class="appt-book__pills">
-            <span class="appt-pill">MBBS, MSc (Oxon), FRSPH</span>
-            <span class="appt-pill">Medical Doctor &amp; Embryologist</span>
-            <span class="appt-pill">Fellow, Royal Society for Public Health</span>
-            <span class="appt-pill">Sexual Health Expert</span>
+            <span class="appt-pill">For all your women health and sexual health needs</span>
           </div>
 
           <!-- Google review carousel -->
@@ -119,7 +123,6 @@ const reviews = [
 
           <div class="appt-book__ctas">
             <a href="#" class="btn-primary appt-book__cta">Book Via WhatsApp →</a>
-            <a href="https://g.page/r/CS964bGV4erqEBM/review" target="_blank" rel="noopener" class="btn-outline appt-book__cta appt-book__cta--review">Add a Review →</a>
           </div>
         </div>
       </section>
@@ -208,22 +211,10 @@ const reviews = [
     text-align: center;
   }
 
-  .appt-hero__heading {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(2rem, 3.75vw, 3rem);
-    color: var(--color-brand-400);
-    letter-spacing: -0.06em;
-    line-height: 0.95;
-    margin: 0 0 16px;
-    text-align: center;
-  }
-
   /* Tag cloud: purple grid bg */
   .appt-hero__tag-cloud {
     width: 100%;
-    height: 283px;
+    height: 305px;
     background-color: var(--color-brand-100);
     background-image:
       linear-gradient(rgba(110, 57, 151, 0.15) 1px, transparent 1px),
@@ -239,27 +230,48 @@ const reviews = [
     inset: 0;
   }
 
+  /* Heading inside the grid */
+  .appt-hero__heading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(2.5rem, 4.375vw, 3.5rem);
+    color: var(--color-brand-600);
+    letter-spacing: -0.06em;
+    line-height: 1.05;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   /* Individual floating tags */
   .appt-tag {
     position: absolute;
     font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 500;
+    font-size: clamp(0.875rem, 1.875vw, 1.5rem);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 0;
     border: 1px solid var(--color-black);
     text-align: center;
     line-height: 1.1;
     white-space: nowrap;
-  }
-
-  .appt-tag--yellow {
-    background-color: var(--color-yellow-500);
-    color: var(--color-black);
+    filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.25));
   }
 
   .appt-tag--yellow-light {
     background-color: #ffe07f;
+    color: var(--color-black);
+  }
+
+  .appt-tag--white {
+    background-color: #fefefe;
     color: var(--color-black);
   }
 
@@ -268,18 +280,16 @@ const reviews = [
     color: var(--color-brand-50);
   }
 
-  .appt-tag--beige {
-    background-color: var(--color-beige-500);
-    color: var(--color-black);
-  }
-
-  /* Desktop scatter positions */
-  .appt-tag--p1 { left: 25%;   top: 20%; transform: rotate(-5.77deg); }
-  .appt-tag--p2 { left: 26%;   top: 40%; transform: rotate(1.26deg);  }
-  .appt-tag--p3 { left: 40.9%; top: 28%; }
-  .appt-tag--p4 { left: 50.7%; top: 53%; transform: rotate(1.09deg);  }
-  .appt-tag--p5 { left: 32%;   top: 56%; transform: rotate(-4.06deg); }
-  .appt-tag--p6 { left: 58.3%; top: 7%;  transform: rotate(-2.03deg); }
+  /* Desktop scatter positions — 9 tags */
+  .appt-tag--p1 { left: 67.9%; top: 59.0%; transform: rotate(3.16deg);  }
+  .appt-tag--p2 { left: 66.5%; top: 33.8%; transform: rotate(-3.89deg); }
+  .appt-tag--p3 { left: 67.9%; top: 17.7%; transform: rotate(1.71deg);  }
+  .appt-tag--p4 { left: 40.1%; top: 10.5%; transform: rotate(-3.23deg); }
+  .appt-tag--p5 { left: 14.0%; top: 8.5%;  transform: rotate(2.49deg);  }
+  .appt-tag--p6 { left: 7.3%;  top: 29.5%; }
+  .appt-tag--p7 { left: 16.5%; top: 49.5%; transform: rotate(5.14deg);  }
+  .appt-tag--p8 { left: 47.2%; top: 74.1%; transform: rotate(-2.68deg); }
+  .appt-tag--p9 { left: 14.5%; top: 73.1%; }
 
   .appt-hero__tagline {
     font-family: var(--font-sans);
@@ -340,6 +350,32 @@ const reviews = [
     border: 2px solid var(--color-yellow-500);
     box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.25);
     display: block;
+  }
+
+  .appt-book__badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fefefe;
+    border: 1px solid var(--color-brand-900);
+    padding: 8px 20px;
+    margin-top: 12px;
+  }
+
+  .appt-book__badge-name {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--color-brand-900);
+    line-height: 1.4;
+  }
+
+  .appt-book__badge-creds {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-brand-900);
+    line-height: 1.4;
   }
 
   .appt-book__content {
@@ -462,15 +498,6 @@ const reviews = [
     transform: scaleX(-1);
   }
 
-  .appt-book__cta--review {
-    background-color: var(--color-white);
-    border-color: var(--color-brand-900);
-  }
-
-  .appt-book__cta--review:hover {
-    background-color: var(--color-brand-50);
-  }
-
   /* CTA buttons row */
   .appt-book__ctas {
     display: flex;
@@ -561,19 +588,32 @@ const reviews = [
       padding: 16px 20px;
     }
 
+    /* Heading resets to flow inside the flex group on mobile */
+    .appt-hero__heading {
+      position: static;
+      transform: none;
+      width: 100%;
+      font-size: clamp(2rem, 6vw, 2.5rem);
+      white-space: normal;
+      margin-bottom: 8px;
+    }
+
     .appt-tag {
       position: static;
       font-size: 0.875rem;
       padding: 6px 12px;
     }
 
-    /* Rotations only on mobile */
-    .appt-tag--p1 { transform: rotate(-5.77deg); }
-    .appt-tag--p2 { transform: rotate(1.26deg);  }
-    .appt-tag--p3 { transform: rotate(-0.26deg); }
-    .appt-tag--p4 { transform: rotate(1.09deg);  }
-    .appt-tag--p5 { transform: rotate(-4.06deg); }
-    .appt-tag--p6 { transform: rotate(-2.03deg); }
+    /* Rotations on mobile */
+    .appt-tag--p1 { transform: rotate(3.16deg);  }
+    .appt-tag--p2 { transform: rotate(-3.89deg); }
+    .appt-tag--p3 { transform: rotate(1.71deg);  }
+    .appt-tag--p4 { transform: rotate(-3.23deg); }
+    .appt-tag--p5 { transform: rotate(2.49deg);  }
+    .appt-tag--p6 { transform: none;             }
+    .appt-tag--p7 { transform: rotate(5.14deg);  }
+    .appt-tag--p8 { transform: rotate(-2.68deg); }
+    .appt-tag--p9 { transform: none;             }
 
     .appt-hero__tagline {
       font-size: 1rem;
@@ -624,6 +664,10 @@ const reviews = [
     .appt-tag-group {
       padding: 12px 14px;
       gap: 6px 8px;
+    }
+
+    .appt-hero__heading {
+      font-size: 1.75rem;
     }
 
     .appt-tag {
