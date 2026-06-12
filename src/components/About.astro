@@ -38,13 +38,25 @@ const logos = [
   { src: '/logos/the_economist.svg',            alt: 'The Economist',              w: 120 },
 ];
 
-// Interleave wide and narrow logos so no similar widths cluster together
-const sorted = [...logos].sort((a, b) => b.w - a.w);
+// Spread logos so similar widths are never adjacent.
+// Greedy: always pick from the largest remaining group whose width differs from the previous.
+const _groups = new Map<number, typeof logos>();
+for (const logo of logos) {
+  if (!_groups.has(logo.w)) _groups.set(logo.w, []);
+  _groups.get(logo.w)!.push(logo);
+}
 const interleaved: typeof logos = [];
-let lo = 0, hi = sorted.length - 1;
-while (lo <= hi) {
-  if (lo === hi) { interleaved.push(sorted[lo++]); }
-  else { interleaved.push(sorted[lo++], sorted[hi--]); }
+let _lastW = -1;
+while (interleaved.length < logos.length) {
+  let bestW = -1, bestCount = 0;
+  for (const [w, g] of _groups) {
+    if (w !== _lastW && g.length > bestCount) { bestW = w; bestCount = g.length; }
+  }
+  if (bestW === -1) bestW = _lastW; // forced: all remaining are same width
+  const g = _groups.get(bestW)!;
+  interleaved.push(g.shift()!);
+  if (g.length === 0) _groups.delete(bestW);
+  _lastW = bestW;
 }
 
 ---
@@ -510,6 +522,10 @@ while (lo <= hi) {
 
   .about__ticker-track.ticker-ready {
     animation-play-state: running;
+  }
+  
+  @media (max-width: 768px) {
+    .about__ticker-track { gap: 50px; }
   }
 
   .about__ticker-logo {
