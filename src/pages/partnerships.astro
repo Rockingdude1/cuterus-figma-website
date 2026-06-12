@@ -31,17 +31,13 @@ import img64 from '../assets/images/image 64.jpg?url';
     <!-- PHOTO COLLAGE -->
     <div class="workshops-collage">
 
-      <!-- Washi tape strips -->
-      <img src="/workshops/tape.png"  class="col-tape col-tape--left"  alt="" aria-hidden="true" />
-      <img src="/workshops/tape2.png" class="col-tape col-tape--right" alt="" aria-hidden="true" />
-
       <!-- Heart decoration -->
       <img src="/workshops/heart.svg" class="col-heart" alt="" aria-hidden="true" />
 
       <!-- Pin dots -->
-      <img src="/workshops/ellipse-b.svg" class="col-dot" style="left:665px;top:64px"  alt="" aria-hidden="true" />
-      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:1061px;top:275px" alt="" aria-hidden="true" />
-      <img src="/workshops/ellipse-a.svg" class="col-dot" style="left:360px;top:305px"  alt="" aria-hidden="true" />
+      <span class="col-dot" style="left:665px;top:64px;background:#6E3997"></span>
+      <span class="col-dot" style="left:1061px;top:275px;background:#FEFEFE"></span>
+      <span class="col-dot" style="left:360px;top:305px;background:#FEFEFE"></span>
 
       <!-- photo-64: large yellow landscape (top right) -->
       <div class="col-photo col-photo--64">
@@ -344,20 +340,6 @@ import img64 from '../assets/images/image 64.jpg?url';
   .col-badge--1 { left: 721px; top: 239px; }
   .col-badge--2 { left: 366px; top: 464px; }
 
-  .col-tape {
-    position: absolute;
-    width: 185px;
-    height: 91px;
-    object-fit: contain;
-    opacity: 0.85;
-    pointer-events: none;
-  }
-  .col-tape--left  { left: 125px; top: 23px; }
-  .col-tape--right {
-    left: 1117px; top: 81px;
-    transform: rotate(24.31deg);
-    transform-origin: center center;
-  }
 
   .col-heart {
     position: absolute;
@@ -370,6 +352,7 @@ import img64 from '../assets/images/image 64.jpg?url';
   .col-dot {
     position: absolute;
     width: 20px; height: 20px;
+    border-radius: 50%;
     pointer-events: none;
     z-index: 10;
   }
@@ -488,7 +471,7 @@ import img64 from '../assets/images/image 64.jpg?url';
     }
 
     /* Re-show all decorative elements */
-    .col-tape, .col-heart, .col-dot, .col-badge { display: block; }
+    .col-heart, .col-dot, .col-badge { display: block; }
     .col-dot { width: 10px; height: 10px; }
 
     /* Reset any desktop img scale transforms */
@@ -553,8 +536,6 @@ import img64 from '../assets/images/image 64.jpg?url';
 
     /* ── Mobile decorative element positions ── */
 
-    .col-tape--left  { left: 35px;  top: 0px;  width: 91px; height: 45px; transform: none; }
-    .col-tape--right { left: 328px; top: 40px; width: 91px; height: 45px; transform: rotate(24.31deg); }
 
     .col-heart { left: 29px; top: 233px; width: 35px; height: 30px; }
 
