@@ -27,7 +27,6 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   <!-- Right group: CTA + lang toggle (desktop) / menu toggle (mobile) -->
   <div class="navbar__right">
-    <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary navbar__cta">Work With Me</a>
     <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language" data-lang="hinglish">
       <span class="lang-toggle__label" data-for="english">English</span>
       <span class="lang-toggle__track"><span class="lang-toggle__thumb"></span></span>
@@ -48,12 +47,6 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
         {link.label}
       </a>
     ))}
-    <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary mobile-menu__cta">Work With Me</a>
-    <button class="lang-toggle lang-toggle--in-menu" id="mobile-lang-toggle" aria-label="Toggle language" data-lang="hinglish">
-      <span class="lang-toggle__label" data-for="english">English</span>
-      <span class="lang-toggle__track"><span class="lang-toggle__thumb"></span></span>
-      <span class="lang-toggle__label" data-for="hinglish">Hinglish</span>
-    </button>
   </nav>
 </div>
 
@@ -134,25 +127,15 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     z-index: -1;
   }
 
-  .navbar__cta {
-    flex-shrink: 0;
-    font-size: 1rem;
-    background-color: var(--color-brand-300) !important;
-  }
-
-  .navbar__cta:hover {
-    background-color: var(--color-brand-500) !important;
-  }
-
   /* ── LANGUAGE TOGGLE ── */
   .lang-toggle {
     display: flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid var(--color-brand-900);
+    border: 0.5px solid var(--color-brand-500);
     border-radius: 999px;
-    padding: 4px 12px;
-    background: transparent;
+    padding: 8px 12px;
+    background: var(--color-brand-100);
     cursor: pointer;
     flex-shrink: 0;
     transition: transform 0.15s ease;
@@ -162,7 +145,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   .lang-toggle__label {
     font-family: var(--font-sans);
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--color-brand-900);
     line-height: 1;
@@ -179,21 +162,21 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   .lang-toggle[data-lang="english"] .lang-toggle__label[data-for="hinglish"] { opacity: 0.3; }
 
   .lang-toggle__track {
-    width: 40px;
-    height: 20px;
-    border-radius: 10px;
+    width: 36px;
+    height: 16px;
+    border-radius: 999px;
     border: none;
-    background: var(--color-brand-100);
+    background: var(--color-brand-400);
     position: relative;
     flex-shrink: 0;
   }
 
   .lang-toggle__thumb {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--color-brand-500);
+    background: #ffffff;
     top: 50%;
     transform: translateY(-50%);
     left: 22px; /* hinglish default: right side */
@@ -266,16 +249,31 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
     /* Hide desktop-only controls */
     .lang-toggle { display: none; }
-    .lang-toggle--in-menu { display: flex; }
-
-    .navbar__cta {
-      display: none;
-    }
 
     /* Show mobile toggle */
     .navbar__toggle {
       display: flex;
     }
+
+    /* When menu is open, toggle morphs into the lang pill */
+    .navbar__toggle.is-lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--color-brand-100);
+      border: 0.5px solid var(--color-brand-500);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--color-brand-900);
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1;
+    }
+
+    /* Inner pill elements are injected via JS so inline styles handle them */
 
     /* Full-page overlay, slides in from the right */
     .mobile-menu {
@@ -337,10 +335,6 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
       z-index: -1;
     }
 
-    .mobile-menu__cta {
-      font-size: 1rem;
-      margin-top: 8px;
-    }
   }
 </style>
 
@@ -359,7 +353,6 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   function updateToggleState(lang: string) {
     if (desktopToggle) desktopToggle.dataset.lang = lang;
-    if (mobileLangToggle) mobileLangToggle.dataset.lang = lang;
   }
 
   // Init language on load
@@ -368,10 +361,9 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   const desktopToggle = document.getElementById('desktop-lang-toggle') as HTMLButtonElement;
   const mobileToggle = document.getElementById('mobile-toggle') as HTMLButtonElement;
-  const mobileLangToggle = document.getElementById('mobile-lang-toggle') as HTMLButtonElement;
   const menu = document.getElementById('mobile-menu') as HTMLDivElement;
 
-  // Reflect saved lang in toggles on load
+  // Reflect saved lang in toggle on load
   updateToggleState(initLang);
 
   // ── DESKTOP LANG TOGGLE ──
@@ -382,30 +374,41 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     updateToggleState(next);
   });
 
-  // ── MOBILE LANG TOGGLE (inside menu) ──
-  mobileLangToggle?.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
-    const next = current === 'hinglish' ? 'english' : 'hinglish';
-    setLang(next);
-    updateToggleState(next);
-    closeMenu();
-  });
-
   // ── MOBILE NAV OPEN / CLOSE ──
   function openMenu() {
     menu.classList.add('is-open');
     mobileToggle.setAttribute('aria-expanded', 'true');
+    mobileToggle.classList.add('is-lang-toggle');
+    const lang = document.documentElement.getAttribute('data-lang') || 'hinglish';
+    mobileToggle.dataset.lang = lang;
+    const enOp = lang === 'english' ? 1 : 0.3;
+    const hiOp = lang === 'hinglish' ? 1 : 0.3;
+    const thumbLeft = lang === 'english' ? '2px' : '18px';
+    mobileToggle.innerHTML = `
+      <span style="font-family:var(--font-sans);font-size:0.9rem;font-weight:400;color:var(--color-brand-900);line-height:1;white-space:nowrap;opacity:${enOp};">English</span>
+      <span style="width:32px;height:14px;border-radius:999px;background:var(--color-brand-400);position:relative;flex-shrink:0;display:inline-block;">
+        <span style="position:absolute;width:10px;height:10px;border-radius:50%;background:#ffffff;top:50%;transform:translateY(-50%);left:${thumbLeft};"></span>
+      </span>
+      <span style="font-family:var(--font-sans);font-size:0.9rem;font-weight:400;color:var(--color-brand-900);line-height:1;white-space:nowrap;opacity:${hiOp};">Hinglish</span>
+    `;
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     menu.classList.remove('is-open');
     mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.classList.remove('is-lang-toggle');
+    delete mobileToggle.dataset.lang;
+    mobileToggle.textContent = 'Menu';
     document.body.style.overflow = '';
   }
 
   mobileToggle?.addEventListener('click', () => {
     if (menu.classList.contains('is-open')) {
+      const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
+      const next = current === 'hinglish' ? 'english' : 'hinglish';
+      setLang(next);
+      updateToggleState(next);
       closeMenu();
     } else {
       openMenu();
