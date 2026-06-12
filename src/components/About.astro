@@ -742,6 +742,12 @@ while (lo <= hi) {
     scene.style.transform = `translateX(-50%) scale(${scale})`;
   }
 
-  applyAboutScale();
+  // Defer until layout is stable — on first visit svh units may not be
+  // resolved yet when the script runs, causing sectionH to read as 0.
+  if (document.readyState === 'complete') {
+    applyAboutScale();
+  } else {
+    window.addEventListener('load', applyAboutScale, { once: true });
+  }
   window.addEventListener('resize', applyAboutScale);
 </script>
