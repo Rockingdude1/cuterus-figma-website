@@ -140,23 +140,34 @@
     .columnist-outer {
       height: 100svh;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 56px; /* navbar height */
+      box-sizing: border-box;
     }
 
     .columnist {
       display: flex;
       flex-direction: column;
-      height: 100svh;
+      min-height: unset;
       max-height: unset;
     }
 
-    /* Photo col takes the top ~55% */
+    /* Photo col: fixed height so it never stretches on tall phones */
     .columnist__photo-col {
-      flex: 0 0 55%;
+      flex: 0 0 clamp(300px, 52svh, 420px);
     }
 
-    /* Right takes remaining space — no grid on mobile */
+    /* Image: fill the fixed photo col, no desktop navbar offset */
+    .col__image {
+      top: 0;
+      height: 100%;
+    }
+
+    /* Right: content-sized, not stretching */
     .columnist__right {
-      flex: 1;
+      flex: 0 0 auto;
       padding: 20px 24px;
       background-color: var(--color-beige-500);
       background-image: none;
