@@ -1,14 +1,15 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
-import img53 from '../assets/images/image 53.jpg?url';
-import img56 from '../assets/images/image 56.jpg?url';
-import img57 from '../assets/images/image 57.jpg?url';
-import img58 from '../assets/images/image 58.jpg?url';
-import img59 from '../assets/images/image 59.jpg?url';
-import img61 from '../assets/images/image 61.jpg?url';
-import img62 from '../assets/images/image 62.jpg?url';
-import img64 from '../assets/images/image 64.jpg?url';
+import { Image } from 'astro:assets';
+import img53 from '../assets/images/image 53.jpg';
+import img56 from '../assets/images/image 56.jpg';
+import img57 from '../assets/images/image 57.jpg';
+import img58 from '../assets/images/image 58.jpg';
+import img59 from '../assets/images/image 59.jpg';
+import img61 from '../assets/images/image 61.jpg';
+import img62 from '../assets/images/image 62.jpg';
+import img64 from '../assets/images/image 64.jpg';
 ---
 
 <html lang="en">
@@ -41,42 +42,42 @@ import img64 from '../assets/images/image 64.jpg?url';
 
       <!-- photo-64: large yellow landscape (top right) -->
       <div class="col-photo col-photo--64">
-        <img src={img64} alt="" />
+        <Image src={img64} alt="" width={999} height={416} loading="lazy" />
       </div>
 
       <!-- photo-53: large white polaroid (left) -->
       <div class="col-photo col-photo--53">
-        <img src={img53} alt="Dr. Tanaya at a speaking event" />
+        <Image src={img53} alt="Dr. Tanaya at a speaking event" width={751} height={864} loading="lazy" />
       </div>
 
       <!-- photo-61: medium purple polaroid (center) -->
       <div class="col-photo col-photo--61">
-        <img src={img61} alt="" />
+        <Image src={img61} alt="" width={656} height={943} loading="lazy" />
       </div>
 
       <!-- photo-59: small square (top centre) -->
       <div class="col-photo col-photo--59">
-        <img src={img59} alt="" />
+        <Image src={img59} alt="" width={255} height={255} loading="lazy" />
       </div>
 
       <!-- photo-57: small white photo -->
       <div class="col-photo col-photo--57">
-        <img src={img57} alt="" />
+        <Image src={img57} alt="" width={361} height={240} loading="lazy" />
       </div>
 
       <!-- photo-56: small yellow polaroid -->
       <div class="col-photo col-photo--56">
-        <img src={img56} alt="" />
+        <Image src={img56} alt="" width={260} height={347} loading="lazy" />
       </div>
 
       <!-- photo-62: medium yellow-light polaroid (right centre) -->
       <div class="col-photo col-photo--62">
-        <img src={img62} alt="" />
+        <Image src={img62} alt="" width={410} height={420} loading="lazy" />
       </div>
 
       <!-- photo-58: small purple polaroid (far right) -->
       <div class="col-photo col-photo--58">
-        <img src={img58} alt="" />
+        <Image src={img58} alt="" width={318} height={424} loading="lazy" />
       </div>
 
       <!-- photo-51: wide landscape (bottom right, no border) -->

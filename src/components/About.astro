@@ -1,10 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 const mainJpg = '/photo-about-main.jpg';
-import sareeJpg     from '../assets/images/photo_about saree.jpg?url';
-import billboardJpg from '../assets/images/photo_about billboard.jpg?url';
-import docJpg       from '../assets/images/photo_about doc.jpg?url';
-import divingJpg    from '../assets/images/photo_about diving.jpg?url';
-import podcastJpg   from '../assets/images/photo_about podcast.jpg?url';
+import sareeJpg     from '../assets/images/photo_about saree.jpg';
+import billboardJpg from '../assets/images/photo_about billboard.jpg';
+import docJpg       from '../assets/images/photo_about doc.jpg';
+import divingJpg    from '../assets/images/photo_about diving.jpg';
+import podcastJpg   from '../assets/images/photo_about podcast.jpg';
 
 const logos = [
   { src: '/logos/forbes.svg',                   alt: 'Forbes India'                },
@@ -52,19 +53,19 @@ const logos = [
     </div>
 
     <div class="about__photo about__photo--saree  about__polaroid about__polaroid--purple">
-      <img src={sareeJpg}     alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+      <Image src={sareeJpg}     alt="" class="about__photo-content" loading="eager" width={441} height={551} />
     </div>
     <div class="about__photo about__photo--billboard about__polaroid about__polaroid--yellow">
-      <img src={billboardJpg} alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+      <Image src={billboardJpg} alt="" class="about__photo-content" loading="eager" width={436} height={545} />
     </div>
     <div class="about__photo about__photo--doctor about__polaroid about__polaroid--purple">
-      <img src={docJpg}       alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+      <Image src={docJpg}       alt="" class="about__photo-content" loading="eager" width={435} height={543} />
     </div>
     <div class="about__photo about__photo--diving about__polaroid about__polaroid--purple">
-      <img src={divingJpg}    alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+      <Image src={divingJpg}    alt="" class="about__photo-content" loading="eager" width={441} height={551} />
     </div>
     <div class="about__photo about__photo--podcast about__polaroid about__polaroid--yellow">
-      <img src={podcastJpg}   alt="" class="about__photo-content" loading="eager" aria-hidden="true" />
+      <Image src={podcastJpg}   alt="" class="about__photo-content" loading="eager" width={809} height={420} />
     </div>
 
 
