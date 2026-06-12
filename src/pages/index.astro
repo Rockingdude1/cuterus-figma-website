@@ -9,7 +9,7 @@ import Columnist from '../components/Columnist.astro';
 import Content from '../components/Content.astro';
 import Footer from '../components/Footer.astro';
 import mainSvgUrl from '../assets/images/main.svg?url';
-import sentientItalicUrl from '../assets/fonts/Sentient-VariableItalic.ttf?url';
+import sentientItalicUrl from '../assets/fonts/Sentient-VariableItalic.woff2?url';
 ---
 
 <html lang="en">
@@ -18,7 +18,7 @@ import sentientItalicUrl from '../assets/fonts/Sentient-VariableItalic.ttf?url';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="font" href={sentientItalicUrl} type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href={sentientItalicUrl} type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" as="image" href={mainSvgUrl} type="image/svg+xml" fetchpriority="high" />
 
     <title>Dr. Cuterus - Dr. Tanaya Narendra</title>

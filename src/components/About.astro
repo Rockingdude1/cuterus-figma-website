@@ -8,36 +8,45 @@ import divingJpg    from '../assets/images/photo_about diving.jpg';
 import podcastJpg   from '../assets/images/photo_about podcast.jpg';
 
 const logos = [
-  { src: '/logos/forbes.svg',                   alt: 'Forbes India'                },
-  { src: '/logos/deccan_herald.svg',            alt: 'Deccan Herald'               },
-  { src: '/logos/delhi.svg',                    alt: 'Government of Delhi', sq: true },
-  { src: '/logos/natgeo.svg',                   alt: 'National Geographic'         },
-  { src: '/logos/gates.svg',                    alt: 'Gates Foundation'            },
-  { src: '/logos/cosmo.svg',                    alt: 'Cosmopolitan India'          },
-  { src: '/logos/hindustan_times.svg',          alt: 'Hindustan Times',    sq: true },
-  { src: '/logos/vogue.svg',                    alt: 'Vogue India'                 },
-  { src: '/logos/india_govt.svg',               alt: 'Ministry of Health'          },
-  { src: '/logos/umich.svg',                    alt: 'University of Michigan'      },
-  { src: '/logos/livemint.svg',                 alt: 'Live Mint'                   },
-  { src: '/logos/grihshobha.svg',               alt: 'Grihshobha'                  },
-  { src: '/logos/who.svg',                      alt: 'World Health Organization'   },
-  { src: '/logos/mumbai_mirror.svg',            alt: 'Mumbai Mirror'               },
-  { src: '/logos/the_hindu_illustrations.svg',  alt: 'The Hindu'                   },
-  { src: '/logos/british_vogue.svg',            alt: 'British Vogue'               },
-  { src: '/logos/ndtv.svg',                     alt: 'NDTV'                        },
-  { src: '/logos/national_herald.svg',          alt: 'National Herald'             },
-  { src: '/logos/times_of_india.svg',           alt: 'Times of India'              },
-  { src: '/logos/dainik_jagran.svg',            alt: 'Dainik Jagran'               },
-  { src: '/logos/mint_lounge.svg',              alt: 'Mint Lounge'                 },
-  { src: '/logos/cnn_swades.svg',               alt: 'CNN Swades'                  },
-  { src: '/logos/cnn.svg',                      alt: 'CNN'                         },
-  { src: '/logos/the_week.svg',                 alt: 'The Week'                    },
-  { src: '/logos/mirror_now.svg',               alt: 'Mirror Now'                  },
-  { src: '/logos/brut.svg',                     alt: 'Brut'                        },
-  { src: '/logos/india_today.svg',              alt: 'India Today'                 },
-  { src: '/logos/elle.svg',                     alt: 'Elle'                        },
-  { src: '/logos/the_economist.svg',            alt: 'The Economist'               },
+  { src: '/logos/forbes.svg',                   alt: 'Forbes India',               w: 120 },
+  { src: '/logos/deccan_herald.svg',            alt: 'Deccan Herald',              w: 170 },
+  { src: '/logos/delhi.svg',                    alt: 'Government of Delhi', sq: true, w: 40 },
+  { src: '/logos/natgeo.svg',                   alt: 'National Geographic',        w: 120 },
+  { src: '/logos/gates.svg',                    alt: 'Gates Foundation',           w: 120 },
+  { src: '/logos/cosmo.svg',                    alt: 'Cosmopolitan India',         w: 120 },
+  { src: '/logos/hindustan_times.svg',          alt: 'Hindustan Times', sq: true,  w: 40  },
+  { src: '/logos/vogue.svg',                    alt: 'Vogue India',                w: 120 },
+  { src: '/logos/india_govt.svg',               alt: 'Ministry of Health',         w: 100 },
+  { src: '/logos/umich.svg',                    alt: 'University of Michigan',     w: 120 },
+  { src: '/logos/livemint.svg',                 alt: 'Live Mint',                  w: 45  },
+  { src: '/logos/grihshobha.svg',               alt: 'Grihshobha',                 w: 150 },
+  { src: '/logos/who.svg',                      alt: 'World Health Organization',  w: 120 },
+  { src: '/logos/mumbai_mirror.svg',            alt: 'Mumbai Mirror',              w: 150 },
+  { src: '/logos/the_hindu_illustrations.svg',  alt: 'The Hindu',                  w: 240 },
+  { src: '/logos/british_vogue.svg',            alt: 'British Vogue',              w: 120 },
+  { src: '/logos/ndtv.svg',                     alt: 'NDTV',                       w: 120 },
+  { src: '/logos/national_herald.svg',          alt: 'National Herald',            w: 120 },
+  { src: '/logos/times_of_india.svg',           alt: 'Times of India',             w: 120 },
+  { src: '/logos/dainik_jagran.svg',            alt: 'Dainik Jagran',              w: 120 },
+  { src: '/logos/mint_lounge.svg',              alt: 'Mint Lounge',                w: 120 },
+  { src: '/logos/cnn_swades.svg',               alt: 'CNN Swades',                 w: 120 },
+  { src: '/logos/cnn.svg',                      alt: 'CNN',                        w: 120 },
+  { src: '/logos/the_week.svg',                 alt: 'The Week',                   w: 120 },
+  { src: '/logos/mirror_now.svg',               alt: 'Mirror Now',                 w: 120 },
+  { src: '/logos/brut.svg',                     alt: 'Brut',                       w: 120 },
+  { src: '/logos/india_today.svg',              alt: 'India Today',                w: 150 },
+  { src: '/logos/elle.svg',                     alt: 'Elle',                       w: 120 },
+  { src: '/logos/the_economist.svg',            alt: 'The Economist',              w: 120 },
 ];
+
+// Interleave wide and narrow logos so no similar widths cluster together
+const sorted = [...logos].sort((a, b) => b.w - a.w);
+const interleaved: typeof logos = [];
+let lo = 0, hi = sorted.length - 1;
+while (lo <= hi) {
+  if (lo === hi) { interleaved.push(sorted[lo++]); }
+  else { interleaved.push(sorted[lo++], sorted[hi--]); }
+}
 
 ---
 
@@ -133,14 +142,14 @@ const logos = [
   <!-- ─── YELLOW TICKER (outside scene, always at bottom) ─── -->
   <div class="about__ticker" aria-label="Featured in">
     <div class="about__ticker-track">
-      {logos.map(l => (
+      {interleaved.map(l => (
         <img
           src={l.src}
           alt={l.alt}
           class={`about__ticker-logo${l.sq  ? ' about__ticker-logo--sq'  : ''}${l.png ? ' about__ticker-logo--png' : ''}`}
         />
       ))}
-      {logos.map(l => (
+      {interleaved.map(l => (
         <img
           src={l.src}
           alt=""
