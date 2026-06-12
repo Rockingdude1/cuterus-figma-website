@@ -787,7 +787,11 @@ const episodes = [
   });
 
   // Init on load and re-layout on resize
-  init();
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init, { once: true });
+  }
   let resizeTimer: ReturnType<typeof setTimeout>;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
