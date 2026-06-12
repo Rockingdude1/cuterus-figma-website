@@ -104,7 +104,7 @@ const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
 
     <!-- Footer -->
     <div class="blog-footer">
-      <p class="blog-footer__heading">Found something you liked? Let's talk.</p>
+      <p class="blog-footer__heading">Found something you liked?<br class="mobile-br" /> Let's talk.</p>
       <p class="blog-footer__sub">For collabs, speaking, and partnerships or just to say hi!</p>
       <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary">Work with Me</a>
     </div>
@@ -204,7 +204,7 @@ const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
 
   .blog__pill-wrap {
     position: absolute;
-    top: -25px;
+    top: -15px;
     right: -100px;
     transform: rotate(5deg);
     z-index: 0;
@@ -213,7 +213,7 @@ const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
   .blog__pill {
     display: inline-block;
     background-color: var(--color-yellow-500);
-    padding: 8px 16px;
+    padding: 1px 4px;
     border-radius: 999px;
     font-family: var(--font-sans);
     font-weight: 500;
@@ -492,8 +492,8 @@ const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     .blog__pill-wrap {
-      top: -30px;
-      right: -12px;
+      top: -20px;
+      right: -70px;
     }
     /* Stack to single column; content first, photo second */
     .blog__body {

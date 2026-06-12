@@ -28,7 +28,11 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   <!-- Right group: CTA + lang toggle (desktop) / menu toggle (mobile) -->
   <div class="navbar__right">
     <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary navbar__cta">Work With Me</a>
-    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language">Aआ → Aa</button>
+    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language" data-lang="hinglish">
+      <span class="lang-toggle__label" data-for="english">English</span>
+      <span class="lang-toggle__track"><span class="lang-toggle__thumb"></span></span>
+      <span class="lang-toggle__label" data-for="hinglish">Hinglish</span>
+    </button>
     <button class="navbar__toggle" id="mobile-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
   </div>
 </header>
@@ -45,6 +49,11 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
       </a>
     ))}
     <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary mobile-menu__cta">Work With Me</a>
+    <button class="lang-toggle lang-toggle--in-menu" id="mobile-lang-toggle" aria-label="Toggle language" data-lang="hinglish">
+      <span class="lang-toggle__label" data-for="english">English</span>
+      <span class="lang-toggle__track"><span class="lang-toggle__thumb"></span></span>
+      <span class="lang-toggle__label" data-for="hinglish">Hinglish</span>
+    </button>
   </nav>
 </div>
 
@@ -135,30 +144,64 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     background-color: var(--color-brand-500) !important;
   }
 
-  /* ── LANGUAGE TOGGLE (desktop) ── */
+  /* ── LANGUAGE TOGGLE ── */
   .lang-toggle {
-    border-radius: 22px;
-    background-color: var(--color-yellow-500);
-    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--color-brand-900);
+    border-radius: 999px;
+    padding: 4px 12px;
+    background: transparent;
     cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.15s ease;
+  }
+
+  .lang-toggle:hover { transform: scale(1.03); }
+
+  .lang-toggle__label {
     font-family: var(--font-sans);
     font-size: 1.25rem;
     font-weight: 400;
     color: var(--color-brand-900);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 12px 8px;
-    flex-shrink: 0;
-    white-space: nowrap;
     line-height: 1;
-    transition: transform 0.15s ease;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
   }
 
-  .lang-toggle:hover {
-    transform: scale(1.05);
+  /* Default (hinglish selected): english dim */
+  .lang-toggle__label[data-for="english"] { opacity: 0.3; }
+  .lang-toggle__label[data-for="hinglish"] { opacity: 1; }
+
+  /* English selected */
+  .lang-toggle[data-lang="english"] .lang-toggle__label[data-for="english"] { opacity: 1; }
+  .lang-toggle[data-lang="english"] .lang-toggle__label[data-for="hinglish"] { opacity: 0.3; }
+
+  .lang-toggle__track {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background: var(--color-brand-100);
+    position: relative;
+    flex-shrink: 0;
   }
+
+  .lang-toggle__thumb {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-brand-500);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 22px; /* hinglish default: right side */
+    transition: left 0.2s ease;
+  }
+
+  /* English selected: thumb slides left */
+  .lang-toggle[data-lang="english"] .lang-toggle__thumb { left: 2px; }
 
   /* ── MOBILE TOGGLE ── */
   .navbar__toggle {
@@ -176,26 +219,6 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     flex-shrink: 0;
     line-height: 1;
     transition: background-color 0.2s ease;
-  }
-
-  /* When nav is open, toggle becomes the yellow lang pill */
-  .navbar__toggle.is-lang-toggle {
-    width: auto;
-    height: auto;
-    border-radius: 22px;
-    background-color: var(--color-yellow-500);
-    color: var(--color-brand-900);
-    font-size: 1.25rem;
-    font-weight: 400;
-    letter-spacing: 0;
-    text-transform: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 12px 8px;
-    white-space: nowrap;
-    line-height: 1;
   }
 
   /* ── MOBILE OVERLAY (hidden on desktop) ── */
@@ -242,9 +265,8 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     }
 
     /* Hide desktop-only controls */
-    .lang-toggle {
-      display: none;
-    }
+    .lang-toggle { display: none; }
+    .lang-toggle--in-menu { display: flex; }
 
     .navbar__cta {
       display: none;
@@ -335,19 +357,9 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     localStorage.setItem(LANG_KEY, lang);
   }
 
-  function getLangButtonText(lang: string): string {
-    // Hinglish mode → show "Aआ → Aa" (click to switch to English)
-    // English mode  → show "Aa → Aआ" (click to switch back to Hinglish)
-    return lang === 'hinglish' ? 'Aआ → Aa' : 'Aa → Aआ';
-  }
-
-  function updateToggleLabels(lang: string) {
-    const text = getLangButtonText(lang);
-    if (desktopToggle) desktopToggle.textContent = text;
-    // Mobile toggle only shows lang text when nav is open
-    if (mobileToggle && mobileToggle.classList.contains('is-lang-toggle')) {
-      mobileToggle.textContent = text;
-    }
+  function updateToggleState(lang: string) {
+    if (desktopToggle) desktopToggle.dataset.lang = lang;
+    if (mobileLangToggle) mobileLangToggle.dataset.lang = lang;
   }
 
   // Init language on load
@@ -356,43 +368,44 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   const desktopToggle = document.getElementById('desktop-lang-toggle') as HTMLButtonElement;
   const mobileToggle = document.getElementById('mobile-toggle') as HTMLButtonElement;
+  const mobileLangToggle = document.getElementById('mobile-lang-toggle') as HTMLButtonElement;
   const menu = document.getElementById('mobile-menu') as HTMLDivElement;
 
-  // Set initial toggle labels
-  updateToggleLabels(initLang);
+  // Reflect saved lang in toggles on load
+  updateToggleState(initLang);
 
   // ── DESKTOP LANG TOGGLE ──
   desktopToggle?.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
     const next = current === 'hinglish' ? 'english' : 'hinglish';
     setLang(next);
-    updateToggleLabels(next);
+    updateToggleState(next);
+  });
+
+  // ── MOBILE LANG TOGGLE (inside menu) ──
+  mobileLangToggle?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
+    const next = current === 'hinglish' ? 'english' : 'hinglish';
+    setLang(next);
+    updateToggleState(next);
+    closeMenu();
   });
 
   // ── MOBILE NAV OPEN / CLOSE ──
   function openMenu() {
     menu.classList.add('is-open');
     mobileToggle.setAttribute('aria-expanded', 'true');
-    mobileToggle.classList.add('is-lang-toggle');
-    const lang = document.documentElement.getAttribute('data-lang') || 'hinglish';
-    mobileToggle.textContent = getLangButtonText(lang);
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     menu.classList.remove('is-open');
     mobileToggle.setAttribute('aria-expanded', 'false');
-    mobileToggle.classList.remove('is-lang-toggle');
-    mobileToggle.textContent = 'Menu';
     document.body.style.overflow = '';
   }
 
   mobileToggle?.addEventListener('click', () => {
     if (menu.classList.contains('is-open')) {
-      // Nav is open — this button is now the lang toggle
-      const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
-      const next = current === 'hinglish' ? 'english' : 'hinglish';
-      setLang(next);
       closeMenu();
     } else {
       openMenu();

@@ -129,3 +129,9 @@ body {
   background-color: var(--color-brand-50);
   transform: translateY(-1px);
 }
+
+/* Mobile-only line break */
+.mobile-br { display: none; }
+@media (max-width: 768px) {
+  .mobile-br { display: block; }
+}
