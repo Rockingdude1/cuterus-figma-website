@@ -32,6 +32,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       class="contact__photo"
       widths={[400, 700, 1000]}
       sizes="(max-width: 768px) 100vw, 50vw"
+      loading="lazy"
     />
     <!-- Mobile-only: samosa overlaid on photo -->
     <Image
@@ -40,6 +41,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       class="contact__samosa-overlay"
       width={140}
       height={140}
+      loading="lazy"
     />
   </div>
 
@@ -50,6 +52,7 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
       <Image
         src={samosaPhoto}
         alt="Samosa, Dr. Cuterus's dog"
+        loading="lazy"
         class="contact__samosa-img"
         width={140}
         height={140}
