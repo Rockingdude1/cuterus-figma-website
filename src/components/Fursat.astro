@@ -309,14 +309,21 @@ const episodes = [
   }
 
   /* ── VARIANT FRAMES: all breakpoints ── */
+  @keyframes fursat-reveal {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
   .fursat__frame--variant {
-    display: none;
     position: absolute;
     inset: 0;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .fursat__frame--variant.is-active {
-    display: block;
+    pointer-events: auto;
+    animation: fursat-reveal 0.3s ease forwards;
   }
 
   .fursat__frame--variant .fursat__photo {
@@ -696,7 +703,11 @@ const episodes = [
         wrap.querySelectorAll('.fursat__swatch').forEach(s => s.classList.remove('is-active'));
         btn.classList.add('is-active');
         wrap.querySelectorAll('.fursat__frame--variant').forEach(f => f.classList.remove('is-active'));
-        wrap.querySelector<HTMLElement>(`.fursat__frame--variant[data-variant="${variant}"]`)?.classList.add('is-active');
+        const nextFrame = wrap.querySelector<HTMLElement>(`.fursat__frame--variant[data-variant="${variant}"]`);
+        if (nextFrame) {
+          void nextFrame.offsetHeight; // force reflow to restart animation
+          nextFrame.classList.add('is-active');
+        }
       });
     });
   }

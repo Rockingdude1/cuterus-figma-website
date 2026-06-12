@@ -28,7 +28,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   <!-- Right group: CTA + lang toggle (desktop) / menu toggle (mobile) -->
   <div class="navbar__right">
     <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary navbar__cta">Work With Me</a>
-    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language">Aa</button>
+    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language">Aआ → Aa</button>
     <button class="navbar__toggle" id="mobile-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
   </div>
 </header>
@@ -137,25 +137,27 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   /* ── LANGUAGE TOGGLE (desktop) ── */
   .lang-toggle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    border-radius: 22px;
     background-color: var(--color-yellow-500);
     border: none;
     cursor: pointer;
     font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--color-brand-900);
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 4px;
+    padding: 12px 8px;
     flex-shrink: 0;
+    white-space: nowrap;
+    line-height: 1;
     transition: transform 0.15s ease;
   }
 
   .lang-toggle:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 
   /* ── MOBILE TOGGLE ── */
@@ -176,20 +178,24 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     transition: background-color 0.2s ease;
   }
 
-  /* When nav is open, toggle becomes the yellow lang button */
+  /* When nav is open, toggle becomes the yellow lang pill */
   .navbar__toggle.is-lang-toggle {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: auto;
+    height: auto;
+    border-radius: 22px;
     background-color: var(--color-yellow-500);
     color: var(--color-brand-900);
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 400;
     letter-spacing: 0;
     text-transform: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 4px;
+    padding: 12px 8px;
+    white-space: nowrap;
+    line-height: 1;
   }
 
   /* ── MOBILE OVERLAY (hidden on desktop) ── */
@@ -330,9 +336,9 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   }
 
   function getLangButtonText(lang: string): string {
-    // Hinglish mode → show "Aa" (click to go English)
-    // English mode  → show "Aआ" (click to go Hinglish)
-    return lang === 'hinglish' ? 'Aa' : 'Aआ';
+    // Hinglish mode → show "Aआ → Aa" (click to switch to English)
+    // English mode  → show "Aa → Aआ" (click to switch back to Hinglish)
+    return lang === 'hinglish' ? 'Aआ → Aa' : 'Aa → Aआ';
   }
 
   function updateToggleLabels(lang: string) {
