@@ -9,7 +9,7 @@ export interface Post {
 export const posts: Post[] = [
   {
     slug: "menstrual-cup",
-    question: "A guide to Menstrual Cups",
+    question: "A Guide to Menstrual Cups",
     category: "Menstrual Health",
     excerpt: "Period pain is one of the most common questions I get. Here's the real answer - and when to actually worry.",
     body: `You want to use a menstrual cup? Well, you've come to the right place. Here is the Dr Cuterus guide to menstrual cups, your new period bestie.
