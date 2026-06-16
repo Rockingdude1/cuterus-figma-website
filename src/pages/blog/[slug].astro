@@ -51,6 +51,24 @@ const bodyHtml = post.body
     <meta property="og:image" content="https://drcuterus.com/photo-about-main.jpg" />
     <meta property="og:image:alt" content="Dr. Tanaya Narendra - Dr. Cuterus" />
     <link rel="canonical" href={`https://drcuterus.com/blog/${post.slug}`} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.question,
+      "description": post.excerpt,
+      "url": `https://drcuterus.com/blog/${post.slug}`,
+      "image": "https://drcuterus.com/photo-about-main.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Tanaya Narendra",
+        "url": "https://drcuterus.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Tanaya Narendra",
+        "url": "https://drcuterus.com"
+      }
+    })} />
   </head>
   <body>
     <Navbar />
