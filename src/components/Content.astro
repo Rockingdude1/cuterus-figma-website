@@ -45,7 +45,7 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
             <div class="content__avatar">
               <Image
                 src={blogPhoto}
-                alt="Dr. Tanaya Narendra"
+                alt="Dr. Tanaya Narendra, Dr Cuterus, sharing sexual health education on Instagram"
                 class="content__avatar-img"
                 width={56}
                 height={56}
@@ -85,11 +85,11 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
 
           <div class="content__grid2">
             <a class="content__thumb" href="https://www.instagram.com/reel/DUiZwPdAQgZ/" target="_blank" rel="noopener" aria-label="Watch reel on Instagram">
-              <Image src={igThumb1} alt="Instagram reel" class="content__thumb-img" width={120} height={213} loading="lazy" />
+              <Image src={igThumb1} alt="Instagram reel by Dr Cuterus on sexual health education" class="content__thumb-img" width={120} height={213} loading="lazy" />
               <span class="content__thumb-play" aria-hidden="true">&#9654;</span>
             </a>
             <a class="content__thumb" href="https://www.instagram.com/reel/DYCUGZqB0eZ/" target="_blank" rel="noopener" aria-label="Watch reel on Instagram">
-              <Image src={igThumb2} alt="Instagram reel" class="content__thumb-img" width={120} height={213} loading="lazy" />
+              <Image src={igThumb2} alt="Instagram reel by Dr Cuterus answering body and period questions" class="content__thumb-img" width={120} height={213} loading="lazy" />
               <span class="content__thumb-play" aria-hidden="true">&#9654;</span>
             </a>
           </div>
@@ -108,7 +108,7 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
 
           <!-- Large album art -->
           <div class="content__pod-art">
-            <Image src={podcastPhoto} alt="The Dr. Cuterus Podcast" class="content__pod-art-img" width={220} height={220} loading="lazy" />
+            <Image src={podcastPhoto} alt="Cover art for The Dr. Cuterus Podcast hosted by Dr. Tanaya Narendra" class="content__pod-art-img" width={220} height={220} loading="lazy" />
           </div>
 
           <!-- Title + artist -->
@@ -123,7 +123,10 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
 
           <!-- Availability footer bar -->
           <div class="content__pod-footer">
-            <p class="content__pod-avail">Available on Spotify<br/>and Apple Podcasts</p>
+            <p class="content__pod-avail">
+              <span class="content__pod-avail-text--hinglish">Spotify aur Apple Podcasts<br/>par available hai</span>
+              <span class="content__pod-avail-text--english">Available on Spotify<br/>and Apple Podcasts</span>
+            </p>
             <a href="https://open.spotify.com/show/41cmfHeXZXHs1xuLV5rJdD" target="_blank" rel="noopener" class="content__pod-trailer">Watch Trailer</a>
           </div>
 
@@ -143,7 +146,7 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
             <div class="content__avatar">
               <Image
                 src={youtubeAvatar}
-                alt="Dr. Tanaya Narendra YouTube"
+                alt="Dr. Tanaya Narendra's YouTube channel on sex education and women's health"
                 class="content__avatar-img"
                 width={52}
                 height={52}
@@ -183,11 +186,11 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
 
           <div class="content__vids">
             <a class="content__vid-thumb" href="https://youtu.be/3n2_HZ_JRTU?si=3Fx699a-dClP04YG" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
-              <Image src={ytThumb1} alt="Dr. Cuterus YouTube video" class="content__vid-img" width={320} height={180} loading="lazy" />
+              <Image src={ytThumb1} alt="YouTube video thumbnail, Dr Cuterus on sexual health" class="content__vid-img" width={320} height={180} loading="lazy" />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
             <a class="content__vid-thumb content__vid-thumb--second" href="https://youtu.be/x3veBgcMzuU?si=CjSevBvW3ssvy_3B" target="_blank" rel="noopener" aria-label="Watch video on YouTube">
-              <Image src={ytThumb2} alt="Dr. Cuterus YouTube video" class="content__vid-img" width={320} height={180} loading="lazy" />
+              <Image src={ytThumb2} alt="YouTube video thumbnail, Dr Cuterus on women's health and periods" class="content__vid-img" width={320} height={180} loading="lazy" />
               <span class="content__vid-play" aria-hidden="true">&#9654;</span>
             </a>
           </div>
@@ -691,6 +694,10 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
     margin: 0;
     line-height: 1.2;
   }
+
+  .content__pod-avail-text--english { display: none; }
+  :global([data-lang="english"]) .content__pod-avail-text--english  { display: inline; }
+  :global([data-lang="english"]) .content__pod-avail-text--hinglish { display: none; }
 
   .content__pod-trailer {
     background: var(--color-yellow-500);

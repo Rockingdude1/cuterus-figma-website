@@ -28,16 +28,19 @@ const episodes = [
 
       <div class="fursat__desc-wrap">
         <div class="fursat__logo-row">
-          <Image src={fursatLogo} alt="Fursat" class="fursat__logo" loading="lazy" />
+          <Image src={fursatLogo} alt="Fursat bra logo, by Dr. Tanaya Narendra" class="fursat__logo" loading="lazy" />
         </div>
         <div class="fursat__desc-box">
           <p class="fursat__desc fursat__desc--desktop">
-            and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
-            <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.
+            <span class="fursat__desc-text--hinglish">aur main proudly present karti hoon <strong>FURSAT</strong>: hamara <strong>cloud-soft</strong>, <strong>medium-impact bra</strong>, jo aapko (aur aapki bewbies ko) pyaar se support karega.</span>
+            <span class="fursat__desc-text--english">and I proudly present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,{" "}
+            <strong>medium-impact bra</strong> designed to hold you (and your bewbies) with love.</span>
           </p>
           <p class="fursat__desc fursat__desc--mobile">
-            and I present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,<br/>
-            <strong>medium-impact bra</strong>.
+            <span class="fursat__desc-text--hinglish">aur main present karti hoon <strong>FURSAT</strong>: hamara <strong>cloud-soft</strong>,<br/>
+            <strong>medium-impact bra</strong>.</span>
+            <span class="fursat__desc-text--english">and I present <strong>FURSAT</strong>: our <strong>cloud-soft</strong>,<br/>
+            <strong>medium-impact bra</strong>.</span>
           </p>
         </div>
       </div>
@@ -75,16 +78,16 @@ const episodes = [
 
         <!-- Colour variant frames — shown on all breakpoints -->
         <div class="fursat__frame fursat__frame--variant is-active" data-variant="1">
-          <Image src={fursat1} alt="Fursat bra colour 1" class="fursat__photo" loading="lazy" />
+          <Image src={fursat1} alt="Fursat cloud-soft medium-impact bra in colour 1 by Dr Cuterus" class="fursat__photo" loading="lazy" />
         </div>
         <div class="fursat__frame fursat__frame--variant" data-variant="2">
-          <Image src={fursat2} alt="Fursat bra colour 2" class="fursat__photo" loading="lazy" />
+          <Image src={fursat2} alt="Fursat cloud-soft medium-impact bra in colour 2 by Dr Cuterus" class="fursat__photo" loading="lazy" />
         </div>
         <div class="fursat__frame fursat__frame--variant" data-variant="3">
-          <Image src={fursat3} alt="Fursat bra colour 3" class="fursat__photo" loading="lazy" />
+          <Image src={fursat3} alt="Fursat cloud-soft medium-impact bra in colour 3 by Dr Cuterus" class="fursat__photo" loading="lazy" />
         </div>
         <div class="fursat__frame fursat__frame--variant" data-variant="4">
-          <Image src={fursat4} alt="Fursat bra colour 4" class="fursat__photo" loading="lazy" />
+          <Image src={fursat4} alt="Fursat cloud-soft medium-impact bra in colour 4 by Dr Cuterus" class="fursat__photo" loading="lazy" />
         </div>
 
         <!-- Colour swatches — shown on all breakpoints -->
@@ -115,7 +118,7 @@ const episodes = [
                 <img
                   class="fursat__thumb"
                   src={`https://img.youtube.com/vi/${ep.id}/hqdefault.jpg`}
-                  alt={`Breast Friends Podcast ${ep.title}`}
+                  alt={`Breast Friends Podcast ${ep.title.replace('Ep', 'Episode')} thumbnail, Dr. Tanaya Narendra`}
                   loading="lazy"
                 />
                 <button class="fursat__play" type="button" aria-label={`Play ${ep.title}`}>
@@ -219,6 +222,11 @@ const episodes = [
   .fursat__desc--mobile {
     display: none;
   }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .fursat__desc-text--english { display: none; }
+  :global([data-lang="english"]) .fursat__desc-text--english  { display: inline; }
+  :global([data-lang="english"]) .fursat__desc-text--hinglish { display: none; }
 
   .fursat__features {
     list-style: none;

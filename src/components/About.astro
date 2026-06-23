@@ -69,37 +69,43 @@ while (interleaved.length < logos.length) {
     <!-- ─── PHOTO COLLAGE ─── -->
     <!-- main photo: CSS polaroid (white bg, shadow, bigger bottom border) -->
     <div class="about__photo about__photo--main">
-      <img src={mainJpg} alt="Dr. Tanaya Narendra" class="about__photo-content" loading="eager" fetchpriority="high" />
+      <img src={mainJpg} alt="Dr. Tanaya Narendra, known as Dr Cuterus, India's favourite sex educator and Oxford-trained doctor" class="about__photo-content" loading="eager" fetchpriority="high" />
     </div>
 
     <div class="about__photo about__photo--saree  about__polaroid about__polaroid--purple">
-      <Image src={sareeJpg}     alt="" class="about__photo-content" loading="eager" width={441} height={551} />
+      <Image src={sareeJpg}     alt="Dr. Tanaya Narendra, Dr Cuterus, dressed in a saree" class="about__photo-content" loading="eager" width={441} height={551} />
     </div>
     <div class="about__photo about__photo--billboard about__polaroid about__polaroid--yellow">
-      <Image src={billboardJpg} alt="" class="about__photo-content" loading="eager" width={436} height={545} />
+      <Image src={billboardJpg} alt="Dr Cuterus featured on a public billboard campaign for sexual health awareness" class="about__photo-content" loading="eager" width={436} height={545} />
     </div>
     <div class="about__photo about__photo--doctor about__polaroid about__polaroid--purple">
-      <Image src={docJpg}       alt="" class="about__photo-content" loading="eager" width={435} height={543} />
+      <Image src={docJpg}       alt="Dr. Tanaya Narendra in her role as a medical doctor" class="about__photo-content" loading="eager" width={435} height={543} />
     </div>
     <div class="about__photo about__photo--diving about__polaroid about__polaroid--purple">
-      <Image src={divingJpg}    alt="" class="about__photo-content" loading="eager" width={441} height={551} />
+      <Image src={divingJpg}    alt="Dr. Tanaya Narendra, Dr Cuterus, scuba diving" class="about__photo-content" loading="eager" width={441} height={551} />
     </div>
     <div class="about__photo about__photo--podcast about__polaroid about__polaroid--yellow">
-      <Image src={podcastJpg}   alt="" class="about__photo-content" loading="eager" width={809} height={420} />
+      <Image src={podcastJpg}   alt="Dr. Tanaya Narendra recording The Dr. Cuterus Podcast" class="about__photo-content" loading="eager" width={809} height={420} />
     </div>
 
 
     <!-- "India's Favourite Sex Educator" badge -->
     <div class="about__badge" aria-hidden="true">
-      <span>India's Favourite</span>
-      <span>Sex Educator</span>
+      <span class="about__badge-set about__badge-set--hinglish">
+        <span>India ki Favourite</span>
+        <span>Sex Educator</span>
+      </span>
+      <span class="about__badge-set about__badge-set--english">
+        <span>India's Favourite</span>
+        <span>Sex Educator</span>
+      </span>
     </div>
 
     <!-- Stars — scattered across the collage -->
-    <img src="/doodles/star about.svg" class="about__star about__star--1" aria-hidden="true" />
-    <img src="/doodles/star about.svg" class="about__star about__star--2" aria-hidden="true" />
-    <img src="/doodles/star about.svg" class="about__star about__star--3" aria-hidden="true" />
-    <img src="/doodles/star about.svg" class="about__star about__star--4" aria-hidden="true" />
+    <img src="/doodles/star about.svg" alt="" class="about__star about__star--1" aria-hidden="true" />
+    <img src="/doodles/star about.svg" alt="" class="about__star about__star--2" aria-hidden="true" />
+    <img src="/doodles/star about.svg" alt="" class="about__star about__star--3" aria-hidden="true" />
+    <img src="/doodles/star about.svg" alt="" class="about__star about__star--4" aria-hidden="true" />
 
     <!-- ─── RIGHT-SIDE TEXT ─── -->
 
@@ -118,8 +124,8 @@ while (interleaved.length < logos.length) {
     <!-- Bio — desktop (two-paragraph, right-aligned) -->
     <div class="about__bio-wrap about__bio-desktop">
       <div class="about__bio about__bio--hinglish">
-        <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
-        <p class="about__bio-body">A doctor, author, podcast host, educator, who answers questions people are too shy to ask out loud.</p>
+        <p class="about__bio-intro">Hi, main hoon <strong>Dr Tanaya Narendra</strong>.<br/>AKA <strong>Dr Cuterus</strong>.</p>
+        <p class="about__bio-body">Doctor, author, podcast host, educator, mai un sawaalon ke jawaab deti hoon jo poochne mein sabko sharam aati hai.</p>
       </div>
       <div class="about__bio about__bio--english">
         <p class="about__bio-intro">Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.</p>
@@ -129,7 +135,7 @@ while (interleaved.length < logos.length) {
 
     <!-- Bio — mobile (single paragraph, shorter, centred) -->
     <p class="about__bio-mobile about__bio-mobile--hinglish">
-      Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.<br/>A doctor, author, podcast host, educator.
+      Hi, main hoon <strong>Dr Tanaya Narendra</strong>.<br/>AKA <strong>Dr Cuterus</strong>.<br/>Doctor, author, podcast host, educator.
     </p>
     <p class="about__bio-mobile about__bio-mobile--english">
       Hey, I'm <strong>Dr Tanaya Narendra</strong>.<br/>Better known as <strong>Dr Cuterus</strong>.<br/>A doctor, author, podcast host, educator.
@@ -337,12 +343,20 @@ while (interleaved.length < logos.length) {
     font-size: clamp(16px, 2.72vw, 28px);
     color: var(--color-brand-900);
     display: flex;
-    flex-direction: column;
-    align-items: center;
     line-height: 0.88;
     z-index: 5;
     white-space: nowrap;
   }
+
+  .about__badge-set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about__badge-set--english { display: none; }
+  :global([data-lang="english"]) .about__badge-set--english  { display: flex; }
+  :global([data-lang="english"]) .about__badge-set--hinglish { display: none; }
 
   /* ─────────────────────────────────────────────
      STAR DECORATIONS

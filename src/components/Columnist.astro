@@ -6,17 +6,23 @@
 
     <!-- LEFT: composited stamp + photo -->
     <div class="columnist__photo-col">
-      <img src="/columnist/image-columnist.png" class="col__image" alt="Dr. Tanaya Narendra holding Mumbai Mirror" loading="lazy" />
+      <img src="/columnist/image-columnist.png" class="col__image" alt="Dr. Tanaya Narendra holding a copy of Mumbai Mirror, writer of the Ask The Sexpert sex education column" loading="lazy" />
     </div>
 
     <!-- RIGHT: grid bg + content -->
     <div class="columnist__right">
       <div class="columnist__content-group">
 
-        <h2 class="columnist__heading">Your Next Door Sexpert.</h2>
+        <h2 class="columnist__heading">
+          <span class="columnist__text--hinglish">Aapki Local Sexpert.</span>
+          <span class="columnist__text--english">Your Next Door Sexpert.</span>
+        </h2>
 
         <div class="columnist__desc-box">
-          <p>Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</p>
+          <p>
+            <span class="columnist__text--hinglish"><strong>Dr. Mahindra Watsa</strong> ke legendary sex column ko Mumbai Mirror mein aage badhate huye main har din aapke sawaalon ka jawaab deti hoon. Aap apne sawaal lekar mujhse contact kar sakte hai. Apne body ke baare mein jaanna kabhi embarrassing nahi hota.</span>
+            <span class="columnist__text--english">Carrying forward <strong>Dr. Mahindra Watsa's</strong> legendary sex column in Mumbai Mirror; everyday, I reply to all of your queries. Anyone with queries can reach out to me. It is never embarrassing to ask to know more about your own body.</span>
+          </p>
         </div>
 
         <a href="https://mumbaimirror.indiatimes.com/ask-the-sexpert"
@@ -116,6 +122,11 @@
   }
 
   .columnist__desc-box strong { font-weight: 700; }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .columnist__text--english { display: none; }
+  :global([data-lang="english"]) .columnist__text--english  { display: inline; }
+  :global([data-lang="english"]) .columnist__text--hinglish { display: none; }
 
   /* CTA */
   .columnist__cta {

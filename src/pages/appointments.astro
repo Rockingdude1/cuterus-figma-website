@@ -32,6 +32,52 @@ const reviews = [
     url: "https://maps.app.goo.gl/Yu4bnH28pMD5JkyR7"
   }
 ];
+
+const faqs = [
+  {
+    questionEnglish: "What does Dr Cuterus consult for?",
+    questionHinglish: "Dr Cuterus kis kis problem ke liye consult karti hain?",
+    answerEnglish: "I consult on a wide range of sexual and reproductive health concerns, including: late or missing periods, PCOD/PCOS/PMOS, difficulty reaching orgasm, pain during sex or being unable to have sex, vaginal discharge concerns, breast-related worries including discharge from breasts, and queer-friendly sexual health consultations. If you're dealing with any of these, you can book a consultation with me directly.",
+    answerHinglish: "Main sexual aur reproductive health-related topics par consult karti hoon, jaise: period late ya missing hona, PCOD/PCOS/PMOS, orgasm na aana, sex karte waqt dard ya sex na ho paana, vaginal discharge ki tension, breasts se related worries jaise breasts se discharge, aur queer-friendly sexual health consultations. Agar aapko inme se kuch bhi feel ho raha hai, toh aap directly mere saath consultation book kar sakte hain.",
+  },
+  {
+    questionEnglish: "How can I book an appointment with Dr Cuterus / Dr. Tanaya Narendra?",
+    questionHinglish: "Dr Cuterus ya Dr. Tanaya Narendra se appointment kaise book karein?",
+    answerEnglish: "The easiest way to book is via WhatsApp. If you're unable to reach me on WhatsApp, you can also email me at drcuterus@gmail.com.",
+    answerHinglish: "Sabse easy tareeka hai WhatsApp se book karna. Agar WhatsApp pe mujhse contact nahi ho paata, toh aap mujhe drcuterus@gmail.com par email bhi kar sakte hain.",
+  },
+  {
+    questionEnglish: "Are consultations online or in-person?",
+    questionHinglish: "Consultations online hote hain ya in-person?",
+    answerEnglish: "All my consultations are conducted online.",
+    answerHinglish: "Mere saare consultations online hi hote hain.",
+  },
+  {
+    questionEnglish: "What are Dr Cuterus's consultation timings?",
+    questionHinglish: "Dr Cuterus ka consultation timing kya hai?",
+    answerEnglish: "I consult on Mondays, Wednesdays, and Fridays, from 3 PM to 6 PM. You can book your slot via WhatsApp.",
+    answerHinglish: "Main Monday, Wednesday aur Friday, 3 PM se 6 PM tak consult karti hoon. Apna slot WhatsApp se book kar sakte hain.",
+  },
+  {
+    questionEnglish: "Where can I learn more from Dr Cuterus alongside my appointment?",
+    questionHinglish: "Appointment ke saath, Dr Cuterus se aur kahan jaan sakti hoon?",
+    answerEnglish: "If you have a specific health concern, it's best to book a consultation with me directly. Alongside that, you can follow me on Instagram and YouTube for daily explainers, listen to The Dr. Cuterus Podcast, or read my bestselling book Dr. Cuterus: Everything Nobody Tells You About Your Body to learn more about your body in everyday language.",
+    answerHinglish: "Agar koi specific health concern hai, toh best yahi hai ki directly mere saath consultation book karein. Iske saath, aap mujhe Instagram aur YouTube par follow kar sakte hain daily explainers ke liye, The Dr. Cuterus Podcast sun sakte hain, ya meri bestselling book Dr. Cuterus: Everything Nobody Tells You About Your Body padh sakte hain apne body ke baare mein aasaan bhasha mein aur jaanne ke liye.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.questionEnglish,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answerEnglish,
+    },
+  })),
+};
 ---
 
 <html lang="en">
@@ -69,6 +115,7 @@ const reviews = [
         }
       }
     </script>
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   </head>
   <body>
     <Navbar />
@@ -163,6 +210,36 @@ const reviews = [
           </div>
         </div>
       </section>
+    </div>
+
+    <!-- SECTION 3: FAQ -->
+    <div class="appt-faq-outer">
+      <div class="appt-faq">
+        <h2 class="appt-faq__heading">Frequently Asked Questions</h2>
+
+        <div class="appt-faq__list">
+          {faqs.map((faq) => (
+            <details class="appt-faq__item">
+              <summary class="appt-faq__q">
+                <h3 class="appt-faq__q-heading">
+                  <span class="appt-faq__text--hinglish">{faq.questionHinglish}</span>
+                  <span class="appt-faq__text--english">{faq.questionEnglish}</span>
+                </h3>
+              </summary>
+              <p class="appt-faq__a">
+                <span class="appt-faq__text--hinglish">{faq.answerHinglish}</span>
+                <span class="appt-faq__text--english">{faq.answerEnglish}</span>
+              </p>
+            </details>
+          ))}
+        </div>
+
+        <a href="https://wa.me/919793656464?text=Hi%2C%20I%20want%20to%20book%20an%20Appointment" target="_blank" rel="noopener" class="btn-primary appt-faq__cta">
+          <span class="appt-cta-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+          <span class="appt-faq__text--hinglish">WhatsApp Par Book Karein →</span>
+          <span class="appt-faq__text--english">Book Via WhatsApp →</span>
+        </a>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -577,6 +654,87 @@ const reviews = [
     gap: 10px;
   }
 
+  /* ── SECTION 3: FAQ ── */
+  .appt-faq-outer {
+    background-color: var(--color-beige-500);
+    padding: 60px 60px 80px;
+  }
+
+  .appt-faq {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .appt-faq__heading {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-brand-400);
+    margin: 0;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-align: center;
+  }
+
+  .appt-faq__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .appt-faq__item {
+    background-color: var(--color-brand-50);
+    border: 1px solid var(--color-brand-500);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .appt-faq__q {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .appt-faq__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .appt-faq__q-heading {
+    display: inline;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-brand-900);
+    margin: 0;
+  }
+
+  .appt-faq__a {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-brand-900);
+    margin: 12px 0 0;
+    line-height: 1.5;
+  }
+
+  .appt-faq__cta {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .appt-faq__text--english { display: none; }
+  :global([data-lang="english"]) .appt-faq__text--english  { display: inline; }
+  :global([data-lang="english"]) .appt-faq__text--hinglish { display: none; }
+
   /* ── FOOTER ── */
   .appt-footer {
     background-color: var(--color-brand-100);
@@ -766,6 +924,27 @@ const reviews = [
     }
 
     .appt-book__cta {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .appt-faq-outer {
+      padding: 40px 20px 56px;
+    }
+
+    .appt-faq__item {
+      padding: 12px 16px;
+    }
+
+    .appt-faq__q-heading {
+      font-size: 1rem;
+    }
+
+    .appt-faq__a {
+      font-size: 0.9rem;
+    }
+
+    .appt-faq__cta {
       font-size: 1rem;
       text-align: center;
     }

@@ -6,10 +6,10 @@ import bookCoverPunjabi from '../assets/images/book-cover-punjabi.jpeg';
 import bookCoverMarathi from '../assets/images/book-cover-marathi.png';
 
 const languages = [
-  { label: "English", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverEn.src },
-  { label: "Hindi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverHindi.src },
-  { label: "Punjabi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverPunjabi.src },
-  { label: "Marathi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverMarathi.src },
+  { label: "English", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverEn.src, coverAlt: "Cover of \"Dr. Cuterus: Everything Nobody Tells You About Your Body\" by Dr. Tanaya Narendra" },
+  { label: "Hindi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverHindi.src, coverAlt: "Cover of \"Dr. Cuterus: Everything Nobody Tells You About Your Body\" by Dr. Tanaya Narendra, Hindi edition" },
+  { label: "Punjabi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverPunjabi.src, coverAlt: "Cover of \"Dr. Cuterus: Everything Nobody Tells You About Your Body\" by Dr. Tanaya Narendra, Punjabi edition" },
+  { label: "Marathi", href: "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1", coverSrc: bookCoverMarathi.src, coverAlt: "Cover of \"Dr. Cuterus: Everything Nobody Tells You About Your Body\" by Dr. Tanaya Narendra, Marathi edition" },
 ];
 ---
 
@@ -49,8 +49,11 @@ const languages = [
   <!-- Mobile row 2 / Desktop col 1 row 1: quote (desktop only) + lang section -->
   <div class="book__left">
     <div class="book__quote-wrap">
-      <blockquote class="book__quote">
-        <span class="book__quote-mark">“</span>   Even though everyone has a body, nobody wants to talk about it. Especially those ‘private’ bits.<span class="book__quote-mark book__quote-mark--close">”</span>
+      <blockquote class=”book__quote”>
+        <span class=”book__quote-mark”>”</span>
+        <span class=”book__quote-text--hinglish”>Sabke paas body hoti hai, par koi uske baare mein baat nahi karna chahta. Especially un ‘private’ parts ke baare mein.</span>
+        <span class=”book__quote-text--english”>Even though everyone has a body, nobody wants to talk about it. Especially those ‘private’ bits.</span>
+        <span class=”book__quote-mark book__quote-mark--close”>”</span>
       </blockquote>
     </div>
 
@@ -69,6 +72,7 @@ const languages = [
               role="option"
               data-href={lang.href}
               data-cover={lang.coverSrc}
+              data-alt={lang.coverAlt}
               data-label={lang.label}
             >
               {lang.label}
@@ -84,7 +88,7 @@ const languages = [
   <div class="book__center">
     <Image
       src={bookCoverEn}
-      alt="Everything Nobody Tells You About Your Body - Dr. Tanaya Narendra"
+      alt="Cover of &quot;Dr. Cuterus: Everything Nobody Tells You About Your Body&quot; by Dr. Tanaya Narendra"
       class="book__cover"
       id="book-cover-img"
       widths={[300, 500, 700]}
@@ -471,6 +475,18 @@ const languages = [
     display: none;
   }
 
+  .book__quote-text--english {
+    display: none;
+  }
+
+  :global([data-lang="english"]) .book__quote-text--english {
+    display: inline;
+  }
+
+  :global([data-lang="english"]) .book__quote-text--hinglish {
+    display: none;
+  }
+
   /* ─────────────────────────────────────────────
      SCENE — display:contents on desktop (grid passthrough),
      fixed 390×750 design canvas on mobile scaled by JS
@@ -652,12 +668,14 @@ const languages = [
       const label = el.dataset.label || 'English';
       const href = el.dataset.href || '#';
       const cover = el.dataset.cover || '';
+      const coverAlt = el.dataset.alt || '';
 
       langCurrentText.textContent = label;
       if (cover) {
         bookCoverImg.srcset = '';
         bookCoverImg.src = cover;
       }
+      if (coverAlt) bookCoverImg.alt = coverAlt;
       if (bookBuyBtn) bookBuyBtn.href = href;
 
       langDropdown.classList.remove('is-open');
