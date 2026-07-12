@@ -37,7 +37,7 @@ import img64 from '../assets/images/image 64.jpg';
 
     <!-- HERO TEXT -->
     <div class="workshops-hero">
-      <h1 class="workshops-hero__heading">Want to conduct a workshop? Get in touch.</h1>
+      <h1 class="workshops-hero__heading">Want to conduct a workshop?<br class="workshops-br" /> Get in touch.</h1>
       <p class="workshops-hero__sub">Interactive workshops on sexual and reproductive health, built for teams who want to do inclusion right</p>
     </div>
 
@@ -177,6 +177,32 @@ import img64 from '../assets/images/image 64.jpg';
 </html>
 
 <script>
+  // ── Scale mobile collage (390×470) to fill tablet viewport width ──
+  const COLLAGE_W = 390;
+  const COLLAGE_H = 470;
+
+  function scaleWorkshopsCollage() {
+    const collage = document.querySelector<HTMLElement>('.workshops-collage');
+    if (!collage) return;
+    const vw = window.innerWidth;
+    if (vw < 720 || vw > 1024) {
+      collage.style.cssText = '';
+      return;
+    }
+    const scale = vw / COLLAGE_W;
+    const scaledH = COLLAGE_H * scale;
+    collage.style.width = `${COLLAGE_W}px`;
+    collage.style.maxWidth = 'none';
+    collage.style.height = `${COLLAGE_H}px`;
+    collage.style.transform = `scale(${scale})`;
+    collage.style.transformOrigin = 'top center';
+    collage.style.marginLeft = `${(vw - COLLAGE_W) / 2}px`;
+    collage.style.marginBottom = `${scaledH - COLLAGE_H}px`;
+  }
+
+  scaleWorkshopsCollage();
+  window.addEventListener('resize', scaleWorkshopsCollage);
+
   const track = document.querySelector<HTMLElement>('.workshops__ticker-track');
   if (track) {
     const imgs = track.querySelectorAll('img');
@@ -226,6 +252,8 @@ import img64 from '../assets/images/image 64.jpg';
     margin: 0 0 28px;
     line-height: 1.4;
   }
+
+  .workshops-br { display: none; }
 
   /* ── COLLAGE ── */
   .workshops-collage {
@@ -455,8 +483,8 @@ import img64 from '../assets/images/image 64.jpg';
     text-align: center;
   }
 
-  /* ── MOBILE (≤768px) ── */
-  @media (max-width: 768px) {
+  /* ── MOBILE + TABLET (≤1024px) ── */
+  @media (max-width: 1024px) {
     .workshops-hero {
       padding: 72px 20px 0;
     }
@@ -558,16 +586,26 @@ import img64 from '../assets/images/image 64.jpg';
     .col-dot[style*="left:367px"]  { display: none; }
   }
 
-  /* ── TABLET (769–1100px) ── */
-  @media (min-width: 769px) and (max-width: 1100px) {
-    .workshops-collage {
-      height: 520px;
-      transform-origin: top left;
+  /* ── TABLET: hero padding adjustment (80px navbar vs 56px on phones) ── */
+  @media (min-width: 720px) and (max-width: 1024px) {
+    html, body { overflow-x: hidden; }
+    .workshops-br { display: inline; }
+
+    .workshops-hero {
+      padding: 100px 40px 0;
+    }
+    .workshops-hero__heading {
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      margin-bottom: 16px;
+    }
+    .workshops-hero__sub {
+      display: none;
     }
 
-    /* Scale the collage proportionally */
-    .workshops-collage > * {
-      transform-origin: top left;
+    .workshops__ticker,
+    .partnerships-footer {
+      width: 100vw;
+      max-width: 100vw;
     }
   }
 </style>

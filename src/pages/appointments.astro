@@ -775,8 +775,10 @@ const faqJsonLd = {
     text-align: center;
   }
 
-  /* ── TABLET (769–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 769px) {
+  /* ── TABLET (720–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 720px) {
+    .appt-tag--p2 { left: calc(70.5%); }
+
     .appt-hero-top,
     .appt-hero-bottom {
       padding: 0 32px;
@@ -799,7 +801,7 @@ const faqJsonLd = {
   }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
+  @media (max-width: 719px) {
     /* Show heading above the grid, hide the one inside */
     .appt-hero__heading--above {
       display: block;

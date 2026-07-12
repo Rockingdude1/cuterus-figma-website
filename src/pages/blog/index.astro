@@ -474,29 +474,69 @@ const categories = ['All', ...Array.from(new Set(posts.map(p => p.category)))];
     text-align: center;
   }
 
-  /* ── TABLET (769–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 769px) {
+  /* ── TABLET (720–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 720px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100svh;
+    }
+
+    .blog-footer {
+      flex: 1;
+      height: auto;
+    }
+
+    .blog {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 80px;
+      padding-bottom: 100px;
+      box-sizing: border-box;
+    }
+
     .blog__body {
-      grid-template-columns: 1fr 1fr;
-      padding: 40px 32px 16px;
-      gap: 32px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      row-gap: 8px;
+      column-gap: 32px;
+      padding: 40px 48px 4px;
+      min-height: unset;
     }
 
-    .blog__frame-outer {
-      width: 240px;
-    }
+    /* Flatten content-col so its children become direct grid items */
+    .blog__content-col { display: contents; }
 
-    .blog__bottom-strip {
-      padding: 8px 32px 24px;
-    }
+    .blog__heading-row      { grid-column: 1 / -1; grid-row: 1; width: fit-content; margin-bottom: 16px; }
+    .blog__subtitle-divider { grid-column: 1 / -1; grid-row: 2; }
+    .blog__categories       { grid-column: 1 / -1; grid-row: 3; }
+    .blog__questions        { grid-column: 1 / -1; grid-row: 4; }
+    .blog__photo-col        { grid-column: 1;      grid-row: 5; display: flex; align-items: flex-start; margin-top: 40px; }
+    .blog__subtitle         { grid-column: 2;      grid-row: 5; align-self: center; background-color: var(--color-brand-100); padding: 20px 24px; }
 
-    .blog__btn-center {
-      width: auto;
-    }
+    .blog__frame-outer { width: 260px; }
+
+    /* Hide both mail icons */
+    .blog__mail-cta { display: none !important; }
+
+    /* CTA centred under the right (subtitle) column */
+    .blog__bottom-strip { padding: 4px 48px 24px; }
+    .blog__bottom-left  { margin-left: calc(260px + 32px); flex: 1; justify-content: center; transform: translateY(-130px); }
+    .blog__confused-text { display: none; }
+    .blog__arrow-icon { display: none; }
+    .blog__btn-center { width: auto; justify-content: center; }
+  }
+
+  /* ── Small tablets (iPad Mini 744px) — no line break in footer heading ── */
+  @media (max-width: 799px) and (min-width: 720px) {
+    .blog-footer .mobile-br { display: none; }
+    .blog-footer__heading { font-size: 1.5rem; padding-top: 24px; }
   }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
+  @media (max-width: 719px) {
     .blog__pill-wrap {
       top: -20px;
       right: -70px;

@@ -124,8 +124,8 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
           <!-- Availability footer bar -->
           <div class="content__pod-footer">
             <p class="content__pod-avail">
-              <span class="content__pod-avail-text--hinglish">Spotify aur Apple Podcasts<br/>par available hai</span>
-              <span class="content__pod-avail-text--english">Available on Spotify<br/>and Apple Podcasts</span>
+              <span class="content__pod-avail-text--hinglish">Spotify aur Apple Podcasts par available hai</span>
+              <span class="content__pod-avail-text--english">Available on Spotify and Apple Podcasts</span>
             </p>
             <a href="https://open.spotify.com/show/41cmfHeXZXHs1xuLV5rJdD" target="_blank" rel="noopener" class="content__pod-trailer">Watch Trailer</a>
           </div>
@@ -841,7 +841,7 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
   }
 
   /* ── DESKTOP OVERRIDE ── */
-  @media (min-width: 769px) {
+  @media (min-width: 720px) {
     .content__mobile-header,
     .content__mobile-controls {
       display: none !important;
@@ -852,27 +852,107 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
     }
   }
 
-  /* ── TABLET (769–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .content__phones {
-      gap: clamp(16px, 3vw, 48px);
-      padding: 32px 20px 0;
-      /* Proportional on tall tablets (iPad portrait) — was fixed 460px */
-      height: clamp(460px, 52svh, 560px);
+  /* ── TABLET (720–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 720px) {
+    /* Vertically centre the whole group with navbar offset */
+    .content {
+      justify-content: center;
+      padding-top: 80px;
+      padding-bottom: 0;
+      gap: 32px; /* space between heading and phones row */
+    }
+
+    /* Show mobile-style heading */
+    .content__mobile-header {
+      display: flex !important;
+      flex-direction: column;
+      align-items: flex-start;
+      width: fit-content;
+      align-self: center;
+      gap: -15px;
+      padding: 4px 20px 10px;
+      flex-shrink: 0;
+    }
+
+    /* Yellow rotated pill — styles live in mobile block, repeat here */
+    .content__mobile-sub {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--color-brand-900);
+      background-color: var(--color-yellow-500);
+      padding: 4px 10px;
+      transform: rotate(-2deg);
+      display: inline-block;
+      align-self: flex-start;
+      line-height: 1.4;
+      max-width: 95%;
+    }
+
+    .content__mobile-sub--english { display: none !important; }
+    :global([data-lang="english"]) .content__mobile-sub--english  { display: inline-block !important; }
+    :global([data-lang="english"]) .content__mobile-sub--hinglish { display: none !important; }
+
+    /* Purple italic heading */
+    .content__mobile-heading {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      color: var(--color-brand-400);
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+      margin: 0;
+      text-align: left;
+    }
+
+    /* No carousel on tablet — all 3 phones visible */
+    .content__mobile-controls {
+      display: none !important;
+    }
+
+    /* Pills below each phone (not above) */
+    .content__desktop-pill {
+      order: 1;
     }
 
     .content__frame {
+      order: 0;
       width: min(220px, 28vw);
       border-radius: 32px;
     }
 
+    /* Podcast footer text — smaller, single line */
+    .content__pod-avail {
+      font-size: 0.6rem;
+    }
+    .content__pod-avail br {
+      display: none;
+    }
+
+    /* Phones sit naturally — section justify-content:center handles spacing */
+    .content__phones {
+      flex: none;
+      height: auto;
+      overflow: hidden;
+      gap: clamp(16px, 3vw, 48px);
+      padding: 0 20px;
+      background-color: var(--color-beige-500); /* match page background */
+    }
+
+    /* More gap between phone frame and pill below it */
+    .content__mockup {
+      gap: 24px;
+    }
+
+    /* Hide bottom strip — heading replaces it */
     .content__strip {
-      padding: 16px 24px 24px;
+      display: none !important;
     }
   }
 
   /* ── MOBILE ── */
-  @media (max-width: 768px) {
+  @media (max-width: 719px) {
     .content {
       display: flex;
       flex-direction: column;
@@ -1051,6 +1131,7 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
       display: none;
     }
   }
+
 </style>
 
 <script>

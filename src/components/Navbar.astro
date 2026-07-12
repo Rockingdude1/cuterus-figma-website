@@ -210,13 +210,13 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   }
 
   /* ── TABLET (769–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 1024px) and (min-width: 720px) {
     .navbar {
       padding: 0 32px;
     }
 
     .navbar__nav {
-      gap: 1rem;
+      gap: 1.75rem;
     }
 
     .navbar__logo {
@@ -227,12 +227,17 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
       font-size: 0.875rem;
       padding: 8px 14px;
     }
+
+    .navbar__link--active::after {
+      left: -6px;
+      right: -6px;
+    }
   }
 
   /* ── NARROW TABLET (769–900px): compact nav + toggle so nothing overflows ── */
-  @media (max-width: 900px) and (min-width: 769px) {
+  @media (max-width: 900px) and (min-width: 720px) {
     .navbar__nav {
-      gap: 0.6rem;
+      gap: 1.25rem;
     }
 
     .lang-toggle {
