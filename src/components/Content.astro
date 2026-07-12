@@ -857,7 +857,8 @@ import ytThumb2 from '../assets/images/yt-thumb-2.jpg';
     .content__phones {
       gap: clamp(16px, 3vw, 48px);
       padding: 32px 20px 0;
-      height: 460px;
+      /* Proportional on tall tablets (iPad portrait) — was fixed 460px */
+      height: clamp(460px, 52svh, 560px);
     }
 
     .content__frame {

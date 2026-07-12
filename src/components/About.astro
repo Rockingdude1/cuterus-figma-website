@@ -569,6 +569,16 @@ while (interleaved.length < logos.length) {
   ───────────────────────────────────────────── */
   @media (max-width: 1024px) and (min-width: 769px) {
     .about__badge { font-size: clamp(14px, 2.2vw, 28px); }
+
+    /* Reduce right offset so bio/CTA don't crowd the photo collage on narrower tablets */
+    .about__bio-wrap {
+      right: 32px;
+      width: 28%;
+    }
+
+    .about__cta-wrap {
+      right: 32px;
+    }
   }
 
   /* Short desktop/laptop screens — nudge badge down so it stays below the main photo */

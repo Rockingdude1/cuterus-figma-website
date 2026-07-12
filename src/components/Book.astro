@@ -495,6 +495,42 @@ const languages = [
     display: contents; /* invisible on desktop — children act as direct grid children */
   }
 
+  /* ── TABLET (769–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .book {
+      padding-top: 80px;
+    }
+
+    /* Reduce 60px desktop padding to 32px so content columns aren't crushed */
+    .book__left {
+      padding: 16px 20px 32px 32px;
+      gap: 20px;
+    }
+
+    .book__right {
+      padding: 16px 32px 32px 20px;
+      gap: 16px;
+    }
+
+    .book__buy-wrap {
+      padding: 0 32px 32px 20px;
+    }
+
+    .book__who {
+      padding: 16px 20px 32px 32px;
+    }
+
+    /* Cover scales proportionally for narrower tablet columns */
+    .book__cover {
+      width: min(300px, 38vw);
+      height: min(450px, 57vw);
+    }
+
+    .book__quote {
+      font-size: 1rem;
+    }
+  }
+
   /* MOBILE */
   @media (max-width: 768px) {
 

@@ -552,6 +552,25 @@ const episodes = [
     }
   }
 
+  /* ── TALL TABLET portrait (iPad, 900px+ viewport height) ── */
+  @media (max-width: 1024px) and (min-width: 769px) and (min-height: 900px) {
+    /* Show the quote box — there's room on tall screens */
+    .fursat__quote-box {
+      display: block;
+    }
+
+    /* Less top margin on CTA since vertical space is ample */
+    .fursat__cta-wrap {
+      margin-top: 20px;
+    }
+
+    /* Scale podcast height proportionally so bra section doesn't feel cramped */
+    .fursat__podcast {
+      flex: 0 0 clamp(290px, 28svh, 330px);
+      max-height: none;
+    }
+  }
+
   /* ── MOBILE (≤768px) ── */
   @media (max-width: 768px) {
     /* Bra section: column — photo on top, content below */

@@ -229,6 +229,36 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     }
   }
 
+  /* ── NARROW TABLET (769–900px): compact nav + toggle so nothing overflows ── */
+  @media (max-width: 900px) and (min-width: 769px) {
+    .navbar__nav {
+      gap: 0.6rem;
+    }
+
+    .lang-toggle {
+      padding: 6px 8px;
+      gap: 5px;
+    }
+
+    .lang-toggle__label {
+      font-size: 0.8rem;
+    }
+
+    .lang-toggle__track {
+      width: 30px;
+      height: 14px;
+    }
+
+    .lang-toggle__thumb {
+      width: 10px;
+      height: 10px;
+    }
+
+    /* Re-align thumb positions for the smaller track */
+    .lang-toggle__thumb { left: 18px; }
+    .lang-toggle[data-lang="english"] .lang-toggle__thumb { left: 2px; }
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     .navbar {
