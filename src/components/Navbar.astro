@@ -27,7 +27,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   <!-- Right group: CTA + lang toggle (desktop) / menu toggle (mobile) -->
   <div class="navbar__right">
-    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language" data-lang="hinglish">
+    <button class="lang-toggle" id="desktop-lang-toggle" aria-label="Toggle language" data-lang="english">
       <span class="lang-toggle__label" data-for="english">English</span>
       <span class="lang-toggle__track"><span class="lang-toggle__thumb"></span></span>
       <span class="lang-toggle__label" data-for="hinglish">Hinglish</span>
@@ -153,7 +153,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     transition: opacity 0.2s ease;
   }
 
-  /* Default (hinglish selected): english dim */
+  /* Default (english selected): hinglish dim */
   .lang-toggle__label[data-for="english"] { opacity: 0.3; }
   .lang-toggle__label[data-for="hinglish"] { opacity: 1; }
 
@@ -378,7 +378,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   const LANG_KEY = 'dr-cuterus-lang';
 
   function getSavedLang(): string {
-    return localStorage.getItem(LANG_KEY) || 'hinglish';
+    return localStorage.getItem(LANG_KEY) || 'english';
   }
 
   function setLang(lang: string) {
@@ -403,7 +403,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   // ── DESKTOP LANG TOGGLE ──
   desktopToggle?.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
+    const current = document.documentElement.getAttribute('data-lang') || 'english';
     const next = current === 'hinglish' ? 'english' : 'hinglish';
     setLang(next);
     updateToggleState(next);
@@ -414,7 +414,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
     menu.classList.add('is-open');
     mobileToggle.setAttribute('aria-expanded', 'true');
     mobileToggle.classList.add('is-lang-toggle');
-    const lang = document.documentElement.getAttribute('data-lang') || 'hinglish';
+    const lang = document.documentElement.getAttribute('data-lang') || 'english';
     mobileToggle.dataset.lang = lang;
     const enOp = lang === 'english' ? 1 : 0.3;
     const hiOp = lang === 'hinglish' ? 1 : 0.3;
@@ -440,7 +440,7 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
 
   mobileToggle?.addEventListener('click', () => {
     if (menu.classList.contains('is-open')) {
-      const current = document.documentElement.getAttribute('data-lang') || 'hinglish';
+      const current = document.documentElement.getAttribute('data-lang') || 'english';
       const next = current === 'hinglish' ? 'english' : 'hinglish';
       setLang(next);
       updateToggleState(next);
