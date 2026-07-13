@@ -564,38 +564,21 @@ while (interleaved.length < logos.length) {
   .about__ticker-logo[src*="mumbai_mirror"] { height: 36px; width: 150px; }
 
 
-  /* ─────────────────────────────────────────────
-     TABLET  (769 – 1024 px)
-  ───────────────────────────────────────────── */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .about__badge { font-size: clamp(14px, 2.2vw, 28px); }
-
-    /* Reduce right offset so bio/CTA don't crowd the photo collage on narrower tablets */
-    .about__bio-wrap {
-      right: 32px;
-      width: 28%;
-    }
-
-    .about__cta-wrap {
-      right: 32px;
-    }
-  }
-
   /* Short desktop/laptop screens — nudge badge down so it stays below the main photo */
-  @media (max-height: 720px) and (min-width: 769px) {
+  @media (max-height: 720px) and (min-width: 1025px) {
     .about__badge { top: 79%; }
   }
-  @media (max-height: 620px) and (min-width: 769px) {
+  @media (max-height: 620px) and (min-width: 1025px) {
     .about__badge { top: 83%; }
   }
 
   /* ─────────────────────────────────────────────
-     MOBILE  (≤ 768 px)
+     MOBILE + TABLET  (≤ 1024 px)
      Scene is fixed 402×772 px design space.
-     JS scales it to fit any phone viewport.
+     JS scales it to fit any phone/tablet viewport.
      All positions are % of 402w × 772h.
   ───────────────────────────────────────────── */
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
 
     /* Scene: fixed design size, JS applies scale() */
     .about__scene {
@@ -761,7 +744,7 @@ while (interleaved.length < logos.length) {
     const scene = document.querySelector<HTMLElement>('.about__scene');
     if (!scene) return;
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 1024) {
       scene.style.transform = '';
       scene.style.top = '';
       return;

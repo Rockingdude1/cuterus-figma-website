@@ -321,28 +321,8 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
   :global([data-lang="english"]) .contact__text--english  { display: inline; }
   :global([data-lang="english"]) .contact__text--hinglish { display: none; }
 
-  /* TABLET */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .contact__top {
-      padding: 40px 32px 24px 28px;
-    }
-
-    .contact__bottom {
-      padding: 0 32px 24px 28px;
-    }
-
-    .contact__flower--purple {
-      right: 80px;
-    }
-
-    .contact__samosa-img {
-      width: min(120px, 15vw);
-      height: min(120px, 15vw);
-    }
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
+  /* MOBILE + TABLET (≤1024px) */
+  @media (max-width: 1024px) {
     .contact {
       display: flex;
       flex-direction: column;
@@ -448,8 +428,13 @@ import samosaPhoto from '../assets/images/samosa.jpeg';
     }
   }
 
-  /* Small phones */
-  @media (max-width: 768px) and (max-height: 700px) {
+  /* Tablet navbar offset (80px vs 56px on phones) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .contact { padding-top: 80px; }
+  }
+
+  /* Small phones / squat screens */
+  @media (max-width: 1024px) and (max-height: 700px) {
     .contact__top {
       padding: 8px 20px 6px;
       gap: 6px;
