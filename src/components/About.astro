@@ -116,9 +116,12 @@ while (interleaved.length < logos.length) {
     <p class="about__headline about__headline--1">100% Science.</p>
     <p class="about__headline about__headline--2">0% Sharam.</p>
 
-    <!-- And dher saara pyaar pill -->
+    <!-- + dher saara pyaar pill -->
     <div class="about__pill-wrap" aria-hidden="true">
-      <div class="about__pill-bakchodi">And dher saara pyaar!</div>
+      <div class="about__pill-bakchodi">
+        <span class="about__pill-text--hinglish">+ dher saara pyaar!</span>
+        <span class="about__pill-text--english">+ a lot of love</span>
+      </div>
     </div>
 
     <!-- Bio — desktop (two-paragraph, right-aligned) -->
@@ -421,6 +424,10 @@ while (interleaved.length < logos.length) {
     white-space: nowrap;
     line-height: 1.3;
   }
+
+  .about__pill-text--hinglish { display: none; }
+  :global([data-lang="hinglish"]) .about__pill-text--hinglish { display: inline; }
+  :global([data-lang="hinglish"]) .about__pill-text--english  { display: none; }
 
   /* ─────────────────────────────────────────────
      BIO TEXT
