@@ -81,16 +81,16 @@ const faqJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Appointments - Dr. Cuterus</title>
-    <meta name="description" content="Book an online consultation with Dr. Tanaya Narendra - confidential, judgment-free." />
+    <meta name="description" content="Book a confidential online consultation with Dr. Tanaya Narendra (Dr. Cuterus) for period problems, PCOS, painful sex, or vaginal discharge concerns." />
     <meta property="og:title" content="Appointments - Dr. Cuterus" />
-    <meta property="og:description" content="Book an online consultation with Dr. Tanaya Narendra - confidential, judgment-free." />
+    <meta property="og:description" content="Book a confidential online consultation with Dr. Tanaya Narendra (Dr. Cuterus) for period problems, PCOS, painful sex, or vaginal discharge concerns." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://drcuterus.com/appointments" />
     <meta property="og:image" content="https://drcuterus.com/photo-about-main.jpg" />
     <meta property="og:image:alt" content="Dr. Tanaya Narendra - Dr. Cuterus" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Appointments - Dr. Cuterus" />
-    <meta name="twitter:description" content="Book an online consultation with Dr. Tanaya Narendra - confidential, judgment-free." />
+    <meta name="twitter:description" content="Book a confidential online consultation with Dr. Tanaya Narendra (Dr. Cuterus) for period problems, PCOS, painful sex, or vaginal discharge concerns." />
     <meta name="twitter:image" content="https://drcuterus.com/photo-about-main.jpg" />
     <meta name="twitter:image:alt" content="Dr. Tanaya Narendra - Dr. Cuterus" />
     <link rel="canonical" href="https://drcuterus.com/appointments" />
@@ -98,15 +98,32 @@ const faqJsonLd = {
       {
         "@context": "https://schema.org",
         "@type": "Physician",
+        "@id": "https://drcuterus.com/#person",
         "name": "Dr. Tanaya Narendra",
         "alternateName": "Dr. Cuterus",
         "description": "Book an online consultation with Dr. Tanaya Narendra - confidential, judgment-free sexual and women's health consultations.",
         "url": "https://drcuterus.com/appointments",
         "image": "https://drcuterus.com/photo-about-main.jpg",
         "medicalSpecialty": "Obstetrics and Gynecology",
+        "worksFor": { "@id": "https://drcuterus.com/#business" },
         "availableService": {
           "@type": "MedicalTherapy",
           "name": "Online Consultation"
+        },
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://wa.me/919793656464?text=Hi%2C%20I%20want%20to%20book%20an%20Appointment",
+            "actionPlatform": [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform"
+            ]
+          },
+          "result": {
+            "@type": "Reservation",
+            "name": "Online Consultation Booking"
+          }
         }
       }
     </script>

@@ -39,21 +39,100 @@ import sentientItalicUrl from '../assets/fonts/Sentient-VariableItalic.woff2?url
     <meta name="twitter:image:alt" content="Dr. Tanaya Narendra - Dr. Cuterus" />
     <link rel="canonical" href="https://drcuterus.com/" />
 
-    <!-- Schema.org Person -->
+    <!-- Schema.org: Person, MedicalBusiness, WebSite, and Book tied together via shared @id -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Tanaya Narendra",
-        "alternateName": "Dr. Cuterus",
-        "jobTitle": "Doctor, Sexual Health Educator, Author",
-        "description": "Oxford-trained doctor, sex educator, author, and award-winning creator making sex education safe and accessible in India.",
-        "url": "https://drcuterus.com",
-        "image": "https://drcuterus.com/photo-about-main.jpg",
-        "sameAs": [
-          "https://www.instagram.com/dr_cuterus/",
-          "https://www.youtube.com/@dr_cuterus",
-          "https://open.spotify.com/show/41cmfHeXZXHs1xuLV5rJdD"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://drcuterus.com/#person",
+            "name": "Tanaya Narendra",
+            "alternateName": "Dr. Cuterus",
+            "jobTitle": "Doctor, Sexual Health Educator, Author",
+            "description": "Oxford-trained doctor, sex educator, author, and award-winning creator making sex education safe and accessible in India.",
+            "url": "https://drcuterus.com",
+            "image": "https://drcuterus.com/photo-about-main.jpg",
+            "alumniOf": [
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "University of Oxford"
+              },
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "Swami Vivekanand Subharti University"
+              }
+            ],
+            "memberOf": {
+              "@type": "Organization",
+              "name": "Royal Society for Public Health",
+              "url": "https://www.rsph.org.uk/"
+            },
+            "award": [
+              "Health Influencer of the Year, IHW Council (2022)",
+              "Forbes India Top 100 Digital Stars (2023)",
+              "ELLE Wellness Expert of the Year (2023)",
+              "Forbes India Top 100 Digital Stars (2024)"
+            ],
+            "knowsAbout": [
+              "Sexual health education",
+              "Reproductive health",
+              "Embryology",
+              "HPV vaccine awareness",
+              "Menstrual health",
+              "PCOS/PCOD"
+            ],
+            "sameAs": [
+              "https://www.instagram.com/dr_cuterus/",
+              "https://www.youtube.com/@dr_cuterus",
+              "https://open.spotify.com/show/41cmfHeXZXHs1xuLV5rJdD",
+              "https://en.wikipedia.org/wiki/Tanaya_Narendra",
+              "https://www.wikidata.org/wiki/Q119444947",
+              "https://twitter.com/drcuterus",
+              "https://www.goodreads.com/author/show/28160174.Tanaya_Narendra"
+            ]
+          },
+          {
+            "@type": "MedicalBusiness",
+            "@id": "https://drcuterus.com/#business",
+            "name": "Dr. Cuterus",
+            "founder": { "@id": "https://drcuterus.com/#person" },
+            "description": "Online sexual and reproductive health consultations with Dr. Tanaya Narendra, AKA Dr. Cuterus.",
+            "url": "https://drcuterus.com",
+            "image": "https://drcuterus.com/photo-about-main.jpg",
+            "medicalSpecialty": "Obstetrics and Gynecology",
+            "sameAs": [
+              "https://www.instagram.com/dr_cuterus/",
+              "https://www.youtube.com/@dr_cuterus",
+              "https://open.spotify.com/show/41cmfHeXZXHs1xuLV5rJdD"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://drcuterus.com/#website",
+            "name": "Dr. Cuterus - Dr. Tanaya Narendra",
+            "url": "https://drcuterus.com",
+            "about": { "@id": "https://drcuterus.com/#person" },
+            "creator": {
+              "@type": "Organization",
+              "name": "ReWired Labs",
+              "url": "https://www.re-wired.tech/"
+            }
+          },
+          {
+            "@type": "Book",
+            "@id": "https://drcuterus.com/#book",
+            "name": "Dr. Cuterus: Everything Nobody Tells You About Your Body",
+            "author": { "@id": "https://drcuterus.com/#person" },
+            "genre": ["Health", "Self-Help"],
+            "inLanguage": ["en", "hi", "pa", "mr"],
+            "url": "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.amazon.in/Dr-Cuterus-Everything-Nobody-Tells/dp/0143455702/ref=sr_1_1",
+              "availability": "https://schema.org/InStock"
+            }
+          }
         ]
       }
     </script>
