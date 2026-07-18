@@ -51,8 +51,7 @@ const languages = [
     <div class="book__quote-wrap">
       <blockquote class="book__quote">
         <span class="book__quote-mark">"</span>
-        <span class="book__quote-text--hinglish">Sabke paas body hoti hai, par koi uske baare mein baat nahi karna chahta. Especially un 'private' parts ke baare mein.</span>
-        <span class="book__quote-text--english">Even though everyone has a body, nobody wants to talk about it. Especially those 'private' bits.</span>
+        <span>From understanding dahi wala bacteria to tackling common myths about sex, covering all the "private bits" people avoid talking about.</span>
         <span class="book__quote-mark book__quote-mark--close">"</span>
       </blockquote>
     </div>
@@ -475,17 +474,6 @@ const languages = [
     display: none;
   }
 
-  .book__quote-text--hinglish {
-    display: none;
-  }
-
-  :global([data-lang="hinglish"]) .book__quote-text--hinglish {
-    display: inline;
-  }
-
-  :global([data-lang="hinglish"]) .book__quote-text--english {
-    display: none;
-  }
 
   /* ─────────────────────────────────────────────
      SCENE — display:contents on desktop (grid passthrough),

@@ -116,11 +116,11 @@ while (interleaved.length < logos.length) {
     <p class="about__headline about__headline--1">100% Science.</p>
     <p class="about__headline about__headline--2">0% Sharam.</p>
 
-    <!-- + dher saara pyaar pill -->
+    <!-- aur dher saara pyaar pill -->
     <div class="about__pill-wrap" aria-hidden="true">
       <div class="about__pill-bakchodi">
-        <span class="about__pill-text--hinglish">+ dher saara pyaar!</span>
-        <span class="about__pill-text--english">+ a lot of love</span>
+        <span class="about__pill-text--hinglish">aur dher saara pyaar!</span>
+        <span class="about__pill-text--english">plus a lot of love</span>
       </div>
     </div>
 
@@ -146,7 +146,8 @@ while (interleaved.length < logos.length) {
 
     <!-- CTA -->
     <div class="about__cta-wrap">
-      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-primary about__cta">Work With Me</a>
+      <a href="/appointments" class="btn-primary about__cta">Book An Appointment</a>
+      <a href="https://mail.google.com/mail/?view=cm&to=drcuterus@gmail.com" target="_blank" rel="noopener" class="btn-outline about__cta">Work With Me</a>
     </div>
 
     <!-- Scroll indicator -->
@@ -409,8 +410,8 @@ while (interleaved.length < logos.length) {
   ───────────────────────────────────────────── */
   .about__pill-wrap {
     position: absolute;
-    left: 80.13%;
-    top: 40.25%;
+    left: 82.13%;
+    top: 38.25%;
     transform: rotate(-5.99deg);
   }
   .about__pill-bakchodi {
@@ -477,8 +478,12 @@ while (interleaved.length < logos.length) {
     position: absolute;
     right: 60px;
     left: auto;
-    top: 75.07%;
+    top: 76%;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
   }
 
   .about__cta {
@@ -709,8 +714,9 @@ while (interleaved.length < logos.length) {
     .about__cta-wrap {
       right: auto;
       left: 50%;
-      top: 85%;
+      top: 84%;
       transform: translateX(-50%);
+      align-items: center;
     }
     .about__cta { font-size: 19px; }
 

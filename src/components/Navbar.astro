@@ -273,8 +273,9 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
       background: rgba(247, 240, 224, 0.97);
     }
 
+    /* Logo replaced by "Menu" + persistent lang toggle on mobile */
     .navbar__logo {
-      font-size: 1.5rem;
+      display: none;
     }
 
     /* Hide desktop nav (center column collapses) */
@@ -282,33 +283,29 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
       display: none;
     }
 
-    /* Hide desktop-only controls */
-    .lang-toggle { display: none; }
+    /* Lang toggle stays visible and persistent on mobile (no longer morphs from Menu) */
+    .navbar {
+      grid-template-columns: 1fr;
+    }
+
+    .navbar__right {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .lang-toggle {
+      padding: 6px 8px;
+    }
+
+    /* Menu sits on the left, lang toggle on the right */
+    .navbar__toggle {
+      order: -1;
+    }
 
     /* Show mobile toggle */
     .navbar__toggle {
       display: flex;
     }
-
-    /* When menu is open, toggle morphs into the lang pill */
-    .navbar__toggle.is-lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      background: var(--color-brand-100);
-      border: 0.5px solid var(--color-brand-500);
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--color-brand-900);
-      letter-spacing: 0;
-      text-transform: none;
-      line-height: 1;
-    }
-
-    /* Inner pill elements are injected via JS so inline styles handle them */
 
     /* Full-page overlay, slides in from the right */
     .mobile-menu {
@@ -413,37 +410,17 @@ const currentPath = rawPath === '/' ? '/' : rawPath.replace(/\/$/, '');
   function openMenu() {
     menu.classList.add('is-open');
     mobileToggle.setAttribute('aria-expanded', 'true');
-    mobileToggle.classList.add('is-lang-toggle');
-    const lang = document.documentElement.getAttribute('data-lang') || 'english';
-    mobileToggle.dataset.lang = lang;
-    const enOp = lang === 'english' ? 1 : 0.3;
-    const hiOp = lang === 'hinglish' ? 1 : 0.3;
-    const thumbLeft = lang === 'english' ? '2px' : '18px';
-    mobileToggle.innerHTML = `
-      <span style="font-family:var(--font-sans);font-size:0.9rem;font-weight:400;color:var(--color-brand-900);line-height:1;white-space:nowrap;opacity:${enOp};">English</span>
-      <span style="width:32px;height:14px;border-radius:999px;background:var(--color-brand-400);position:relative;flex-shrink:0;display:inline-block;">
-        <span style="position:absolute;width:10px;height:10px;border-radius:50%;background:#ffffff;top:50%;transform:translateY(-50%);left:${thumbLeft};"></span>
-      </span>
-      <span style="font-family:var(--font-sans);font-size:0.9rem;font-weight:400;color:var(--color-brand-900);line-height:1;white-space:nowrap;opacity:${hiOp};">Hinglish</span>
-    `;
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     menu.classList.remove('is-open');
     mobileToggle.setAttribute('aria-expanded', 'false');
-    mobileToggle.classList.remove('is-lang-toggle');
-    delete mobileToggle.dataset.lang;
-    mobileToggle.textContent = 'Menu';
     document.body.style.overflow = '';
   }
 
   mobileToggle?.addEventListener('click', () => {
     if (menu.classList.contains('is-open')) {
-      const current = document.documentElement.getAttribute('data-lang') || 'english';
-      const next = current === 'hinglish' ? 'english' : 'hinglish';
-      setLang(next);
-      updateToggleState(next);
       closeMenu();
     } else {
       openMenu();
